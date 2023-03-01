@@ -3,7 +3,7 @@
 #ifndef QUADRUPLE_HPP
 #define QUADRUPLE_HPP
 
-class Quadruple : public AbilityCard
+class Quadruple : public virtual AbilityCard
 {
 private:
 public:
@@ -13,6 +13,10 @@ public:
      */
     Quadruple();
 
+    /**
+     * @brief Use the Quadruple ability
+     *
+     */
     void use(GameEngine &ge);
 };
 

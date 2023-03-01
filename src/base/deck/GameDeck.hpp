@@ -12,7 +12,7 @@ public:
 protected:
     // dipanggil oleh modifikasi reset deck
     virtual void shuffle() = 0;
-    virtual void from_file() = 0;
+    virtual void fromFile() = 0;
 };
 
 #endif

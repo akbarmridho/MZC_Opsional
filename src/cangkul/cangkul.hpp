@@ -1,7 +1,7 @@
 #ifndef CASINO_HPP
 #define CASINO_HPP
 
-class Casino
+class Cangkul
 {
 public:
     void start();

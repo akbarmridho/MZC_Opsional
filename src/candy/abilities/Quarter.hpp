@@ -3,7 +3,7 @@
 
 #include "AbilityCard.hpp"
 
-class Quarter : public AbilityCard
+class Quarter : public virtual AbilityCard
 {
 private:
 public:
@@ -12,6 +12,12 @@ public:
      *
      */
     Quarter();
+
+    /**
+     * @brief Use the Quarter ability
+     *
+     */
+    void use(GameEngine &ge);
 };
 
 #endif

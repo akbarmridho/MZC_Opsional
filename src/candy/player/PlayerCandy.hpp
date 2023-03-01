@@ -5,13 +5,26 @@
 #include "../deck/PlayerDeckCandy.hpp"
 #include "../abilities/AbilityCard.hpp"
 
-class CandyPlayer : public Player
+const int PLAYER_COUNT = 7;
+
+enum PlayerAction
+{
+    ability,
+    next,
+    dbl,
+    half
+};
+
+class PlayerCandy : public Player
 {
 private:
     PlayerDeckCandy deck;
     AbilityCard &ability;
 
 public:
+    void receiveCard(CardCandy);
+    void receiveAbility(AbilityCard);
+    PlayerAction getThenRunAction();
 };
 
 #endif

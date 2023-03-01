@@ -1,25 +1,19 @@
-/* Card.hpp*/
+/* Card.hpp */
 
 #ifndef CARD_HPP
 #define CARD_HPP
 
 #include <string.h>
+#include "Valuable.hpp"
 
 template <class T>
-class Card
+class Card : public Valuable
 {
 protected:
     const T type;
     const int number;
 
 public:
-    /**
-     * @brief Virtual function to get value of Card
-     *
-     * @return double
-     */
-    virtual double value() const = 0;
-
     // virtual bool operator>(const Card<T> &) const = 0;
     // virtual bool operator==(const Card<T> &) const = 0;
     // virtual bool operator<(const Card<T> &) const = 0;

@@ -7,25 +7,30 @@ class AbilityCard
 {
 private:
     bool used;
+    string name;
+    PlayerCandy &owner;
+
+protected:
+    GameEngine &gameEngine;
 
 public:
     /**
      * @brief Construct a new Ability Card object
      *
      */
-    AbilityCard();
+    AbilityCard(GameEngine &);
 
     /**
      * @brief Virtual function for ability
      *
      */
-    virtual void use(GameEngine &) = 0;
+    virtual void use() = 0;
 
-    /**
-     * @brief Function to toggle card is used or not
-     *
-     */
-    void toggleUsed();
+    bool getUsed() const;
+
+    string getName() const;
+
+    void setOwner(PlayerCandy &);
 };
 
 #endif
