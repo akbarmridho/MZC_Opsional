@@ -24,8 +24,6 @@ public:
     bool nextRound();
 
     void reversePlayer();
-
-    int getRoundCount() const;
 };
 
 #endif

@@ -5,12 +5,12 @@
 
 using std::pair;
 
-typedef pair<int, double> value_pair;
+typedef pair<int, double> value_pair_t;
 
 class Valuable
 {
 public:
-    virtual value_pair value() = 0;
+    virtual value_pair_t value() = 0;
 };
 
 #endif

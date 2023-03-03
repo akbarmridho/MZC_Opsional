@@ -3,8 +3,10 @@
 #ifndef CARD_HPP
 #define CARD_HPP
 
-#include <string.h>
+#include <string>
 #include "Valuable.hpp"
+
+using std::string;
 
 template <class T>
 class Card : public Valuable
@@ -14,15 +16,16 @@ protected:
     const int number;
 
 public:
-    // virtual bool operator>(const Card<T> &) const = 0;
-    // virtual bool operator==(const Card<T> &) const = 0;
-    // virtual bool operator<(const Card<T> &) const = 0;
+    Card(T type, int number);
+     virtual bool operator>(const Card<T> &) const = 0;
+     virtual bool operator==(const Card<T> &) const = 0;
+     virtual bool operator<(const Card<T> &) const = 0;
 
     T getType() const;
 
-    virtual std::string getTypeString() const = 0;
+    [[nodiscard]] virtual std::string getTypeString() const = 0;
 
-    int getNumber() const;
+    [[nodiscard]] int getNumber() const;
 };
 
 #endif

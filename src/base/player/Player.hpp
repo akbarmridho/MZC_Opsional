@@ -11,7 +11,8 @@ protected:
     string name;
 
 public:
-    Player(string);
+    Player();
+    explicit Player(string);
     virtual bool operator>(const Player &) = 0;
     virtual bool operator>=(const Player &) = 0;
     virtual bool operator<(const Player &) = 0;

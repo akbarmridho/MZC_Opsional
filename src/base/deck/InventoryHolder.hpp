@@ -5,8 +5,6 @@
 
 using std::vector;
 
-#include "../base/card/Card.hpp"
-
 template <class T>
 class InventoryHolder
 {
@@ -14,7 +12,10 @@ protected:
     vector<T> cards;
 
 public:
-    virtual void resetDeck() = 0;
+    void reset();
+    T& operator[](int);
+    T& get(int);
+    [[nodiscard]] int getCount() const;
 };
 
 #endif
