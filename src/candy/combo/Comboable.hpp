@@ -14,7 +14,7 @@ protected:
 
 public:
     Comboable(const PlayerDeckCandy &, const TableDeckCandy &);
-    virtual value_pair value();
+    virtual value_pair_t value();
 };
 
 #endif

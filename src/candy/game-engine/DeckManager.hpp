@@ -12,7 +12,7 @@ public:
     void openTableCard();
 
 protected:
-    PlayerCandy *players;
+    PlayerCandy* players[7];
     GameDeckCandy gameDeck;
     TableDeckCandy tableDeck;
 };

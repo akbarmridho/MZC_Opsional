@@ -1,8 +1,8 @@
 #include "Comboable.hpp"
 
-value_pair Comboable::value()
+value_pair_t Comboable::value()
 {
-    return value_pair{
+    return value_pair_t{
         level,
         comboValue};
 }

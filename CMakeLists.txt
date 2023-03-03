@@ -12,4 +12,6 @@ add_executable(MZC_Opsional
         src/base/deck/TableDeck.cpp
         src/base/player/Player.cpp
         src/candy/deck/GameDeckCandy.cpp
-        src/utils/reader.cpp)
+        src/utils/reader.cpp
+        src/candy/abilities/SwapCard.cpp
+        src/candy/abilities/AbilityCard.cpp)

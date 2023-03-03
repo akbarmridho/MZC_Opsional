@@ -9,7 +9,7 @@ public:
     void shuffleAbilities();
 
 protected:
-    PlayerCandy *players;
+    PlayerCandy *players[7];
 };
 
 #endif

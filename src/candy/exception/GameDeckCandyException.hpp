@@ -1,11 +1,8 @@
-#include <utility>
-
 #ifndef GAMEDECKCANDYEXCEPTIONS_HPP
 #define GAMEDECKCANDYEXCEPTIONS_HPP
 
 using std::exception;
 using std::string;
-
 
 class InvalidDeckTypeException: public exception {
 public:

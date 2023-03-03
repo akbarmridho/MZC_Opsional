@@ -13,6 +13,7 @@ protected:
 public:
     Player();
     explicit Player(string);
+    string getName();
     virtual bool operator>(const Player &) = 0;
     virtual bool operator>=(const Player &) = 0;
     virtual bool operator<(const Player &) = 0;

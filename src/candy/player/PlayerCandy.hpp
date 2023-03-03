@@ -19,11 +19,13 @@ class PlayerCandy : public Player
 {
 private:
     PlayerDeckCandy deck;
-    AbilityCard &ability;
+    AbilityCard& ability;
 
 public:
     void receiveCard(CardCandy);
-    void receiveAbility(AbilityCard);
+    void receiveAbility(AbilityCard); // pangil setOwner
+    AbilityCard& getAbility() const;
+    PlayerDeckCandy& getDeck();
     PlayerAction getThenRunAction();
 };
 
