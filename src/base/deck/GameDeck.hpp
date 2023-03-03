@@ -2,6 +2,9 @@
 #define GAMEDECK_HPP
 
 #include "./InventoryHolder.hpp"
+#include <string>
+
+using std::string;
 
 template <class T>
 class GameDeck : virtual public InventoryHolder<T>
@@ -12,7 +15,7 @@ public:
 protected:
     // dipanggil oleh modifikasi reset deck
     virtual void shuffle() = 0;
-    virtual void fromFile() = 0;
+    virtual void fromFile(const string&) = 0;
 };
 
 #endif

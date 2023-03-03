@@ -6,10 +6,10 @@
 class GameDeckCandy : virtual public GameDeck<CardCandy>
 {
 public:
-    void resetDeck();
+//    void resetDeck(); panggil method reset dari base class InventoryHolder
 
 protected:
-    void shuffle();
-    void from_file();
+    void shuffle() override;
+    void fromFile(const string&) override;
 };
 #endif

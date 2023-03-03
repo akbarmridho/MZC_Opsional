@@ -12,11 +12,11 @@ template <class T>
 class Card : public Valuable
 {
 protected:
-    const T type;
-    const int number;
+    T type; // const dihapus karena membuat assignment operator dihapus
+    int number; // const dihapus karena membuat assignment operator dihapus
 
 public:
-    Card(T type, int number);
+     Card(T type, int number);
      virtual bool operator>(const Card<T> &) const = 0;
      virtual bool operator==(const Card<T> &) const = 0;
      virtual bool operator<(const Card<T> &) const = 0;

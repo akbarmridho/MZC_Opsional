@@ -3,12 +3,14 @@
 #include "../../base/card/Card.hpp"
 #include <string>
 
+using std::string;
+
 enum CardCandyType
 {
-    green,
-    blue,
-    yellow,
-    red
+    green = 0,
+    blue = 1,
+    yellow = 2,
+    red = 3
 };
 
 class CardCandy : virtual public Card<CardCandyType>
@@ -26,13 +28,13 @@ class CardCandy : virtual public Card<CardCandyType>
      *
      * @return double
      */
-    virtual double value() const;
+    double value() const;
 
     bool operator>(const CardCandy &) const;
     bool operator==(const CardCandy &) const;
     bool operator<(const CardCandy &) const;
 
-    std::string getTypeString() const;
+    string getTypeString() const;
 };
 
 #endif
