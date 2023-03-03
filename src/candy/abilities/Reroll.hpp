@@ -11,13 +11,13 @@ public:
      * @brief Construct a new Reroll object
      *
      */
-    Reroll();
+    Reroll(GameEngine &ge);
 
     /**
      * @brief Use the Reroll ability
      *
      */
-    void use(GameEngine &ge);
+    void use();
 };
 
 #endif

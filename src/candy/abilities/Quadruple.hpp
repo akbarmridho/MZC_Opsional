@@ -11,13 +11,13 @@ public:
      * @brief Construct a new Quadruple object
      *
      */
-    Quadruple();
+    Quadruple(GameEngine &ge);
 
     /**
      * @brief Use the Quadruple ability
      *
      */
-    void use(GameEngine &ge);
+    void use();
 };
 
 #endif

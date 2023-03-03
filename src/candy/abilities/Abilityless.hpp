@@ -11,13 +11,13 @@ public:
      * @brief Construct a new Abilityless object
      *
      */
-    Abilityless();
+    Abilityless(GameEngine &ge);
 
     /**
      * @brief Use the Abilityless ability
      *
      */
-    void use(GameEngine &ge);
+    void use();
 };
 
 #endif

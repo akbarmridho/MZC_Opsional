@@ -11,13 +11,13 @@ public:
      * @brief Construct a new Quarter object
      *
      */
-    Quarter();
+    Quarter(GameEngine &ge);
 
     /**
      * @brief Use the Quarter ability
      *
      */
-    void use(GameEngine &ge);
+    void use();
 };
 
 #endif

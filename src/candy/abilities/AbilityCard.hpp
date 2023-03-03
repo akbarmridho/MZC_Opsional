@@ -8,17 +8,13 @@ class AbilityCard
 private:
     bool used;
     string name;
-    PlayerCandy &owner;
+    PlayerCandy *owner;
 
 protected:
-    GameEngine &gameEngine;
+    GameEngine *gameEngine;
 
 public:
-    /**
-     * @brief Construct a new Ability Card object
-     *
-     */
-    AbilityCard(GameEngine &);
+    AbilityCard(string name, GameEngine*gameEngine);
 
     /**
      * @brief Virtual function for ability
@@ -26,11 +22,11 @@ public:
      */
     virtual void use() = 0;
 
-    bool getUsed() const;
+    [[nodiscard]] bool getUsed() const;
 
-    string getName() const;
+    [[nodiscard]] string getName() const;
 
-    void setOwner(PlayerCandy &);
+    void setOwner(PlayerCandy *);
 };
 
 #endif

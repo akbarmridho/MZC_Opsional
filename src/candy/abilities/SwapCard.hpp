@@ -11,13 +11,13 @@ public:
      * @brief Construct a new SwapCard object
      *
      */
-    SwapCard();
+    SwapCard(GameEngine *);
 
     /**
      * @brief Use the SwapCard ability
      *
      */
-    void use(GameEngine &ge);
+    void use();
 };
 
 #endif

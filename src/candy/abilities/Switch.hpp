@@ -11,13 +11,13 @@ public:
      * @brief Construct a new Switch object
      *
      */
-    Switch();
+    Switch(GameEngine &ge);
 
     /**
      * @brief Use the Switch ability
      *
      */
-    void use(GameEngine &ge);
+    void use();
 };
 
 #endif
