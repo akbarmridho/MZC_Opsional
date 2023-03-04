@@ -65,4 +65,6 @@ void RoundManager::reversePlayer()
     {
         this->players.insert(this->players.end(), afterCurrentPlayer.begin(), afterCurrentPlayer.end());
     }
+
+    this->currentPlayerIdx = 6;
 }
