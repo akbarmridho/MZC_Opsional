@@ -5,7 +5,7 @@
 #include "../deck/PlayerDeckCandy.hpp"
 #include "../deck/TableDeckCandy.hpp"
 
-class Comboable
+class Comboable : virtual public Valuable
 {
 protected:
     int level;
@@ -13,7 +13,7 @@ protected:
     virtual void computeCombo(const PlayerDeckCandy &, const TableDeckCandy &) = 0;
 
 public:
-    Comboable(const PlayerDeckCandy &, const TableDeckCandy &);
+    Comboable(int level, const PlayerDeckCandy &, const TableDeckCandy &);
     virtual value_pair_t value();
 };
 

@@ -11,6 +11,10 @@ class Valuable
 {
 public:
     virtual value_pair_t value() = 0;
+
+    [[nodiscard]] bool operator<(const Valuable &other) const;
+    [[nodiscard]] bool operator>(const Valuable &other) const;
+    [[nodiscard]] bool operator==(const Valuable &other) const;
 };
 
 #endif
