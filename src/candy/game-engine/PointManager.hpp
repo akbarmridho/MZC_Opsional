@@ -11,7 +11,7 @@ using std::pair;
 class PointManager
 {
 public:
-    PointManager();
+    PointManager(PlayerCandy **);
     /**
      * Berikan poin ke player, dan reset current reward jadi 64 point
      * Identifier berdasarkan nama player
@@ -29,13 +29,13 @@ public:
      */
     void divideReward(int);
 
-    pair<string, long> getHighestScore();
+    pair<string, long> getHighestScore() const;
 
     [[nodiscard]] int getCurrentRewardPoint() const;
 
 protected:
     int currentRewardPoint;
-    map<string, long> player;
+    map<string, long> players;
 };
 
 #endif
