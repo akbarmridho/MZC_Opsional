@@ -18,7 +18,7 @@ T &max(T arr[])
 template <class T>
 T &max(T *arr[])
 {
-  int length = sizeof(arr) / sizeof(*T);
+  int length = sizeof(arr) / sizeof(T *);
   if (length == 0)
     throw NoMaxException();
   T *maxEl = arr[0];
