@@ -38,6 +38,13 @@ void PlayerDeckCandy::resetDeck()
     delete combo;
   }
 }
+void PlayerDeckCandy::pushOrDeleteCombo(Comboable *combo)
+{
+  if (combo->value().second != 0)
+    combos.push_back(combo);
+  else
+    delete combo;
+}
 
 void PlayerDeckCandy::computeCombos(TableDeckCandy &tableDeck)
 {
@@ -49,13 +56,7 @@ void PlayerDeckCandy::computeCombos(TableDeckCandy &tableDeck)
   cards.insert(cards.end(), tableDeck.getCards().begin(), tableDeck.getCards().end());
 
   // do this for all the combos
-  TwoPair *tp = new TwoPair(*this, tableDeck);
-  if (tp->value().second != 0)
-    combos.push_back(new TwoPair(*this, tableDeck));
-  else
-    delete tp;
-  vector<FourOfAKind *> fourCombos = FourOfAKind::getCombos(cards);
-  combos.insert(combos.end(), fourCombos.begin(), fourCombos.end());
+  pushOrDeleteCombo(new FourOfAKind(cards));
 
   // sort descending
   sort(combos.begin(), combos.end(), [](Comboable *a, Comboable *b)

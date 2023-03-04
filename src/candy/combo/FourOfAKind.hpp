@@ -4,10 +4,11 @@
 
 class FourOfAKind : virtual public Comboable
 {
+protected:
+  void computeCombo(vector<CardCandy>);
 
 public:
-  static vector<FourOfAKind *> getCombos(const vector<CardCandy> &);
-  FourOfAKind(double comboValue);
+  FourOfAKind(const vector<CardCandy> &);
 };
 
 #endif
