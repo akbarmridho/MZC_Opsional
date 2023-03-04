@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.16)
 project(MZC_Opsional)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -15,8 +15,8 @@ add_executable(MZC_Opsional
         src/utils/reader.cpp
         src/candy/abilities/SwapCard.cpp
         src/candy/abilities/AbilityCard.cpp
-        src/combo/Comboable.cpp
-        src/combo/TwoPair.cpp
-        src/deck/GameDeckCandy.cpp
-        src/deck/PlayerDeckCandy.cpp
+        src/candy/combo/Comboable.cpp
+        src/candy/combo/TwoPair.cpp
+        src/candy/deck/GameDeckCandy.cpp
+        src/candy/deck/PlayerDeckCandy.cpp
         src/candy/game-engine/AbilitiesManager.cpp)
