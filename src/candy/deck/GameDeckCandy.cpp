@@ -2,7 +2,7 @@
 
 #include "../card/CardCandy.hpp"
 #include "../../utils/reader.hpp"
-#include "../exception/GameDeckCandyException.hpp"
+#include "../exception/DeckCandyException.hpp"
 #include <sstream>
 #include <vector>
 #include <random>
@@ -62,7 +62,7 @@ void GameDeckCandy::fromFile(const string& path) {
             checker[type][number] = true;
         }
 
-        CardCandy card(type, number);
+        CardCandy card((CardCandyType)type, number);
         this->cards.push_back(card);
     }
 

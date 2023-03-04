@@ -15,6 +15,7 @@ enum CardCandyType
 
 class CardCandy : virtual public Card<CardCandyType>
 {
+public:
     /**
      * @brief Construct a new Card object
      *
@@ -26,9 +27,9 @@ class CardCandy : virtual public Card<CardCandyType>
     /**
      * @brief get value of Card
      *
-     * @return double
+     * @return value_pair_t
      */
-    double value() const;
+    value_pair_t value() const;
 
     bool operator>(const CardCandy &) const;
     bool operator==(const CardCandy &) const;
