@@ -6,6 +6,7 @@
 class TableDeckCandy : virtual public TableDeck<CardCandy>
 {
 public:
+    vector<CardCandy> const &getCards() const;
     void resetDeck();
 };
 #endif

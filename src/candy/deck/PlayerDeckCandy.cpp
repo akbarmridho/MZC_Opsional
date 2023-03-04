@@ -1,8 +1,10 @@
 #include "PlayerDeckCandy.hpp"
 #include "../combo/Comboable.hpp"
 #include "../combo/TwoPair.hpp"
+#include "../combo/FourOfAKind.hpp"
 #include "../exception/DeckCandyException.hpp"
 #include <algorithm>
+using std::min;
 using std::sort;
 
 PlayerDeckCandy::PlayerDeckCandy()
@@ -18,6 +20,11 @@ PlayerDeckCandy::~PlayerDeckCandy()
     combos.pop_back();
     delete combo;
   }
+}
+
+vector<CardCandy> const &PlayerDeckCandy::getCards() const
+{
+  return cards;
 }
 
 void PlayerDeckCandy::resetDeck()
@@ -37,39 +44,52 @@ void PlayerDeckCandy::computeCombos(TableDeckCandy &tableDeck)
   // cache computation
   if (comboComputed)
     return;
+  vector<CardCandy> cards;
+  cards.insert(cards.end(), this->cards.begin(), this->cards.end());
+  cards.insert(cards.end(), tableDeck.getCards().begin(), tableDeck.getCards().end());
+
   // do this for all the combos
-  combos.push_back(new TwoPair(*this, tableDeck));
+  TwoPair *tp = new TwoPair(*this, tableDeck);
+  if (tp->value().second != 0)
+    combos.push_back(new TwoPair(*this, tableDeck));
+  else
+    delete tp;
+  vector<FourOfAKind *> fourCombos = FourOfAKind::getCombos(cards);
+  combos.insert(combos.end(), fourCombos.begin(), fourCombos.end());
 
   // sort descending
   sort(combos.begin(), combos.end(), [](Comboable *a, Comboable *b)
        { return (*a) > (*b); });
 }
 
-bool PlayerDeckCandy::compare(PlayerDeckCandy &other, function<bool(Comboable &, Comboable &)> func)
+bool PlayerDeckCandy::operator<(PlayerDeckCandy &other)
 {
   if (!comboComputed || !other.comboComputed)
     throw NoComputedCombosException();
-  // combos length must be the same
-  for (int i = 0; i < combos.size(); i++)
+  int minSize = min(combos.size(), other.combos.size());
+  for (int i = 0; i < minSize; i++)
   {
     Comboable *c1 = combos[i];
     Comboable *c2 = other.combos[i];
     if (*c1 == *c2)
       continue;
-    return func(*c1, *c2);
+    return *c1 < *c2;
   }
-}
-
-bool PlayerDeckCandy::operator<(PlayerDeckCandy &other)
-{
-  return compare(
-      other, [](Comboable &a, Comboable &b)
-      { return a < b; });
+  return combos.size() < other.combos.size();
 }
 
 bool PlayerDeckCandy::operator>(PlayerDeckCandy &other)
 {
-  return compare(
-      other, [](Comboable &a, Comboable &b)
-      { return a > b; });
+  if (!comboComputed || !other.comboComputed)
+    throw NoComputedCombosException();
+  int minSize = min(combos.size(), other.combos.size());
+  for (int i = 0; i < minSize; i++)
+  {
+    Comboable *c1 = combos[i];
+    Comboable *c2 = other.combos[i];
+    if (*c1 == *c2)
+      continue;
+    return *c1 > *c2;
+  }
+  return combos.size() > other.combos.size();
 }
