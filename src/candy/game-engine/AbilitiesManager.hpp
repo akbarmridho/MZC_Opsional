@@ -2,18 +2,23 @@
 #define ABILITIESMANAGER_HPP
 
 #include "../player/PlayerCandy.hpp"
+#include "DeckManager.hpp"
+#include "PointManager.hpp"
+#include "RoundManager.hpp"
 
-class AbilitiesManager
-{
+class AbilitiesManager {
 public:
     AbilitiesManager();
-    AbilitiesManager(GameEngine *, PlayerCandy *[7]);
+
+    AbilitiesManager(PlayerCandy **, DeckManager *, PointManager *, RoundManager *);
 
     void shuffle();
 
 protected:
     PlayerCandy *players[7];
-    GameEngine *gameEngine;
+    DeckManager *deckManager;
+    PointManager *pointManager;
+    RoundManager *roundManager;
 };
 
 #endif

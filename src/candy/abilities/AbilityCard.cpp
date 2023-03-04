@@ -3,59 +3,46 @@
 
 #include <utility>
 
-AbilityCard::AbilityCard(string name, GameEngine *gameEngine) : name(std::move(name)), used(false), deactivated(false)
-{
-    this->gameEngine = gameEngine;
+AbilityCard::AbilityCard(string name) : name(std::move(name)), used(false), deactivated(false) {
     this->owner = nullptr;
 }
 
-bool AbilityCard::getUsed() const
-{
+bool AbilityCard::getUsed() const {
     return used;
 }
 
-string AbilityCard::getName() const
-{
+string AbilityCard::getName() const {
     return name;
 }
 
-void AbilityCard::setOwner(PlayerCandy *player)
-{
+void AbilityCard::setOwner(PlayerCandy *player) {
     this->owner = player;
 }
 
-bool AbilityCard::isDeactivated() const
-{
+bool AbilityCard::isDeactivated() const {
     return this->deactivated;
 }
 
-void AbilityCard::deactivate()
-{
+void AbilityCard::deactivate() {
     this->deactivated = true;
 }
 
-PlayerCandy *AbilityCard::getOwner()
-{
+PlayerCandy *AbilityCard::getOwner() {
     return this->owner;
 }
 
-void AbilityCard::setUsed()
-{
+void AbilityCard::setUsed() {
     this->used = true;
 }
 
-void AbilityCard::notUsedOrThrow() const
-{
-    if (this->getUsed())
-    {
+void AbilityCard::notUsedOrThrow() const {
+    if (this->getUsed()) {
         throw UsedCardException(this->getName());
     }
 }
 
-void AbilityCard::activeOrThrow() const
-{
-    if (this->getUsed())
-    {
+void AbilityCard::activeOrThrow() const {
+    if (this->getUsed()) {
         throw DeactivatedCardException(this->getName());
     }
 }

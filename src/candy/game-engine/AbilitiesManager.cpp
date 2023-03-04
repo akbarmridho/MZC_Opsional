@@ -14,16 +14,17 @@ using std::mt19937;
 using std::random_device;
 using std::uniform_int_distribution;
 
-AbilitiesManager::AbilitiesManager()
-{
+AbilitiesManager::AbilitiesManager() {
 }
 
-AbilitiesManager::AbilitiesManager(GameEngine *ge, PlayerCandy *players[7]) {
-    this->gameEngine = ge;
-
+AbilitiesManager::AbilitiesManager(PlayerCandy **players, DeckManager *dm, PointManager *pm, RoundManager *rm) {
     for (int i = 0; i < 7; i++) {
         this->players[i] = players[i];
     }
+
+    this->deckManager = dm;
+    this->pointManager = pm;
+    this->roundManager = rm;
 }
 
 void AbilitiesManager::shuffle() {
@@ -33,7 +34,7 @@ void AbilitiesManager::shuffle() {
     options.push_back((AbilityCard *) new Quadruple(this->gameEngine));
     options.push_back((AbilityCard *) new Reroll(this->gameEngine));
     options.push_back((AbilityCard *) new Reverse(this->gameEngine));
-    options.push_back((AbilityCard *) new SwapCard(this->gameEngine));
+    options.push_back((AbilityCard *) new SwapCard(this->players));
     options.push_back((AbilityCard *) new Switch(this->gameEngine));
 
     random_device rd;

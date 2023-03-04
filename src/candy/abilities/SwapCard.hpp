@@ -3,15 +3,17 @@
 
 #include "AbilityCard.hpp"
 
-class SwapCard : public virtual AbilityCard
-{
+class SwapCard : public virtual AbilityCard {
 private:
+    PlayerCandy **players;
 public:
     /**
      * @brief Construct a new SwapCard object
      *
      */
-    SwapCard(GameEngine *);
+    explicit SwapCard(PlayerCandy **);
+
+    ~SwapCard();
 
     /**
      * @brief Use the SwapCard ability

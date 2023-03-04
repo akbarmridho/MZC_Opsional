@@ -7,68 +7,58 @@ using std::cin;
 using std::cout;
 using std::istream_iterator;
 
-GameEngine::GameEngine()
-{
+GameEngine::GameEngine() {
 }
 
-void GameEngine::start()
-{
-  istream_iterator<string> iit(cin);
-  for (int i = 0; i < 7; i++)
-  {
-    cout << "Masukkan nama player ke-" << i + 1 << ":\n> ";
-    players[i] = new PlayerCandy(*iit);
-    iit++;
-  }
-  gameCounter = 1;
-  AbilitiesManager am(this, players);
-  abilitiesManager = am;
-  DeckManager dm(players);
-  deckManager = dm;
-  PointManager pm(players);
-  pointManager = pm;
-  RoundManager rm(players);
-  roundManager = rm;
+void GameEngine::start() {
+    istream_iterator<string> iit(cin);
+    for (int i = 0; i < 7; i++) {
+        cout << "Masukkan nama player ke-" << i + 1 << ":\n> ";
+        players[i] = new PlayerCandy(*iit);
+        iit++;
+    }
+    gameCounter = 1;
+    DeckManager dm(players);
+    deckManager = dm;
+    PointManager pm(players);
+    pointManager = pm;
+    RoundManager rm(players);
+    roundManager = rm;
+    AbilitiesManager am(players, &dm, &pm, &rm);
+    abilitiesManager = am;
 
-  deckManager.initializePlayerDeck();
+    deckManager.initializePlayerDeck();
 
-  bool gameOver = false;
-  do
-  {
-    gameOver = runMatch();
-    gameCounter++;
-  } while (!gameOver);
+    bool gameOver = false;
+    do {
+        gameOver = runMatch();
+        gameCounter++;
+    } while (!gameOver);
 }
 
-bool GameEngine::runMatch()
-{
-  deckManager.initializePlayerDeck();
-  bool roundFinished = false;
-  do
-  {
+bool GameEngine::runMatch() {
+    deckManager.initializePlayerDeck();
+    bool roundFinished = false;
+    do {
 
-    roundFinished = runRound();
-  } while (!roundFinished);
+        roundFinished = runRound();
+    } while (!roundFinished);
 
-  string winnerName = max<PlayerCandy>(players).getName();
-  bool gameOver = pointManager.givePointAndReset(winnerName);
-  pointManager.showLeaderboard();
-  return gameOver;
+    string winnerName = max<PlayerCandy>(players).getName();
+    bool gameOver = pointManager.givePointAndReset(winnerName);
+    pointManager.showLeaderboard();
+    return gameOver;
 }
 
-bool GameEngine::runRound()
-{
-  if (roundCount == 2)
-  {
-    abilitiesManager.shuffle();
-  }
-  if (roundCount < 6)
-  {
-    deckManager.openTableCard();
-  }
-  do
-  {
-    PlayerCandy &p = roundManager.getCurrentPlayer();
-    p.getThenRunAction(roundCount == 1);
-  } while (!roundManager.nextPlayer());
+bool GameEngine::runRound() {
+    if (roundCount == 2) {
+        abilitiesManager.shuffle();
+    }
+    if (roundCount < 6) {
+        deckManager.openTableCard();
+    }
+    do {
+        PlayerCandy &p = roundManager.getCurrentPlayer();
+        p.getThenRunAction(roundCount == 1);
+    } while (!roundManager.nextPlayer());
 }
