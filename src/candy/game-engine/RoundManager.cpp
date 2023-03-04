@@ -1,8 +1,5 @@
 #include "RoundManager.hpp"
 
-#include <iostream>
-using namespace std;
-
 RoundManager::RoundManager(PlayerCandy players[], int* roundCount)
 {
     for (int i = 0; i < 7; i++)

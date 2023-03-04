@@ -2,11 +2,7 @@
 #define ROUNDMANAGER_HPP
 
 #include <deque>
-#include <iterator>
 #include "../player/PlayerCandy.hpp"
-
-#include <iostream>
-using namespace std;
 
 class RoundManager
 {
@@ -18,7 +14,7 @@ private:
 public:
     RoundManager(PlayerCandy [], int*);
 
-    PlayerCandy& getCurrentPlayer();
+    PlayerCandy getCurrentPlayer();
     /**
      * Ubah ke player selanjutnya.
      *
