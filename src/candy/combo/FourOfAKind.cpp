@@ -32,12 +32,7 @@ void FourOfAKind::computeCombo(vector<CardCandy> cards) // copy so that cards ca
         }
         if (same == 4)
         {
-            double cardValue = 0;
-            for (int j = 0; j < 4; j++)
-            {
-                cardValue += cards[i - 3 + j].value().second * pow(10.0, 3.0 * j);
-            }
-            this->comboValue = cardValue;
+            this->comboValue = card.value().second;
             break;
         }
     }
