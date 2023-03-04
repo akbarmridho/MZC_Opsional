@@ -21,7 +21,7 @@ public:
     /**
      * Kalikan current reward dengan angka tertentu.
      */
-    void multiplyReward(int);
+    void multiplyReward(float);
 
     /**
      *  Bagi current reward dengan a

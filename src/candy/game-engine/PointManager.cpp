@@ -1,5 +1,7 @@
 #include "PointManager.hpp"
 #include "../../utils/max.hpp"
+#include <cmath>
+
 PointManager::PointManager(PlayerCandy **players)
 {
   currentRewardPoint = 64;
@@ -15,9 +17,9 @@ void PointManager::givePointAndReset(string &player)
   currentRewardPoint = 64;
 }
 
-void PointManager::multiplyReward(int multiplier)
+void PointManager::multiplyReward(float multiplier)
 {
-  currentRewardPoint *= multiplier;
+  currentRewardPoint = floor(currentRewardPoint * multiplier);
 }
 
 void PointManager::divideReward(int divider)
