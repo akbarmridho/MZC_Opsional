@@ -4,13 +4,16 @@
 #include <cmath>
 using std::sort;
 
-FourOfAKind::FourOfAKind(double comboValue)
-    : Comboable(8, comboValue){};
+FourOfAKind::FourOfAKind(const vector<CardCandy> &cards)
+    : Comboable(8, 0)
+{
+    computeCombo(cards);
+};
 
-vector<FourOfAKind *> FourOfAKind::getCombos(const vector<CardCandy> &cards)
+void FourOfAKind::computeCombo(vector<CardCandy> cards) // copy so that cards can be sorted freely
 {
 
-    vector<FourOfAKind *> combos;
+    // sort by value
     sort(cards.begin(), cards.end(), [](CardCandy &a, CardCandy &b)
          { return a < b; });
     int same = 0;
@@ -34,8 +37,8 @@ vector<FourOfAKind *> FourOfAKind::getCombos(const vector<CardCandy> &cards)
             {
                 cardValue += cards[i - 3 + j].value().second * pow(10.0, 3.0 * j);
             }
-            combos.push_back(new FourOfAKind(cardValue));
+            this->comboValue = cardValue;
+            break;
         }
     }
-    return combos;
 }

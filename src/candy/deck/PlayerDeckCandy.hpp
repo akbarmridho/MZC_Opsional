@@ -20,6 +20,7 @@ public:
     vector<CardCandy> const &getCards() const;
 
     void resetDeck();
+    void pushOrDeleteCombo(Comboable *);
     void computeCombos(TableDeckCandy &);
 
     bool operator<(PlayerDeckCandy &other);
