@@ -41,7 +41,6 @@ void RoundManager::reversePlayer()
 {
     std::deque<PlayerCandy> beforeCurrentPlayer;
     std::deque<PlayerCandy> afterCurrentPlayer;
-    PlayerCandy currentPlayer = this->players[this->currentPlayerIdx];
 
     for (int i = 0; i < currentPlayerIdx; i++)
     {
