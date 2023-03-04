@@ -3,13 +3,15 @@
 
 #include "../player/PlayerCandy.hpp"
 
-class AbilitiesManager
-{
+class AbilitiesManager {
 public:
-    void shuffleAbilities();
+    AbilitiesManager(GameEngine *, PlayerCandy *[]);
+
+    void shuffle();
 
 protected:
     PlayerCandy *players[7];
+    GameEngine *gameEngine;
 };
 
 #endif
