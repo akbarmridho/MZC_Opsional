@@ -1,15 +1,21 @@
 #ifndef ROUNDMANAGER_HPP
 #define ROUNDMANAGER_HPP
 
+#include <deque>
+#include <iterator>
 #include "../player/PlayerCandy.hpp"
 
 class RoundManager
 {
+private:
+    std::deque<PlayerCandy> players;
+    std::deque<PlayerCandy>::iterator currentPlayer;
+    int roundCount;
 
 public:
-    RoundManager();
+    RoundManager(PlayerCandy [], int*);
 
-    PlayerCandy getCurrentPlayer();
+    PlayerCandy& getCurrentPlayer();
     /**
      * Ubah ke player selanjutnya.
      *
@@ -21,7 +27,7 @@ public:
      * Dipanggil ketika giliran sudah habis.
      * Akan mengacak kembali urutan pemain (pindahkan player pertama sebelumnya ke terakhir)
      */
-    bool nextRound();
+    void nextRound();
 
     void reversePlayer();
 };
