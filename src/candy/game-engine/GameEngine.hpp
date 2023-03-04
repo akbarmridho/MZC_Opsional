@@ -21,6 +21,9 @@ public:
     GameEngine(); // initialize game
     void start();
     [[nodiscard]] PlayerCandy **getPlayers() const;
+    [[nodiscard]] DeckManager &getDeckManager() const;
+    [[nodiscard]] PointManager &getPointManager() const;
+    [[nodiscard]] RoundManager &getRoundManager() const;
 };
 
 #endif

@@ -31,6 +31,8 @@ public:
 
     pair<string, long> getHighestScore();
 
+    [[nodiscard]] int getCurrentRewardPoint() const;
+
 protected:
     int currentRewardPoint;
     map<string, long> player;
