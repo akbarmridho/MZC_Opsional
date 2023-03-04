@@ -5,11 +5,14 @@
 #include <iterator>
 #include "../player/PlayerCandy.hpp"
 
+#include <iostream>
+using namespace std;
+
 class RoundManager
 {
 private:
     std::deque<PlayerCandy> players;
-    std::deque<PlayerCandy>::iterator currentPlayer;
+    int currentPlayerIdx;
     int roundCount;
 
 public:
