@@ -20,6 +20,7 @@ class PlayerCandy : virtual public Player
 private:
     PlayerDeckCandy deck;
     AbilityCard *ability;
+    TableDeckCandy *tableDeck;
 
 public:
     PlayerCandy();
@@ -30,15 +31,16 @@ public:
     void receiveAbility(AbilityCard *); // pangil setOwner, hapus ability lama
     AbilityCard *getAbility() const;
 
-    PlayerDeckCandy &getDeck();
+    PlayerDeckCandy &getDeck() const;
+    void updateTableDeck(TableDeckCandy *);
 
     // boolean isFirstRound
     PlayerAction getThenRunAction(bool);
-    bool operator>(const Player &);
-    bool operator>=(const Player &);
-    bool operator<(const Player &);
-    bool operator<=(const Player &);
-    bool operator==(const Player &);
+    bool operator>(const Player &) const;
+    bool operator>=(const Player &) const;
+    bool operator<(const Player &) const;
+    bool operator<=(const Player &) const;
+    bool operator==(const Player &) const;
 };
 
 #endif
