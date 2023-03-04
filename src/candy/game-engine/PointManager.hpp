@@ -40,7 +40,7 @@ public:
 protected:
     int currentRewardPoint;
     map<string, long long> players;
-    const static long long WIN_SCORE = 1 << 32;
+    const static long long WIN_SCORE = 1LL << 32;
 };
 
 #endif
