@@ -19,4 +19,8 @@ add_executable(MZC_Opsional
         src/candy/combo/TwoPair.cpp
         src/candy/deck/GameDeckCandy.cpp
         src/candy/deck/PlayerDeckCandy.cpp
-        src/candy/game-engine/AbilitiesManager.cpp)
+        src/candy/game-engine/AbilitiesManager.cpp
+        src/base/card/Valuable.cpp
+        src/candy/combo/FullHouse.cpp
+        src/candy/combo/FullHouse.hpp
+        src/candy/combo/FourOfAKind.cpp)
