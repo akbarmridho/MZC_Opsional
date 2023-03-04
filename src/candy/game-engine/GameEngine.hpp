@@ -13,14 +13,14 @@ protected:
     DeckManager deckManager;
     PointManager pointManager;
     RoundManager roundManager;
-    PlayerCandy* players[7];
-    int roundCount; // ronde 1 sampai 6 (atau 7?)
+    PlayerCandy *players[7];
+    int roundCount;  // ronde 1 sampai 6 (atau 7?)
     int gameCounter; // game ke 1 sampe inf
 
 public:
     GameEngine(); // initialize game
     void start();
-    [[nodiscard]] PlayerCandy*[] getPlayers() const;
+    [[nodiscard]] PlayerCandy **getPlayers() const;
 };
 
 #endif
