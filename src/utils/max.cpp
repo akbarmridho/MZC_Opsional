@@ -30,7 +30,7 @@ T &max(T *arr[])
   return *maxEl;
 }
 
-pair<string, long> max(map<string, long> obj)
+pair<string, long long> max(map<string, long long> obj)
 {
   if (obj.size() == 0)
     throw NoMaxException();

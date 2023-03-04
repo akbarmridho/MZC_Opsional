@@ -14,8 +14,8 @@ add_executable(MZC_Opsional
         src/candy/deck/GameDeckCandy.cpp
         src/utils/reader.cpp
         src/utils/max.cpp
-        src/candy/abilities/SwapCard.cpp
         src/candy/abilities/AbilityCard.cpp
+        src/candy/abilities/SwapCard.cpp
         src/candy/abilities/Abilityless.cpp
         src/candy/abilities/Quadruple.cpp
         src/candy/combo/Comboable.cpp
@@ -24,7 +24,7 @@ add_executable(MZC_Opsional
         src/candy/deck/PlayerDeckCandy.cpp
         src/candy/game-engine/AbilitiesManager.cpp
         src/candy/game-engine/PointManager.cpp
+        src/candy/game-engine/GameEngine.cpp
         src/base/card/Valuable.cpp
         src/candy/combo/FullHouse.cpp
-        src/candy/combo/FullHouse.hpp
         src/candy/combo/FourOfAKind.cpp)

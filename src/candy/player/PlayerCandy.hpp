@@ -7,19 +7,23 @@
 
 const int PLAYER_COUNT = 7;
 
-enum PlayerAction {
+enum PlayerAction
+{
     ability,
     next,
     dbl,
     half
 };
 
-class PlayerCandy : public Player {
+class PlayerCandy : virtual public Player
+{
 private:
     PlayerDeckCandy deck;
     AbilityCard *ability;
 
 public:
+    PlayerCandy();
+    PlayerCandy(string);
     ~PlayerCandy(); // hapus ability
     void receiveCard(CardCandy);
 
@@ -28,7 +32,13 @@ public:
 
     PlayerDeckCandy &getDeck();
 
-    PlayerAction getThenRunAction();
+    // boolean isFirstRound
+    PlayerAction getThenRunAction(bool);
+    bool operator>(const Player &);
+    bool operator>=(const Player &);
+    bool operator<(const Player &);
+    bool operator<=(const Player &);
+    bool operator==(const Player &);
 };
 
 #endif
