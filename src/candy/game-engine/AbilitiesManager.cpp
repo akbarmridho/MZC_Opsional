@@ -14,7 +14,11 @@ using std::mt19937;
 using std::random_device;
 using std::uniform_int_distribution;
 
-AbilitiesManager::AbilitiesManager(GameEngine *ge, PlayerCandy *players[]) {
+AbilitiesManager::AbilitiesManager()
+{
+}
+
+AbilitiesManager::AbilitiesManager(GameEngine *ge, PlayerCandy *players[7]) {
     this->gameEngine = ge;
 
     for (int i = 0; i < 7; i++) {

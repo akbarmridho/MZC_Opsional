@@ -3,9 +3,11 @@
 
 #include "../player/PlayerCandy.hpp"
 
-class AbilitiesManager {
+class AbilitiesManager
+{
 public:
-    AbilitiesManager(GameEngine *, PlayerCandy *[]);
+    AbilitiesManager();
+    AbilitiesManager(GameEngine *, PlayerCandy *[7]);
 
     void shuffle();
 

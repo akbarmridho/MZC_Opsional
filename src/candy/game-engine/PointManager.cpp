@@ -1,18 +1,30 @@
 #include "PointManager.hpp"
 #include "../../utils/max.hpp"
-PointManager::PointManager(PlayerCandy **players)
+#include <algorithm>
+#include <iostream>
+using std::copy;
+using std::cout;
+using std::endl;
+using std::sort;
+
+PointManager::PointManager()
+{
+}
+
+PointManager::PointManager(PlayerCandy *players[7])
 {
   currentRewardPoint = 64;
   for (int i = 0; i < 7; i++)
   {
-    this->players.insert(pair<string, long>{players[i]->getName(), 0L});
+    this->players.insert(pair<string, long>{players[i]->getName(), 0LL});
   }
 }
 
-void PointManager::givePointAndReset(string &player)
+bool PointManager::givePointAndReset(string &player)
 {
   players[player] += currentRewardPoint;
   currentRewardPoint = 64;
+  return players[player] > WIN_SCORE;
 }
 
 void PointManager::multiplyReward(int multiplier)
@@ -25,7 +37,21 @@ void PointManager::divideReward(int divider)
   currentRewardPoint /= divider;
 }
 
-pair<string, long> PointManager::getHighestScore() const
+void PointManager::showLeaderboard() const
+{
+  vector<pair<string, long long>> sortedPoints;
+  copy(players.begin(), players.end(), sortedPoints);
+  sort(sortedPoints.begin(), sortedPoints.end(),
+       [](pair<string, long long> &a, pair<string, long long> &b)
+       { return a.second > b.second; });
+  cout << "Leaderboard:\n";
+  for (int i = 0; i < sortedPoints.size(); i++)
+  {
+    cout << "\t" << i + 1 << ". " << sortedPoints[i].first << ": " << sortedPoints[i].second << endl;
+  }
+}
+
+pair<string, long long> PointManager::getHighestScore() const
 {
   return max(players);
 }

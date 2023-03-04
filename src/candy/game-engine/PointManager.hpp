@@ -11,12 +11,14 @@ using std::pair;
 class PointManager
 {
 public:
-    PointManager(PlayerCandy **);
+    PointManager();
+    PointManager(PlayerCandy *[7]);
     /**
      * Berikan poin ke player, dan reset current reward jadi 64 point
      * Identifier berdasarkan nama player
+     * @return bool player yang ditambahkan nilainya menjadi pemenang atau tidak
      */
-    void givePointAndReset(string &);
+    bool givePointAndReset(string &);
 
     /**
      * Kalikan current reward dengan angka tertentu.
@@ -29,13 +31,16 @@ public:
      */
     void divideReward(int);
 
-    pair<string, long> getHighestScore() const;
+    void showLeaderboard() const;
+
+    pair<string, long long> getHighestScore() const;
 
     [[nodiscard]] int getCurrentRewardPoint() const;
 
 protected:
     int currentRewardPoint;
-    map<string, long> players;
+    map<string, long long> players;
+    const static long long WIN_SCORE = 1 << 32;
 };
 
 #endif

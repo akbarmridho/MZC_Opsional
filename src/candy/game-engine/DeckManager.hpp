@@ -7,12 +7,14 @@
 class DeckManager
 {
 public:
+    DeckManager();
+    DeckManager(PlayerCandy *[7]);
     void resetDeck();
     void initializePlayerDeck(); // dipanggil ronde 1
     void openTableCard();
 
 protected:
-    PlayerCandy* players[7];
+    PlayerCandy *players[7];
     GameDeckCandy gameDeck;
     TableDeckCandy tableDeck;
 };

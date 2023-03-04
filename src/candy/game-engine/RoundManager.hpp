@@ -5,11 +5,15 @@
 
 class RoundManager
 {
+private:
+    PlayerCandy *players[7];
+    // apa aja dah
 
 public:
     RoundManager();
+    RoundManager(PlayerCandy *[]);
 
-    PlayerCandy getCurrentPlayer();
+    PlayerCandy &getCurrentPlayer();
     /**
      * Ubah ke player selanjutnya.
      *
