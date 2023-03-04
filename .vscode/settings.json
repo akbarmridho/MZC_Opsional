@@ -1,8 +1,0 @@
-{
-  "files.associations": {
-    "*.pl": "prolog",
-    "optional": "cpp",
-    "system_error": "cpp",
-    "__node_handle": "cpp"
-  }
-}

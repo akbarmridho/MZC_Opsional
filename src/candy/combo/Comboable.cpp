@@ -7,7 +7,8 @@ value_pair_t Comboable::value()
         comboValue};
 }
 
-Comboable::Comboable(const PlayerDeckCandy &playerDeck, const TableDeckCandy &tableDeck)
+Comboable::Comboable(int level, const PlayerDeckCandy &playerDeck, const TableDeckCandy &tableDeck)
 {
+    this->level = level;
     computeCombo(playerDeck, tableDeck);
 };
