@@ -8,10 +8,7 @@ Abilityless::Abilityless(GameEngine *ge) : AbilityCard("Abilityless", ge) {}
 
 void Abilityless::use()
 {
-  if (this->getUsed())
-  {
-    throw UsedCardException(this->getName());
-  }
+  notUsedOrThrow();
 
   PlayerCandy **players = this->gameEngine->getPlayers();
 
@@ -54,12 +51,12 @@ void Abilityless::use()
   }
   if (target->getAbility()->getUsed())
   {
-    cout << "Kartu ability " << target->getName() << " telah dipakai debelumnya. Yah, sayang penggunaan kartu ini sia-sia\n";
+    cout << "Kartu ability " << *target << " telah dipakai debelumnya. Yah, sayang penggunaan kartu ini sia-sia\n";
   }
   else
   {
     target->getAbility()->deactivate();
-    cout << "Kartu ability " << target->getName() << " telah dimatikan.\n";
+    cout << "Kartu ability " << *target << " telah dimatikan.\n";
   }
 
   setUsed();

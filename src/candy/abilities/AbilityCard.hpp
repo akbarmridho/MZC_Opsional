@@ -15,7 +15,7 @@ protected:
     GameEngine *gameEngine;
 
 public:
-    AbilityCard(string name, GameEngine*gameEngine);
+    AbilityCard(string name, GameEngine *gameEngine);
 
     /**
      * @brief Virtual function for ability
@@ -34,9 +34,11 @@ public:
     [[nodiscard]] string getName() const;
 
     void setOwner(PlayerCandy *);
-    PlayerCandy* getOwner();
+    PlayerCandy *getOwner();
     void deactivate();
     void setUsed();
+    void notUsedOrThrow() const;
+    void activeOrThrow() const;
 };
 
 #endif

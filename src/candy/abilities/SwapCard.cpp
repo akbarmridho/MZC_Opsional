@@ -14,14 +14,8 @@ SwapCard::SwapCard(GameEngine *ge) : AbilityCard("SwapCard", ge) {}
 
 void SwapCard::use()
 {
-    if (this->getUsed())
-    {
-        throw UsedCardException(this->getName());
-    }
-    else if (this->isDeactivated())
-    {
-        throw DeactivatedCardException(this->getName());
-    }
+    notUsedOrThrow();
+    activeOrThrow();
 
     PlayerCandy *target[] = {nullptr, nullptr};
     PlayerCandy **players = this->gameEngine->getPlayers();
@@ -65,7 +59,7 @@ void SwapCard::use()
 
     for (int i = 0; i < 2; i++)
     {
-        cout << "Silakan pilih kartu kanan/kiri " << target[i]->getName() << endl;
+        cout << "Silakan pilih kartu kanan/kiri " << *target[i] << endl;
 
         cout << "1. Kanan" << endl
              << "2. Kiri" << endl;
