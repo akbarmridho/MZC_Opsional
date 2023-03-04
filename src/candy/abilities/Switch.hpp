@@ -3,15 +3,14 @@
 
 #include "AbilityCard.hpp"
 
-class Switch : public virtual AbilityCard
-{
+class Switch : public virtual AbilityCard {
 private:
 public:
     /**
      * @brief Construct a new Switch object
      *
      */
-    Switch(GameEngine &ge);
+    Switch(GameEngine *ge);
 
     /**
      * @brief Use the Switch ability

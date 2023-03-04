@@ -7,25 +7,27 @@
 
 const int PLAYER_COUNT = 7;
 
-enum PlayerAction
-{
+enum PlayerAction {
     ability,
     next,
     dbl,
     half
 };
 
-class PlayerCandy : public Player
-{
+class PlayerCandy : public Player {
 private:
     PlayerDeckCandy deck;
-    AbilityCard& ability;
+    AbilityCard *ability;
 
 public:
+    ~PlayerCandy(); // hapus ability
     void receiveCard(CardCandy);
-    void receiveAbility(AbilityCard); // pangil setOwner
-    AbilityCard& getAbility() const;
-    PlayerDeckCandy& getDeck();
+
+    void receiveAbility(AbilityCard *); // pangil setOwner, hapus ability lama
+    AbilityCard *getAbility() const;
+
+    PlayerDeckCandy &getDeck();
+
     PlayerAction getThenRunAction();
 };
 

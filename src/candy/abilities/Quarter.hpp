@@ -3,15 +3,14 @@
 
 #include "AbilityCard.hpp"
 
-class Quarter : public virtual AbilityCard
-{
+class Quarter : public virtual AbilityCard {
 private:
 public:
     /**
      * @brief Construct a new Quarter object
      *
      */
-    Quarter(GameEngine &ge);
+    Quarter(GameEngine *ge);
 
     /**
      * @brief Use the Quarter ability

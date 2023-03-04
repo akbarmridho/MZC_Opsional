@@ -3,15 +3,14 @@
 
 #include "AbilityCard.hpp"
 
-class Abilityless : public virtual AbilityCard
-{
+class Abilityless : public virtual AbilityCard {
 private:
 public:
     /**
      * @brief Construct a new Abilityless object
      *
      */
-    Abilityless(GameEngine &ge);
+    Abilityless(GameEngine *ge);
 
     /**
      * @brief Use the Abilityless ability

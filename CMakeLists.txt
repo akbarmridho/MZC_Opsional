@@ -14,4 +14,5 @@ add_executable(MZC_Opsional
         src/candy/deck/GameDeckCandy.cpp
         src/utils/reader.cpp
         src/candy/abilities/SwapCard.cpp
-        src/candy/abilities/AbilityCard.cpp)
+        src/candy/abilities/AbilityCard.cpp
+        src/candy/game-engine/AbilitiesManager.cpp)
