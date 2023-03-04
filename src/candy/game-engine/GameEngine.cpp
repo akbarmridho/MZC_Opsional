@@ -1,6 +1,7 @@
 #include "GameEngine.hpp"
 #include <iostream>
 #include <iterator>
+#include "../../utils/max.hpp"
 
 using std::cin;
 using std::cout;
@@ -45,16 +46,26 @@ bool GameEngine::runMatch()
   bool roundFinished = false;
   do
   {
-    if (roundCount == 2)
-    {
-      abilitiesManager.shuffle();
-    }
+
     roundFinished = runRound();
   } while (!roundFinished);
+
+  string winnerName = max<PlayerCandy>(players).getName();
+  bool gameOver = pointManager.givePointAndReset(winnerName);
+  pointManager.showLeaderboard();
+  return gameOver;
 }
 
 bool GameEngine::runRound()
 {
+  if (roundCount == 2)
+  {
+    abilitiesManager.shuffle();
+  }
+  if (roundCount < 6)
+  {
+    deckManager.openTableCard();
+  }
   do
   {
     PlayerCandy &p = roundManager.getCurrentPlayer();

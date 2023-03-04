@@ -22,10 +22,10 @@ public:
 };
 
 template <class T>
-T &max(T arr[]);
+T &max(T *arr[]);
 
 template <class T>
-T &max(T *arr[]);
+T &max(T arr[]);
 
 pair<string, long long> max(map<string, long long>);
 #endif
