@@ -1,6 +1,6 @@
 #include "Comboable.hpp"
 
-value_pair_t Comboable::value()
+value_pair_t Comboable::value() const
 {
     return value_pair_t{
         level,

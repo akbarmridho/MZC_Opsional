@@ -14,7 +14,7 @@ protected:
 public:
     Comboable(int level);
     Comboable(int level, double comboValue);
-    virtual value_pair_t value();
+    virtual value_pair_t value() const;
 };
 
 #endif
