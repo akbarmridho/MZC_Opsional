@@ -13,11 +13,12 @@ private:
     bool comboComputed;
     vector<Comboable *> combos;
 
-    bool compare(PlayerDeckCandy &other, function<bool(Comboable &, Comboable &)> func);
-
 public:
     PlayerDeckCandy();
     ~PlayerDeckCandy();
+
+    vector<CardCandy> const &getCards() const;
+
     void resetDeck();
     void computeCombos(TableDeckCandy &);
 
