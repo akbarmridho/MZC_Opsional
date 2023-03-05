@@ -2,18 +2,20 @@
 #include <iostream>
 using std::cout;
 
-Quadruple::Quadruple(GameEngine *ge) : AbilityCard("Quadruple", ge) {}
+Quadruple::Quadruple(PointManager *pm) : AbilityCard("Quadruple")
+{
+  pointManager = pm;
+}
 
 void Quadruple::use()
 {
   notUsedOrThrow();
   activeOrThrow();
-  PointManager pointManager = gameEngine->getPointManager();
-  cout << *getOwner() << " melakukan QUADRUPLE! Poin hadiah naik dari " << pointManager.getCurrentRewardPoint() << " menjadi ";
+  cout << *getOwner() << " melakukan QUADRUPLE! Poin hadiah naik dari " << pointManager->getCurrentRewardPoint() << " menjadi ";
 
-  gameEngine->getPointManager().multiplyReward(4);
+  pointManager->multiplyReward(4);
 
-  cout << pointManager.getCurrentRewardPoint() << "!\n";
+  cout << pointManager->getCurrentRewardPoint() << "!\n";
 
   setUsed();
 }

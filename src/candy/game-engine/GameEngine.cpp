@@ -7,12 +7,15 @@ using std::cin;
 using std::cout;
 using std::istream_iterator;
 
-GameEngine::GameEngine() {
+GameEngine::GameEngine()
+{
 }
 
-void GameEngine::start() {
+void GameEngine::start()
+{
     istream_iterator<string> iit(cin);
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 7; i++)
+    {
         cout << "Masukkan nama player ke-" << i + 1 << ":\n> ";
         players[i] = new PlayerCandy(*iit);
         iit++;
@@ -24,22 +27,25 @@ void GameEngine::start() {
     pointManager = pm;
     RoundManager rm(players);
     roundManager = rm;
-    AbilitiesManager am(players, &dm, &pm, &rm);
+    AbilitiesManager am(players, &deckManager, &pointManager, &roundManager);
     abilitiesManager = am;
 
     deckManager.initializePlayerDeck();
 
     bool gameOver = false;
-    do {
+    do
+    {
         gameOver = runMatch();
         gameCounter++;
     } while (!gameOver);
 }
 
-bool GameEngine::runMatch() {
+bool GameEngine::runMatch()
+{
     deckManager.initializePlayerDeck();
     bool roundFinished = false;
-    do {
+    do
+    {
 
         roundFinished = runRound();
     } while (!roundFinished);
@@ -50,14 +56,18 @@ bool GameEngine::runMatch() {
     return gameOver;
 }
 
-bool GameEngine::runRound() {
-    if (roundCount == 2) {
+bool GameEngine::runRound()
+{
+    if (roundCount == 2)
+    {
         abilitiesManager.shuffle();
     }
-    if (roundCount < 6) {
+    if (roundCount < 6)
+    {
         deckManager.openTableCard();
     }
-    do {
+    do
+    {
         PlayerCandy &p = roundManager.getCurrentPlayer();
         p.getThenRunAction(roundCount == 1);
     } while (!roundManager.nextPlayer());

@@ -10,14 +10,16 @@ using std::copy_if;
 using std::cout;
 using std::endl;
 
-SwapCard::SwapCard(PlayerCandy **players) : AbilityCard("SwapCard") {
-    this->players = new PlayerCandy *[7];
-    for (int i = 0; i < 7; i++) {
+SwapCard::SwapCard(PlayerCandy *players[7]) : AbilityCard("SwapCard")
+{
+    for (int i = 0; i < 7; i++)
+    {
         this->players[i] = players[i];
     }
 }
 
-void SwapCard::use() {
+void SwapCard::use()
+{
     notUsedOrThrow();
     activeOrThrow();
 
@@ -26,25 +28,32 @@ void SwapCard::use() {
     vector<PlayerCandy *> selectablePlayers;
 
     copy_if(players, players + 7, back_inserter(selectablePlayers),
-            [this](PlayerCandy *player) { return this->getOwner() != player; });
+            [this](PlayerCandy *player)
+            { return this->getOwner() != player; });
 
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 2; i++)
+    {
         cout << "Silakan pilih pemain lain yang kartunya ingin anda tukar: " << endl;
 
-        for (int j = 0; j < selectablePlayers.size(); j++) {
+        for (int j = 0; j < selectablePlayers.size(); j++)
+        {
             PlayerCandy *player = selectablePlayers.at(j);
             cout << j + 1 << ". " << player->getName() << endl;
         }
 
         bool valid = false;
-        while (!valid) {
+        while (!valid)
+        {
             int val;
             cout << "> ";
             cin >> val;
 
-            if (val < 1 || val > selectablePlayers.size()) {
+            if (val < 1 || val > selectablePlayers.size())
+            {
                 cout << "Masukan salah. Pilih ulang! " << endl;
-            } else {
+            }
+            else
+            {
                 target[i] = selectablePlayers[i];
                 selectablePlayers.erase(selectablePlayers.begin() + i, selectablePlayers.begin() + i);
                 valid = true;
@@ -54,21 +63,26 @@ void SwapCard::use() {
 
     int switchTarget[] = {-1, -1};
 
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 2; i++)
+    {
         cout << "Silakan pilih kartu kanan/kiri " << *target[i] << endl;
 
         cout << "1. Kanan" << endl
              << "2. Kiri" << endl;
 
         bool valid = false;
-        while (!valid) {
+        while (!valid)
+        {
             int val;
             cout << "> ";
             cin >> val;
 
-            if (val != 1 && val != 2) {
+            if (val != 1 && val != 2)
+            {
                 cout << "Masukan salah. Pilih ulang! " << endl;
-            } else {
+            }
+            else
+            {
                 switchTarget[i] = val - 1;
                 valid = true;
             }
@@ -87,8 +101,4 @@ void SwapCard::use() {
     cout << "Kartu berhasil ditukar" << endl;
 
     this->setUsed();
-}
-
-SwapCard::~SwapCard() {
-    delete[]players;
 }

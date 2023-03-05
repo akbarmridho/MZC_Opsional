@@ -3,14 +3,17 @@
 #ifndef QUADRUPLE_HPP
 #define QUADRUPLE_HPP
 
-class Quadruple : public virtual AbilityCard {
+class Quadruple : public virtual AbilityCard
+{
 private:
+    PointManager *pointManager;
+
 public:
     /**
      * @brief Construct a new Quadruple object
      *
      */
-    Quadruple(GameEngine *ge);
+    Quadruple(PointManager *pm);
 
     /**
      * @brief Use the Quadruple ability

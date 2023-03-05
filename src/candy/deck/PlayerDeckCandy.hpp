@@ -9,7 +9,8 @@
 
 using std::function;
 
-class PlayerDeckCandy : virtual public PlayerDeck<CardCandy> {
+class PlayerDeckCandy : virtual public PlayerDeck<CardCandy>
+{
 private:
     bool comboComputed;
     vector<Comboable *> combos;

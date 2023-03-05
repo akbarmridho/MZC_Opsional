@@ -4,13 +4,17 @@
 #include <algorithm>
 using namespace std;
 
-Abilityless::Abilityless(GameEngine *ge) : AbilityCard("Abilityless", ge) {}
+Abilityless::Abilityless(PlayerCandy *players[7]) : AbilityCard("Abilityless")
+{
+  for (int i = 0; i < 7; i++)
+  {
+    this->players[i] = players[i];
+  }
+}
 
 void Abilityless::use()
 {
   notUsedOrThrow();
-
-  PlayerCandy **players = this->gameEngine->getPlayers();
 
   vector<PlayerCandy *> selectablePlayers;
   copy_if(players, players + 7, back_inserter(selectablePlayers), [this](PlayerCandy *player)
