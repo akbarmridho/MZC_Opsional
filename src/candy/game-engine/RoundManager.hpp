@@ -1,21 +1,20 @@
 #ifndef ROUNDMANAGER_HPP
 #define ROUNDMANAGER_HPP
 
-#include <deque>
 #include <iostream>
 #include "../player/PlayerCandy.hpp"
 
 class RoundManager
 {
 private:
-    std::deque<PlayerCandy> players;
     int currentPlayerIdx;
     int roundCountRM;
+    PlayerCandy *players[7];
 
 public:
-    RoundManager(PlayerCandy []);
-
-    PlayerCandy getCurrentPlayer();
+    RoundManager();
+    RoundManager(PlayerCandy *[]);
+    PlayerCandy *getCurrentPlayer();
     /**
      * Ubah ke player selanjutnya.
      *
