@@ -8,7 +8,7 @@
 
 class GameEngine
 {
-private:
+protected:
     AbilitiesManager abilitiesManager;
     DeckManager deckManager;
     PointManager pointManager;
@@ -16,16 +16,11 @@ private:
     PlayerCandy *players[7];
     int roundCount;  // ronde 1 sampai 6 (atau 7?)
     int gameCounter; // game ke 1 sampe inf
-    bool runMatch();
-    bool runRound();
 
 public:
     GameEngine(); // initialize game
     void start();
     [[nodiscard]] PlayerCandy **getPlayers() const;
-    [[nodiscard]] DeckManager &getDeckManager() const;
-    [[nodiscard]] PointManager &getPointManager() const;
-    [[nodiscard]] RoundManager &getRoundManager() const;
 };
 
 #endif

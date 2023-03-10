@@ -1,9 +1,9 @@
 #include "AbilityCard.hpp"
-#include "../exception/AbilitiesException.hpp"
 
 #include <utility>
 
-AbilityCard::AbilityCard(string name) : name(std::move(name)), used(false), deactivated(false) {
+AbilityCard::AbilityCard(string name, GameEngine*gameEngine) : name(std::move(name)), used(false), deactivated(false) {
+    this->gameEngine = gameEngine;
     this->owner = nullptr;
 }
 
@@ -27,22 +27,10 @@ void AbilityCard::deactivate() {
     this->deactivated = true;
 }
 
-PlayerCandy *AbilityCard::getOwner() {
+PlayerCandy* AbilityCard::getOwner() {
     return this->owner;
 }
 
 void AbilityCard::setUsed() {
     this->used = true;
-}
-
-void AbilityCard::notUsedOrThrow() const {
-    if (this->getUsed()) {
-        throw UsedCardException(this->getName());
-    }
-}
-
-void AbilityCard::activeOrThrow() const {
-    if (this->getUsed()) {
-        throw DeactivatedCardException(this->getName());
-    }
 }

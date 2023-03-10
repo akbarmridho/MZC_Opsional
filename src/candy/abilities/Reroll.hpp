@@ -3,15 +3,14 @@
 
 #include "AbilityCard.hpp"
 
-class Reroll : public virtual AbilityCard
-{
+class Reroll : public virtual AbilityCard {
 private:
 public:
     /**
      * @brief Construct a new Reroll object
      *
      */
-    Reroll();
+    Reroll(GameEngine *ge);
 
     /**
      * @brief Use the Reroll ability

@@ -5,17 +5,16 @@
 #include "../deck/PlayerDeckCandy.hpp"
 #include "../deck/TableDeckCandy.hpp"
 
-class Comboable : virtual public Valuable {
+class Comboable : virtual public Valuable
+{
 protected:
     int level;
     double comboValue;
+    virtual void computeCombo(const PlayerDeckCandy &, const TableDeckCandy &) = 0;
 
 public:
-    explicit Comboable(int level);
-
-    Comboable(int level, double comboValue);
-
-    [[nodiscard]] value_pair_t value() const override;
+    Comboable(int level, const PlayerDeckCandy &, const TableDeckCandy &);
+    virtual value_pair_t value();
 };
 
 #endif

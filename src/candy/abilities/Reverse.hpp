@@ -3,15 +3,14 @@
 
 #include "AbilityCard.hpp"
 
-class Reverse : public virtual AbilityCard
-{
+class Reverse : public virtual AbilityCard {
 private:
 public:
     /**
      * @brief Construct a new Reverse object
      *
      */
-    Reverse();
+    Reverse(GameEngine *ge);
 
     /**
      * @brief Use the Reverse ability

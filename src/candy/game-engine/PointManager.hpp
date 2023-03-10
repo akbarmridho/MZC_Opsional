@@ -12,13 +12,11 @@ class PointManager
 {
 public:
     PointManager();
-    PointManager(PlayerCandy *[7]);
     /**
      * Berikan poin ke player, dan reset current reward jadi 64 point
      * Identifier berdasarkan nama player
-     * @return bool player yang ditambahkan nilainya menjadi pemenang atau tidak
      */
-    bool givePointAndReset(string &);
+    void givePointAndReset(string &);
 
     /**
      * Kalikan current reward dengan angka tertentu.
@@ -31,16 +29,11 @@ public:
      */
     void divideReward(int);
 
-    void showLeaderboard() const;
-
-    pair<string, long long> getHighestScore() const;
-
-    [[nodiscard]] int getCurrentRewardPoint() const;
+    pair<string, long> getHighestScore();
 
 protected:
     int currentRewardPoint;
-    map<string, long long> players;
-    const static long long WIN_SCORE = 1LL << 32;
+    map<string, long> player;
 };
 
 #endif

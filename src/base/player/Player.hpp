@@ -14,7 +14,11 @@ public:
     Player();
     explicit Player(string);
     string getName();
-    friend std::ostream &operator<<(std::ostream &stream, Player &p);
+    virtual bool operator>(const Player &) = 0;
+    virtual bool operator>=(const Player &) = 0;
+    virtual bool operator<(const Player &) = 0;
+    virtual bool operator<=(const Player &) = 0;
+    virtual bool operator==(const Player &) = 0;
 };
 
 #endif
