@@ -48,7 +48,7 @@ void AbilitiesManager::shuffle()
     for (auto &player : this->players)
     {
         int idx = distributor(generator) % (int)options.size();
-        player->receiveAbility(options[idx]);
+        player->receiveAbility(&options[idx]->getStatus());
         options.erase(options.begin() + idx, options.begin() + idx);
     }
 }

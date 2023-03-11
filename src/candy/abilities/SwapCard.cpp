@@ -20,9 +20,6 @@ SwapCard::SwapCard(PlayerCandy *players[7]) : AbilityCard("SwapCard")
 
 void SwapCard::use()
 {
-    notUsedOrThrow();
-    activeOrThrow();
-
     PlayerCandy *target[] = {nullptr, nullptr};
 
     vector<PlayerCandy *> selectablePlayers;
@@ -100,5 +97,5 @@ void SwapCard::use()
 
     cout << "Kartu berhasil ditukar" << endl;
 
-    this->setUsed();
+    getStatus().setUsed();
 }

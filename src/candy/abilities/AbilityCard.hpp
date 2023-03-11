@@ -2,12 +2,12 @@
 #define ABILITYCARD_HPP
 
 #include "../game-engine/GameEngine.hpp"
+#include "AbilityStatus.hpp"
 
-class AbilityCard {
+class AbilityCard
+{
 private:
-    bool used;
-    bool deactivated;
-    string name;
+    AbilityStatus status;
     PlayerCandy *owner;
 
 public:
@@ -23,23 +23,11 @@ public:
      */
     virtual void use() = 0;
 
-    [[nodiscard]] bool getUsed() const;
-
-    [[nodiscard]] bool isDeactivated() const;
-
-    [[nodiscard]] string getName() const;
+    AbilityStatus &getStatus();
 
     void setOwner(PlayerCandy *);
 
     PlayerCandy *getOwner();
-
-    void deactivate();
-
-    void setUsed();
-
-    void notUsedOrThrow() const;
-
-    void activeOrThrow() const;
 };
 
 #endif

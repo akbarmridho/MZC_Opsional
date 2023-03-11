@@ -2,6 +2,9 @@
 #define TWOPAIR_HPP
 #include "Comboable.hpp"
 
+#include "../deck/PlayerDeckCandy.hpp"
+#include "../deck/TableDeckCandy.hpp"
+
 class TwoPair : virtual public Comboable
 {
 protected:
