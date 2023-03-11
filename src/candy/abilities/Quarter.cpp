@@ -13,7 +13,7 @@ void Quarter::use()
   if (pointManager->getCurrentRewardPoint() >= 4)
   {
     std::cout << " melakukan QUARTER! Poin hadiah turun " << pointManager->getCurrentRewardPoint() << " menjadi ";
-    pointManager->multiplyReward(0.25);
+    pointManager->divideReward(4);
     std::cout << pointManager->getCurrentRewardPoint() << "!\n";
   }
   else
