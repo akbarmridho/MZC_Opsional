@@ -3,6 +3,9 @@
 
 #include "Comboable.hpp"
 #include "../card/CardCandy.hpp"
+#include <iostream>
+#include <vector>
+using std::vector;
 
 class HighCard : virtual public Comboable {
 protected:
