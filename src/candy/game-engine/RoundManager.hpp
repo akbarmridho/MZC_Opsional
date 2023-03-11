@@ -1,19 +1,20 @@
 #ifndef ROUNDMANAGER_HPP
 #define ROUNDMANAGER_HPP
 
+#include <iostream>
 #include "../player/PlayerCandy.hpp"
 
 class RoundManager
 {
 private:
+    int currentPlayerIdx;
+    int roundCountRM;
     PlayerCandy *players[7];
-    // apa aja dah
 
 public:
     RoundManager();
     RoundManager(PlayerCandy *[]);
-
-    PlayerCandy &getCurrentPlayer();
+    PlayerCandy *getCurrentPlayer();
     /**
      * Ubah ke player selanjutnya.
      *
