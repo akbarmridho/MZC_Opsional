@@ -71,4 +71,5 @@ bool GameEngine::runRound()
         PlayerCandy &p = roundManager.getCurrentPlayer();
         p.getThenRunAction(roundCount == 1);
     } while (!roundManager.nextPlayer());
+    return roundCount == 6;
 }

@@ -40,7 +40,11 @@ void PointManager::divideReward(int divider)
 void PointManager::showLeaderboard() const
 {
   vector<pair<string, long long>> sortedPoints;
-  copy(players.begin(), players.end(), sortedPoints);
+  for (auto it = players.begin(); it != players.end(); it++)
+  {
+    auto el = *it;
+    sortedPoints.push_back(el);
+  }
   sort(sortedPoints.begin(), sortedPoints.end(),
        [](pair<string, long long> &a, pair<string, long long> &b)
        { return a.second > b.second; });

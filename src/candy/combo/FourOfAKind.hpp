@@ -2,6 +2,9 @@
 #define FOUROFAKIND_HPP
 #include "Comboable.hpp"
 
+#include "../deck/PlayerDeckCandy.hpp"
+#include "../deck/TableDeckCandy.hpp"
+
 class FourOfAKind : virtual public Comboable
 {
 protected:
