@@ -2,8 +2,7 @@
 #define COMBOABLE_HPP
 
 #include <utility>
-#include "../deck/PlayerDeckCandy.hpp"
-#include "../deck/TableDeckCandy.hpp"
+#include "../../base/card/Valuable.hpp"
 
 class Comboable : virtual public Valuable
 {

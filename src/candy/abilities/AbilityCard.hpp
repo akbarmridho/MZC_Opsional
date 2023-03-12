@@ -2,20 +2,16 @@
 #define ABILITYCARD_HPP
 
 #include "../game-engine/GameEngine.hpp"
+#include "AbilityStatus.hpp"
 
 class AbilityCard
 {
 private:
-    bool used;
-    bool deactivated;
-    string name;
+    AbilityStatus status;
     PlayerCandy *owner;
 
-protected:
-    GameEngine *gameEngine;
-
 public:
-    AbilityCard(string name, GameEngine*gameEngine);
+    AbilityCard(string name);
 
     /**
      * @brief Virtual function for ability
@@ -27,16 +23,11 @@ public:
      */
     virtual void use() = 0;
 
-    [[nodiscard]] bool getUsed() const;
-
-    [[nodiscard]] bool isDeactivated() const;
-
-    [[nodiscard]] string getName() const;
+    AbilityStatus &getStatus();
 
     void setOwner(PlayerCandy *);
-    PlayerCandy* getOwner();
-    void deactivate();
-    void setUsed();
+
+    PlayerCandy *getOwner();
 };
 
 #endif

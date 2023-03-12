@@ -3,7 +3,8 @@
 
 #include "../player/PlayerCandy.hpp"
 
-class AbilitiesManager {
+class AbilitiesManager
+{
 public:
     AbilitiesManager(GameEngine *, PlayerCandy *[]);
 

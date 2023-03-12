@@ -1,9 +1,4 @@
 #include "HighCard.hpp"
-#include <iostream>
-#include <algorithm>
-#include <cmath>
-#include <vector>
-using namespace std;
 
 HighCard::HighCard(const vector<CardCandy> &cards) : Comboable(1) {
     computeCombo(cards);
