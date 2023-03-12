@@ -19,4 +19,6 @@ void Reroll::use()
     // Insert from deck
     deck.insertCard(this->gamedeck->popCard());
     deck.insertCard(this->gamedeck->popCard());
+
+    this->setUsed();
 }
