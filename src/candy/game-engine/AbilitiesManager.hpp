@@ -6,7 +6,8 @@
 #include "PointManager.hpp"
 #include "RoundManager.hpp"
 
-class AbilitiesManager {
+class AbilitiesManager
+{
 public:
     AbilitiesManager();
 

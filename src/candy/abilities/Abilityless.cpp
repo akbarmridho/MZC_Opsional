@@ -14,8 +14,6 @@ Abilityless::Abilityless(PlayerCandy *players[7]) : AbilityCard("Abilityless")
 
 void Abilityless::use()
 {
-  notUsedOrThrow();
-
   vector<PlayerCandy *> selectablePlayers;
   copy_if(players, players + 7, back_inserter(selectablePlayers), [this](PlayerCandy *player)
           { return this->getOwner() != player; });
@@ -24,7 +22,7 @@ void Abilityless::use()
              { return player->getAbility()->getUsed(); }))
   {
     cout << "Eits, ternyata semua pemain sudah memakai kartu kemampuan. Yah kamu kena sendiri deh, kemampuanmu menjadi abilityless. Yah, pengunaan kartu ini sia-sia\n";
-    setUsed();
+    getStatus().setUsed();
     return;
   }
 
@@ -63,5 +61,5 @@ void Abilityless::use()
     cout << "Kartu ability " << *target << " telah dimatikan.\n";
   }
 
-  setUsed();
+  getStatus().setUsed();
 }

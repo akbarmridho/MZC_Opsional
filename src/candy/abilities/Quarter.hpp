@@ -6,12 +6,13 @@
 class Quarter : public virtual AbilityCard
 {
 private:
+    PointManager *pointManager;
 public:
     /**
      * @brief Construct a new Quarter object
      *
      */
-    Quarter();
+    Quarter(PointManager *pm);
 
     /**
      * @brief Use the Quarter ability

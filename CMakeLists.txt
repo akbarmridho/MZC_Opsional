@@ -27,4 +27,6 @@ add_executable(MZC_Opsional
         src/candy/game-engine/GameEngine.cpp
         src/base/card/Valuable.cpp
         src/candy/combo/FullHouse.cpp
-        src/candy/combo/FourOfAKind.cpp)
+        src/candy/combo/FourOfAKind.cpp
+        src/candy/candy.cpp
+        src/main.cpp)

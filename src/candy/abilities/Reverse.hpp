@@ -3,15 +3,15 @@
 
 #include "AbilityCard.hpp"
 
-class Reverse : public virtual AbilityCard
-{
+class Reverse : public virtual AbilityCard {
 private:
+    RoundManager *roundManager;
 public:
     /**
      * @brief Construct a new Reverse object
      *
      */
-    Reverse();
+    Reverse(RoundManager *rm);
 
     /**
      * @brief Use the Reverse ability
