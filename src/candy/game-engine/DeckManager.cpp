@@ -17,6 +17,9 @@ void DeckManager::resetDeck()
         c = players[i].removeCard();
         c = players[i].removeCard();
     }
+    // Resets the table deck
+    tableDeck.resetDeck();
+    // Resets the game deck
 }
 
 void DeckManager::initializePlayerDeck()
