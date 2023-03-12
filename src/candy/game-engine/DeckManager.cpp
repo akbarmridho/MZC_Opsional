@@ -14,12 +14,13 @@ void DeckManager::resetDeck()
     CardCandy c;
     for (int i = 0; i < 7; i++)
     {
-        c = players[i].removeCard();
-        c = players[i].removeCard();
+        c = players[i]->getDeck().removeCard();
+        c = players[i]->getDeck().removeCard();
     }
     // Resets the table deck
     tableDeck.resetDeck();
     // Resets the game deck
+    gameDeck.shuffle();
 }
 
 void DeckManager::initializePlayerDeck()
