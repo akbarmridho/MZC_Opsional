@@ -27,6 +27,7 @@ Pair::Pair(const vector<CardCandy> &cards)
             int cardNum = i + 1;
             int typeValue = cardBag[i].second;
             this->comboValue = 100 * cardNum + typeValue;
+            break;
         }
     }
 }

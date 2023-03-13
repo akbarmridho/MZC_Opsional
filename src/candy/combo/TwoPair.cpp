@@ -31,18 +31,20 @@ TwoPair::TwoPair(const vector<CardCandy> &cards)
         {
             highCardNum = i + 1;
             highTypeValue = cardBag[i].second;
+            break;
         }
     }
 
     bool found = false;
     int j = i - 1;
-    for (j; i >= 0; i--)
+    for (j; j >= 0; j--)
     {
-        if (cardBag[i].first >= 2)
+        if (cardBag[j].first >= 2)
         {
             found = true;
-            lowCardNum = i + 1;
-            lowTypeValue = cardBag[i].second;
+            lowCardNum = j + 1;
+            lowTypeValue = cardBag[j].second;
+            break;
         }
     }
 

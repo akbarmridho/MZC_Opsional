@@ -27,5 +27,8 @@ T &max(T *arr[]);
 template <class T>
 T &max(T arr[]);
 
+template <class T>
+T &max(T t1, T t2);
+
 pair<string, long long> max(map<string, long long>);
 #endif

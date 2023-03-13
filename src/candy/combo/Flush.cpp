@@ -1,4 +1,5 @@
 #include "Flush.hpp"
+#include <algorithm>
 
 
 Flush::Flush(const vector<CardCandy> &cards)
