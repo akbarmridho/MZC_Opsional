@@ -6,10 +6,15 @@ HighCard::HighCard(const vector<CardCandy> &cards) : Comboable(1) {
 }
 
 void HighCard::computeCombo(vector<CardCandy> cards) {
-    sort(cards.begin(), cards.end(), [](CardCandy &a, CardCandy &b)
-         { return ((a < b) && (a.getType() < b.getType())); });
-    this->comboValue = 0;
+    sort(cards.begin(), cards.end(), [](CardCandy a, CardCandy b)
+        { return ((a.getType() <= b.getType())); });
+    
+    stable_sort(cards.begin(), cards.end(), [](CardCandy a, CardCandy b)
+        { return ((a.getNumber() >= b.getNumber())); });
+    std::cout << std::endl;
     for (int i = 0; i < 6; i++) {
-        this->comboValue += ((cards[i].getNumber() * 10) + cards[i].getType());
+        const CardCandy &card = cards[i];
+        this->comboValue = this->comboValue*32 + card.getNumber();
+        this->comboValue = this->comboValue*4 + card.getType();
     }
 }
