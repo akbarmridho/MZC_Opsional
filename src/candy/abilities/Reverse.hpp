@@ -11,13 +11,13 @@ public:
      * @brief Construct a new Reverse object
      *
      */
-    Reverse(RoundManager *rm);
+    explicit Reverse(RoundManager *rm);
 
     /**
      * @brief Use the Reverse ability
      *
      */
-    void use();
+    void use() override;
 };
 
 #endif

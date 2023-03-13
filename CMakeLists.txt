@@ -35,4 +35,16 @@ add_executable(MZC_Opsional
         src/cangkul/deck/PlayerDeckCangkul.cpp
         src/cangkul/deck/TableDeckCangkul.cpp
         src/cangkul/player/PlayerCangkul.cpp
-        src/main.cpp src/candy/game-engine/DeckManager.cpp src/candy/abilities/Reroll.cpp src/candy/abilities/Switch.cpp src/candy/card/CardCandy.cpp src/candy/player/PlayerCandy.cpp)
+        src/main.cpp src/candy/game-engine/DeckManager.cpp
+        src/candy/abilities/Reroll.cpp
+        src/candy/abilities/Switch.cpp
+        src/candy/card/CardCandy.cpp
+        src/candy/player/PlayerCandy.cpp
+        src/candy/abilities/Quarter.cpp
+        src/candy/abilities/Reverse.cpp
+        src/candy/combo/Flush.cpp
+        src/candy/combo/HighCard.cpp
+        src/candy/combo/Pair.cpp
+        src/candy/combo/Straight.cpp
+        src/candy/combo/StraightFlush.cpp
+        src/candy/combo/ThreeOfAKind.cpp)

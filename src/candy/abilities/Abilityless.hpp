@@ -3,23 +3,24 @@
 
 #include "AbilityCard.hpp"
 
-class Abilityless : public virtual AbilityCard
-{
+class Abilityless : public virtual AbilityCard {
 private:
-    PlayerCandy *players[7];
+    PlayerCandy **players;
 
 public:
     /**
      * @brief Construct a new Abilityless object
      *
      */
-    Abilityless(PlayerCandy *[7]);
+    explicit Abilityless(PlayerCandy **);
+
+    ~Abilityless() override;
 
     /**
      * @brief Use the Abilityless ability
      *
      */
-    void use();
+    void use() override;
 };
 
 #endif

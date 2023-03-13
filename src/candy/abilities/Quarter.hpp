@@ -3,8 +3,7 @@
 
 #include "AbilityCard.hpp"
 
-class Quarter : public virtual AbilityCard
-{
+class Quarter : public virtual AbilityCard {
 private:
     PointManager *pointManager;
 public:
@@ -12,13 +11,13 @@ public:
      * @brief Construct a new Quarter object
      *
      */
-    Quarter(PointManager *pm);
+    explicit Quarter(PointManager *pm);
 
     /**
      * @brief Use the Quarter ability
      *
      */
-    void use();
+    void use() override;
 };
 
 #endif

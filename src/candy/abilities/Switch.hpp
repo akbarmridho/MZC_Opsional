@@ -21,7 +21,7 @@ public:
      */
     void use() override;
 
-    ~Switch();
+    ~Switch() override;
 };
 
 #endif
