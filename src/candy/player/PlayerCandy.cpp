@@ -146,11 +146,14 @@ bool PlayerCandy::operator==(PlayerCandy &other)
     return !(this->deck < other.deck) && !(this->deck > other.deck);
 }
 
-void PlayerCandy::showStatus(bool isFirstRound)
+void PlayerCandy::showStatus(bool isFirstRound, bool isFirstForAll)
 {
-    cout << "Sekarang giliran " << *this << endl;
-    cout << "Tekan enter untuk memulai giliran\n";
-    cin.ignore();
+    cout << "Sekarang giliran " << *this << "\n";
+    cout << "Tekan enter untuk memulai giliran" << endl;
+    if (!isFirstForAll)
+    {
+        cin.ignore();
+    }
     string temp;
     getline(cin, temp);
 

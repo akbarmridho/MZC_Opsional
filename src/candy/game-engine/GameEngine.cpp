@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iterator>
 #include "../../utils/max.hpp"
+#include "../../utils/interface.hpp"
 #include <algorithm>
 
 using std::cin;
@@ -10,6 +11,8 @@ using std::endl;
 using std::getline;
 using std::istream_iterator;
 
+bool isFirstForAll = false;
+
 GameEngine::GameEngine()
 {
 }
@@ -17,6 +20,7 @@ GameEngine::GameEngine()
 void GameEngine::start()
 {
     cout << "Selamat datang di Candy Land" << endl;
+    cin.ignore();
     for (int i = 0; i < 7; i++)
     {
         cout << "\nMasukkan nama player ke-" << i + 1 << ":\n> ";
@@ -44,6 +48,7 @@ void GameEngine::start()
     abilitiesManager = am;
 
     bool gameOver = false;
+    isFirstForAll = true;
     do
     {
         gameOver = runMatch();
@@ -53,16 +58,16 @@ void GameEngine::start()
 
 bool GameEngine::runMatch()
 {
-    bool roundFinished = false;
     roundCount = 1;
     deckManager.resetDeck();
     deckManager.initializePlayerDeck();
     do
     {
-        roundFinished = runRound();
-        roundManager.nextRound();
+        cout << cyellow() << "\n\nROUND " << roundCount << "\n\n"
+             << reset();
+        runRound();
         roundCount++;
-    } while (!roundFinished);
+    } while (roundManager.nextRound());
 
     string winnerName = max<PlayerCandy>(players, 7).getName();
     bool gameOver = pointManager.givePointAndReset(winnerName);
@@ -70,7 +75,7 @@ bool GameEngine::runMatch()
     return gameOver;
 }
 
-bool GameEngine::runRound()
+void GameEngine::runRound()
 {
     if (roundCount == 2)
     {
@@ -83,7 +88,8 @@ bool GameEngine::runRound()
     do
     {
         PlayerCandy *p = roundManager.getCurrentPlayer();
-        p->showStatus(roundCount == 1);
+        p->showStatus(roundCount == 1, isFirstForAll);
+        isFirstForAll = false;
         PlayerAction action = p->getAction(roundCount == 1);
         switch (action)
         {
@@ -97,6 +103,6 @@ bool GameEngine::runRound()
         default:
             break;
         }
-    } while (!roundManager.nextPlayer());
-    return roundCount == 6;
+        clearTerminal();
+    } while (roundManager.nextPlayer());
 }

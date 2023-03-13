@@ -47,7 +47,7 @@ public:
 
     bool operator==(PlayerCandy &);
 
-    void showStatus(bool);
+    void showStatus(bool, bool);
 };
 
 #endif

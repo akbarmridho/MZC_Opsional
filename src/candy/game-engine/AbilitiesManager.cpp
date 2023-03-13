@@ -44,6 +44,7 @@ void AbilitiesManager::shuffle() {
 
     for (int i = 0; i < 7; i++) {
         players[i]->receiveAbility(&options[i]->getStatus());
+        options[i]->setOwner(players[i]);
         this->abilityOwner.insert({players[i]->getName(), options[i]});
     }
 }

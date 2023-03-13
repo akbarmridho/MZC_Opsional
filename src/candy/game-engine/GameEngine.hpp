@@ -17,7 +17,7 @@ private:
     int roundCount;  // ronde 1 sampai 6 (atau 7?)
     int gameCounter; // game ke 1 sampe inf
     bool runMatch();
-    bool runRound();
+    void runRound();
 
 public:
     GameEngine(); // initialize game
