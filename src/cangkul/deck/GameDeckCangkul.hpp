@@ -4,12 +4,13 @@
 #include "../card/CardCangkul.hpp"
 #include "../../base/deck/GameDeck.hpp"
 
-class GameDeckCangkul : virtual public GameDeck<CardCangkul> {
+class GameDeckCangkul : virtual public GameDeck<CardCangkul>
+{
 public:
     void shuffle() override;
+    void shuffle(vector<CardCangkul> &);
 
     void fromFile(const string &) override;
 };
-
 
 #endif

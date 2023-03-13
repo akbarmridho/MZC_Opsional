@@ -4,9 +4,8 @@
 #include "../card/CardCangkul.hpp"
 #include "../../base/deck/PlayerDeck.hpp"
 
-class PlayerDeckCangkul : public virtual PlayerDeck<CardCangkul> {
-
+class PlayerDeckCangkul : public virtual PlayerDeck<CardCangkul>
+{
 };
-
 
 #endif
