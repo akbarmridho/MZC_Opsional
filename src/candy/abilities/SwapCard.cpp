@@ -10,7 +10,7 @@ using std::copy_if;
 using std::cout;
 using std::endl;
 
-SwapCard::SwapCard(PlayerCandy **players) : AbilityCard("SwapCard") {
+SwapCard::SwapCard(PlayerCandy **players) : AbilityCard("swap card") {
     this->players = new PlayerCandy *[7];
     for (int i = 0; i < 7; i++) {
         this->players[i] = players[i];

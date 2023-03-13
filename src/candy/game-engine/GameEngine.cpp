@@ -2,22 +2,36 @@
 #include <iostream>
 #include <iterator>
 #include "../../utils/max.hpp"
+#include <algorithm>
 
 using std::cin;
 using std::cout;
 using std::endl;
+using std::getline;
 using std::istream_iterator;
 
-GameEngine::GameEngine() {
+GameEngine::GameEngine()
+{
 }
 
-void GameEngine::start() {
+void GameEngine::start()
+{
     cout << "Selamat datang di Candy Land" << endl;
-    for (int i = 0; i < 7; i++) {
-        cout << "Masukkan nama player ke-" << i + 1 << ":\n> ";
+    for (int i = 0; i < 7; i++)
+    {
+        cout << "\nMasukkan nama player ke-" << i + 1 << ":\n> ";
         string name;
-        cin >> name;
-        players[i] = new PlayerCandy(name);
+        getline(cin, name);
+        if (std::any_of(players, players + i, [name](PlayerCandy *p)
+                        { return p->getName() == name; }))
+        {
+            i--;
+            cout << "Nama '" << name << "' telah digunakan, harap masukkan nama lain.\n";
+        }
+        else
+        {
+            players[i] = new PlayerCandy(name);
+        }
     }
     gameCounter = 1;
     DeckManager dm(players);
@@ -29,21 +43,24 @@ void GameEngine::start() {
     AbilitiesManager am(players, &deckManager, &pointManager, &roundManager);
     abilitiesManager = am;
 
-
     bool gameOver = false;
-    do {
+    do
+    {
         gameOver = runMatch();
         gameCounter++;
     } while (!gameOver);
 }
 
-bool GameEngine::runMatch() {
+bool GameEngine::runMatch()
+{
     bool roundFinished = false;
     roundCount = 1;
     deckManager.resetDeck();
     deckManager.initializePlayerDeck();
-    do {
+    do
+    {
         roundFinished = runRound();
+        roundManager.nextRound();
         roundCount++;
     } while (!roundFinished);
 
@@ -53,26 +70,32 @@ bool GameEngine::runMatch() {
     return gameOver;
 }
 
-bool GameEngine::runRound() {
-    if (roundCount == 2) {
+bool GameEngine::runRound()
+{
+    if (roundCount == 2)
+    {
         abilitiesManager.shuffle();
     }
-    if (roundCount < 6) {
+    if (roundCount < 6)
+    {
         deckManager.openTableCard();
     }
-    do {
+    do
+    {
         PlayerCandy *p = roundManager.getCurrentPlayer();
+        p->showStatus(roundCount == 1);
         PlayerAction action = p->getAction(roundCount == 1);
-        switch (action) {
-            case ability:
-                abilitiesManager.useAbility(p);
-                break;
-            case dbl:
-                pointManager.multiplyReward(2);
-            case half:
-                pointManager.divideReward(2);
-            default:
-                break;
+        switch (action)
+        {
+        case ability:
+            abilitiesManager.useAbility(p);
+            break;
+        case dbl:
+            pointManager.multiplyReward(2);
+        case half:
+            pointManager.divideReward(2);
+        default:
+            break;
         }
     } while (!roundManager.nextPlayer());
     return roundCount == 6;

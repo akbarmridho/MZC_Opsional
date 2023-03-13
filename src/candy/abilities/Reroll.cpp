@@ -1,7 +1,7 @@
 #include "Reroll.hpp"
 #include "../exception/AbilitiesException.hpp"
 
-Reroll::Reroll(DeckManager *a) : AbilityCard("Reroll") {
+Reroll::Reroll(DeckManager *a) : AbilityCard("reroll") {
     this->deckManager = a;
 }
 

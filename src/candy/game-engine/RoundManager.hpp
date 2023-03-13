@@ -13,7 +13,7 @@ private:
 
 public:
     RoundManager();
-    RoundManager(PlayerCandy *[]);
+    RoundManager(PlayerCandy *[7]);
     PlayerCandy *getCurrentPlayer();
     /**
      * Ubah ke player selanjutnya.

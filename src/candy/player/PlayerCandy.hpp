@@ -7,14 +7,16 @@
 
 const int PLAYER_COUNT = 7;
 
-enum PlayerAction {
+enum PlayerAction
+{
     ability,
     next,
     dbl,
     half
 };
 
-class PlayerCandy : public Player {
+class PlayerCandy : public Player
+{
 private:
     PlayerDeckCandy deck;
     AbilityStatus *abilityStatus;
@@ -44,6 +46,8 @@ public:
     bool operator<(PlayerCandy &);
 
     bool operator==(PlayerCandy &);
+
+    void showStatus(bool);
 };
 
 #endif

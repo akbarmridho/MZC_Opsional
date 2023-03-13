@@ -47,4 +47,5 @@ add_executable(MZC_Opsional
         src/candy/combo/Straight.cpp
         src/candy/combo/StraightFlush.cpp
         src/candy/combo/ThreeOfAKind.cpp
-        src/candy/deck/TableDeckCandy.cpp src/utils/max.cpp)
+        src/candy/deck/TableDeckCandy.cpp src/utils/max.cpp
+        src/utils/string.cpp)

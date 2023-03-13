@@ -5,7 +5,8 @@
 
 using std::string;
 
-class AbilityStatus {
+class AbilityStatus
+{
 private:
     bool used;
     bool deactivated;
@@ -29,6 +30,8 @@ public:
     void activeOrThrow() const;
 
     void haveOrThrow(string) const;
+
+    void showStatus() const;
 };
 
 #endif
