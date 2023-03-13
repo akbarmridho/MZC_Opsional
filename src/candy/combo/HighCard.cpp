@@ -1,17 +1,15 @@
 #include "HighCard.hpp"
+#include <algorithm>
 
 HighCard::HighCard(const vector<CardCandy> &cards) : Comboable(1) {
     computeCombo(cards);
 }
 
 void HighCard::computeCombo(vector<CardCandy> cards) {
-    double maxNum = 0;
-    int idx = 0;
-    for (int i = 0; i < cards.size(); i++) {
-        if (cards[i].getNumber() > maxNum) {
-            maxNum = cards[i].getNumber();
-            idx = i;
-        }
+    sort(cards.begin(), cards.end(), [](CardCandy &a, CardCandy &b)
+         { return ((a < b) && (a.getType() < b.getType())); });
+    this->comboValue = 0;
+    for (int i = 0; i < 6; i++) {
+        this->comboValue += ((cards[i].getNumber() * 10) + cards[i].getType());
     }
-    this->comboValue = maxNum + (cards[idx].getType() * 0.03);
 }
