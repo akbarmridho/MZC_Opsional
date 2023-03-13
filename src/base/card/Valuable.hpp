@@ -5,9 +5,11 @@
 
 using std::pair;
 
+// pair of level, value
 typedef pair<int, double> value_pair_t;
 
-class Valuable {
+class Valuable
+{
 public:
     [[nodiscard]] virtual value_pair_t value() const = 0;
 

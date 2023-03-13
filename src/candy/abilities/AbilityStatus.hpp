@@ -22,6 +22,7 @@ public:
 
   void notUsedOrThrow() const;
   void activeOrThrow() const;
+  void haveOrThrow(string) const;
 };
 
 #endif

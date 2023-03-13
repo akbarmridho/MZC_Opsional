@@ -31,6 +31,9 @@ public:
      */
     value_pair_t value() const;
 
+    CardCandyType getType() const;
+    int getNumber() const;
+
     bool operator>(const CardCandy &) const;
     bool operator==(const CardCandy &) const;
     bool operator<(const CardCandy &) const;

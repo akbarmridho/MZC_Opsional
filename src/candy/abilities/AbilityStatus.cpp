@@ -40,8 +40,16 @@ void AbilityStatus::notUsedOrThrow() const
 
 void AbilityStatus::activeOrThrow() const
 {
-  if (this->getUsed())
+  if (this->isDeactivated())
   {
     throw DeactivatedCardException(this->getName());
+  }
+}
+
+void AbilityStatus::haveOrThrow(string name) const
+{
+  if (this->name != name)
+  {
+    throw NotOwnedCardException(this->getName());
   }
 }

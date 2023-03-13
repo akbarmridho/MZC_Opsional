@@ -7,30 +7,44 @@
 using std::exception;
 using std::string;
 
-class UsedCardException : public exception
+class AbilityException : public exception
 {
 public:
-    explicit UsedCardException(string message) : message(std::move(message)) {}
-    string what()
-    {
-        return "Card " + message + " was already used";
-    }
+    AbilityException(string message) : message(std::move(message)) {}
+    virtual string what() = 0;
 
-private:
+protected:
     string message;
 };
 
-class DeactivatedCardException : public exception
+class UsedCardException : public AbilityException
 {
 public:
-    explicit DeactivatedCardException(string message) : message(std::move(message)) {}
+    explicit UsedCardException(string message) : AbilityException(message) {}
     string what()
     {
-        return "Card " + message + " was deactivated by another player";
+        return "Card " + this->message + " was already used";
     }
+};
 
-private:
-    string message;
+class DeactivatedCardException : public AbilityException
+{
+public:
+    explicit DeactivatedCardException(string message) : AbilityException(message) {}
+    string what()
+    {
+        return "Card " + this->message + " was deactivated by another player";
+    }
+};
+
+class NotOwnedCardException : public AbilityException
+{
+public:
+    explicit NotOwnedCardException(string message) : AbilityException(message) {}
+    string what()
+    {
+        return "Card " + this->message + " is not owned by player";
+    }
 };
 
 #endif
