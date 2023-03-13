@@ -4,14 +4,15 @@
 #include "../game-engine/GameEngine.hpp"
 #include "AbilityStatus.hpp"
 
-class AbilityCard
-{
+class AbilityCard {
 private:
     AbilityStatus status;
     PlayerCandy *owner;
 
 public:
-    AbilityCard(string name);
+    explicit AbilityCard(string name);
+
+    virtual ~AbilityCard();
 
     /**
      * @brief Virtual function for ability

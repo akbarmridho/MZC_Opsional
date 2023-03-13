@@ -2,22 +2,20 @@
 
 #include <utility>
 
-AbilityCard::AbilityCard(string name) : status(name)
-{
+AbilityCard::AbilityCard(string name) : status(name) {
     this->owner = nullptr;
 }
 
-AbilityStatus &AbilityCard::getStatus()
-{
+AbilityStatus &AbilityCard::getStatus() {
     return status;
 };
 
-void AbilityCard::setOwner(PlayerCandy *player)
-{
+void AbilityCard::setOwner(PlayerCandy *player) {
     this->owner = player;
 }
 
-PlayerCandy *AbilityCard::getOwner()
-{
+PlayerCandy *AbilityCard::getOwner() {
     return this->owner;
 }
+
+AbilityCard::~AbilityCard() = default;

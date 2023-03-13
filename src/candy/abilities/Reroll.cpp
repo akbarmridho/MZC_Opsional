@@ -1,24 +1,25 @@
 #include "Reroll.hpp"
 #include "../exception/AbilitiesException.hpp"
 
-Reroll::Reroll(GameDeckCandy *a) : AbilityCard("Reroll")
-{
-    this->gamedeck = a;
+Reroll::Reroll(DeckManager *a) : AbilityCard("Reroll") {
+    this->deckManager = a;
 }
 
-void Reroll::use()
-{
-    notUsedOrThrow();
-    activeOrThrow();
+void Reroll::use() {
+    this->getStatus().notUsedOrThrow();
+    this->getStatus().activeOrThrow();
 
     // Deletes the current main deck card
     PlayerDeckCandy &deck = this->getOwner()->getDeck();
-    CardCandy c = deck.removeCard();
-    c = deck.removeCard();
+    deck.removeCard();
+    deck.removeCard();
+
+    GameDeckCandy &gameDeck = this->deckManager->getGameDeck();
 
     // Insert from deck
-    deck.insertCard(this->gamedeck->popCard());
-    deck.insertCard(this->gamedeck->popCard());
+    deck.insertCard(gameDeck.popCard());
+    deck.insertCard(gameDeck.popCard());
 
-    this->setUsed();
+    this->getStatus().setUsed();
 }
+

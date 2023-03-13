@@ -2,25 +2,25 @@
 #define REROLL_HPP
 
 #include "AbilityCard.hpp"
+#include "../game-engine/DeckManager.hpp"
 
-class Reroll : public virtual AbilityCard
-{
+class Reroll : public virtual AbilityCard {
 private:
-    GameDeckCandy *gamedeck;
+    DeckManager *deckManager;
 
 public:
     /**
      * @brief Construct a new Reroll object
      *
      */
-    Reroll(GameDeckCandy *);
+    explicit Reroll(DeckManager *);
 
     /**
      * @brief Use the Reroll ability :
      * membuang 2 kartu dari main deck yang dimiliki oleh diri sendiri dan mengambil ulang 2 kartu.
      *
      */
-    void use();
+    void use() override;
 };
 
 #endif

@@ -1,18 +1,15 @@
 #include "DeckManager.hpp"
 
-DeckManager::DeckManager(PlayerCandy *players[7], GameDeckCandy gameDeck, TableDeckCandy tableDeck) : gameDeck(gameDeck), tableDeck(tableDeck)
-{
-    for (int i = 0; i < 7; i++)
-    {
+DeckManager::DeckManager(PlayerCandy *players[7], GameDeckCandy gameDeck, TableDeckCandy tableDeck) : gameDeck(
+        gameDeck), tableDeck(tableDeck) {
+    for (int i = 0; i < 7; i++) {
         this->players[i] = players[i];
     }
 }
 
-void DeckManager::resetDeck()
-{
+void DeckManager::resetDeck() {
     // Resets the player deck
-    for (int i = 0; i < 7; i++)
-    {
+    for (int i = 0; i < 7; i++) {
         players[i]->getDeck().removeCard();
         players[i]->getDeck().removeCard();
     }
@@ -22,17 +19,18 @@ void DeckManager::resetDeck()
     gameDeck.shuffle();
 }
 
-void DeckManager::initializePlayerDeck()
-{
-    for (int i = 0; i < 7; i++)
-    {
+void DeckManager::initializePlayerDeck() {
+    for (int i = 0; i < 7; i++) {
         this->players[i]->getDeck().insertCard(gameDeck.popCard());
         this->players[i]->getDeck().insertCard(gameDeck.popCard());
     }
 }
 
-void DeckManager::openTableCard()
-{
+void DeckManager::openTableCard() {
     CardCandy c1 = gameDeck.popCard();
     tableDeck.insertCard(c1);
+}
+
+GameDeckCandy &DeckManager::getGameDeck() {
+    return gameDeck;
 }
