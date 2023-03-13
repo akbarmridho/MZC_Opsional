@@ -12,7 +12,8 @@ enum PlayerAction
     ability,
     next,
     dbl,
-    half
+    half,
+    status,
 };
 
 class PlayerCandy : public Player
@@ -47,7 +48,7 @@ public:
 
     bool operator==(PlayerCandy &);
 
-    void showStatus(bool, bool);
+    void showStatus(bool);
 };
 
 #endif

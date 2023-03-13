@@ -18,6 +18,7 @@ private:
     int gameCounter; // game ke 1 sampe inf
     bool runMatch();
     void runRound();
+    void showGameStatus();
 
 public:
     GameEngine(); // initialize game

@@ -6,14 +6,16 @@
 
 using std::string;
 
-enum CardCandyType {
+enum CardCandyType
+{
     green = 0,
     blue = 1,
     yellow = 2,
     red = 3
 };
 
-class CardCandy : public Card<CardCandyType> {
+class CardCandy : public Card<CardCandyType>
+{
 public:
     /**
      * @brief Construct a new Card object
@@ -41,6 +43,10 @@ public:
     bool operator<(const CardCandy &) const;
 
     string getTypeString() const;
+
+    string getTypeColor() const;
+
+    void print();
 };
 
 #endif

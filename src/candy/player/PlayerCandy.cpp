@@ -3,6 +3,7 @@
 #include "../exception/AbilitiesException.hpp"
 #include "../exception/DeckCandyException.hpp"
 #include "../../utils/string.hpp"
+#include "../../utils/interface.hpp"
 #include <iostream>
 
 using std::cin;
@@ -52,7 +53,9 @@ void help(bool isFirstRound)
     cout << "List perintah:" << endl
          << "\t1. next" << endl
          << "\t2. double" << endl
-         << "\t3. half" << endl;
+         << "\t3. half" << endl
+         << "\t4. game status" << endl;
+
     if (!isFirstRound)
     {
         cout << "\t4. <ability-name>" << endl
@@ -77,7 +80,7 @@ PlayerAction PlayerCandy::getAction(bool isFirstRound)
     while (!valid)
     {
         cout << "> ";
-        cin >> input;
+        getline(cin, input);
         lower(input);
         if (input == "help")
         {
@@ -115,9 +118,14 @@ PlayerAction PlayerCandy::getAction(bool isFirstRound)
             valid = true;
             return PlayerAction::half;
         }
+        else if (input == "game status")
+        {
+            valid = true;
+            return PlayerAction::status;
+        }
         else
         {
-            cout << "Masukan salah! Harap ulangi masukan" << endl;
+            cout << "Masukan salah! Harap ulangi masukan (command help untuk menampilkan list command)" << endl;
         }
     }
     return PlayerAction::next;
@@ -146,20 +154,16 @@ bool PlayerCandy::operator==(PlayerCandy &other)
     return !(this->deck < other.deck) && !(this->deck > other.deck);
 }
 
-void PlayerCandy::showStatus(bool isFirstRound, bool isFirstForAll)
+void PlayerCandy::showStatus(bool isFirstRound)
 {
-    cout << "Sekarang giliran " << *this << "\n";
-    cout << "Tekan enter untuk memulai giliran" << endl;
-    if (!isFirstForAll)
-    {
-        cin.ignore();
-    }
-    string temp;
-    getline(cin, temp);
-
     cout << "Kartu kamu: \n";
-    cout << "\t- " << this->deck.get(0).getNumber() << " " << this->deck.get(0).getTypeString() << endl;
-    cout << "\t- " << this->deck.get(1).getNumber() << " " << this->deck.get(1).getTypeString() << endl;
+    for (int i = 0; i < 2; i++)
+    {
+        CardCandy &c = this->deck.get(i);
+        cout << "\t- ";
+        c.print();
+        cout << endl;
+    }
 
     if (!isFirstRound)
     {

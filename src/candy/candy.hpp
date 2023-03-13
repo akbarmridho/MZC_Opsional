@@ -4,7 +4,7 @@
 class Candy
 {
 public:
-    void main();
+    static void start();
 };
 
 #endif

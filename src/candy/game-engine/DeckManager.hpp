@@ -5,7 +5,8 @@
 #include "../deck/TableDeckCandy.hpp"
 #include "../player/PlayerCandy.hpp"
 
-class DeckManager {
+class DeckManager
+{
 public:
     DeckManager();
 
@@ -15,6 +16,7 @@ public:
 
     void initializePlayerDeck(); // dipanggil ronde 1
     void openTableCard();
+    void showTableStatus();
 
     GameDeckCandy &getGameDeck();
 
