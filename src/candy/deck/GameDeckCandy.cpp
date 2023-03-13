@@ -5,33 +5,23 @@
 #include <sstream>
 #include <vector>
 #include <random>
+#include <algorithm>
 
-using std::mt19937;
-using std::random_device;
-using std::uniform_int_distribution;
 using std::vector;
 using std::stringstream;
+using std::random_shuffle;
 
 void GameDeckCandy::shuffle() {
-    random_device rd;
-    mt19937 generator(rd());
-    uniform_int_distribution<int> distributor(0, 52);
-
     this->reset();
-    vector<CardCandy> holder;
 
     for (auto &type: {green, blue, yellow, red}) {
         for (int i = 1; i <= 13; i++) {
             CardCandy card(type, i); // ignore this error for now
-            holder.push_back(card);
+            cards.push_back(card);
         }
     }
 
-    while (!holder.empty()) {
-        int idx = distributor(generator) % holder.size();
-        this->cards.push_back(holder[idx]);
-        holder.erase(holder.begin() + idx);
-    }
+    random_shuffle(cards.begin(), cards.end());
 }
 
 void GameDeckCandy::fromFile(const string &path) {
