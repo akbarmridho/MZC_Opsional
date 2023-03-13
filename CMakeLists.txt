@@ -29,4 +29,4 @@ add_executable(MZC_Opsional
         src/candy/combo/FullHouse.cpp
         src/candy/combo/FourOfAKind.cpp
         src/candy/candy.cpp
-        src/main.cpp)
+        src/main.cpp src/cangkul/card/CardCangkul.cpp src/cangkul/card/CardCangkul.hpp src/cangkul/deck/GameDeckCangkul.cpp src/cangkul/deck/GameDeckCangkul.hpp src/cangkul/deck/PlayerDeckCangkul.cpp src/cangkul/deck/PlayerDeckCangkul.hpp src/cangkul/deck/TableDeckCangkul.cpp src/cangkul/deck/TableDeckCangkul.hpp src/candy/exception/DeckCandyException.hpp src/cangkul/player/PlayerCangkul.cpp src/cangkul/player/PlayerCangkul.hpp)

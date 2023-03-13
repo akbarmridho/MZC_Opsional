@@ -6,16 +6,15 @@
 
 using std::string;
 
-template <class T>
-class GameDeck : virtual public InventoryHolder<T>
-{
+template<class T>
+class GameDeck : virtual public InventoryHolder<T> {
 public:
     virtual T popCard();
 
-protected:
-    // dipanggil oleh modifikasi reset deck
+public:
     virtual void shuffle() = 0;
-    virtual void fromFile(const string&) = 0;
+
+    virtual void fromFile(const string &) = 0;
 };
 
 #endif
