@@ -35,6 +35,8 @@ void PointManager::multiplyReward(int multiplier)
 void PointManager::divideReward(int divider)
 {
   currentRewardPoint /= divider;
+  if (currentRewardPoint < 1)
+    currentRewardPoint = 1;
 }
 
 void PointManager::showLeaderboard() const

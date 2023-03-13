@@ -44,10 +44,11 @@ bool GameEngine::runMatch()
 {
     deckManager.initializePlayerDeck();
     bool roundFinished = false;
+    roundCount = 1;
     do
     {
-
         roundFinished = runRound();
+        roundCount++;
     } while (!roundFinished);
 
     string winnerName = max<PlayerCandy>(players).getName();
@@ -68,8 +69,20 @@ bool GameEngine::runRound()
     }
     do
     {
-        PlayerCandy &p = roundManager.getCurrentPlayer();
-        p.getThenRunAction(roundCount == 1);
+        PlayerCandy *p = roundManager.getCurrentPlayer();
+        PlayerAction action = p->getAction(roundCount == 1);
+        switch (action)
+        {
+        case ability:
+            abilitiesManager.useAbility(p);
+            break;
+        case dbl:
+            pointManager.multiplyReward(2);
+        case half:
+            pointManager.divideReward(2);
+        default:
+            break;
+        }
     } while (!roundManager.nextPlayer());
     return roundCount == 6;
 }
