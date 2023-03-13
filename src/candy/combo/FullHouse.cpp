@@ -82,6 +82,6 @@ FullHouse::FullHouse(const vector<CardCandy> &cards) : Comboable(7) {
     this->comboValue += threeTypes[1] * pow(10, 5); // second-highest three pair card type
     this->comboValue += threeTypes[2] * pow(10, 4); // third-highest three pair card type
     this->comboValue += maxTwo * pow(10, 2); // highest two pair number
-    this->comboValue += threeTypes[0] * 10; // highest two pair card type
-    this->comboValue += threeTypes[1]; // second-highest two pair card type
+    this->comboValue += twoTypes[0] * 10; // highest two pair card type
+    this->comboValue += twoTypes[1]; // second-highest two pair card type
 }

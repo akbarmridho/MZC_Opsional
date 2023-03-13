@@ -17,13 +17,13 @@ void FourOfAKind::computeCombo(vector<CardCandy> cards) // copy so that cards ca
     sort(cards.begin(), cards.end(), [](CardCandy &a, CardCandy &b)
          { return a < b; });
     int same = 0;
-    CardCandyType lastType;
+    int lastNumber;
     for (int i = 0; i < cards.size(); i++)
     {
         const CardCandy &card = cards[i];
-        if (same == 0 || card.getType() != lastType)
+        if (same == 0 || card.getNumber() != lastNumber)
         {
-            lastType = card.getType();
+            lastNumber = card.getNumber();
             same = 1;
         }
         else
@@ -32,7 +32,7 @@ void FourOfAKind::computeCombo(vector<CardCandy> cards) // copy so that cards ca
         }
         if (same == 4)
         {
-            this->comboValue = card.value().second;
+            this->comboValue = card.getNumber();
             break;
         }
     }
