@@ -5,17 +5,19 @@
 
 using std::cin;
 using std::cout;
+using std::endl;
 using std::istream_iterator;
 
 GameEngine::GameEngine() {
 }
 
 void GameEngine::start() {
-    istream_iterator<string> iit(cin);
+    cout << "Selamat datang di Candy Land" << endl;
     for (int i = 0; i < 7; i++) {
         cout << "Masukkan nama player ke-" << i + 1 << ":\n> ";
-        players[i] = new PlayerCandy(*iit);
-        iit++;
+        string name;
+        cin >> name;
+        players[i] = new PlayerCandy(name);
     }
     gameCounter = 1;
     DeckManager dm(players);
@@ -27,7 +29,6 @@ void GameEngine::start() {
     AbilitiesManager am(players, &deckManager, &pointManager, &roundManager);
     abilitiesManager = am;
 
-    deckManager.initializePlayerDeck();
 
     bool gameOver = false;
     do {
@@ -37,9 +38,10 @@ void GameEngine::start() {
 }
 
 bool GameEngine::runMatch() {
-    deckManager.initializePlayerDeck();
     bool roundFinished = false;
     roundCount = 1;
+    deckManager.resetDeck();
+    deckManager.initializePlayerDeck();
     do {
         roundFinished = runRound();
         roundCount++;

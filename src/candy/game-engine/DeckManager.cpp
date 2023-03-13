@@ -9,8 +9,7 @@ DeckManager::DeckManager(PlayerCandy *players[7]) {
 void DeckManager::resetDeck() {
     // Resets the player deck
     for (int i = 0; i < 7; i++) {
-        players[i]->getDeck().removeCard();
-        players[i]->getDeck().removeCard();
+        players[i]->getDeck().resetDeck();
     }
     // Resets the table deck
     tableDeck.resetDeck();
