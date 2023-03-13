@@ -9,7 +9,6 @@
 
 using std::vector;
 using std::stringstream;
-using std::random_shuffle;
 
 void GameDeckCandy::shuffle() {
     this->reset();
@@ -17,11 +16,11 @@ void GameDeckCandy::shuffle() {
     for (auto &type: {green, blue, yellow, red}) {
         for (int i = 1; i <= 13; i++) {
             CardCandy card(type, i); // ignore this error for now
-            cards.push_back(card);
+            this->cards.push_back(card);
         }
     }
 
-    random_shuffle(cards.begin(), cards.end());
+    std::shuffle(this->cards.begin(), this->cards.end(), std::mt19937(std::random_device()()));
 }
 
 void GameDeckCandy::fromFile(const string &path) {

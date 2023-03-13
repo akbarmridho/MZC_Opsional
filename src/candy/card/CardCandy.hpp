@@ -1,20 +1,19 @@
 #ifndef CARDCANDY_HPP
 #define CARDCANDY_HPP
+
 #include "../../base/card/Card.hpp"
 #include <string>
 
 using std::string;
 
-enum CardCandyType
-{
+enum CardCandyType {
     green = 0,
     blue = 1,
     yellow = 2,
     red = 3
 };
 
-class CardCandy : virtual public Card<CardCandyType>
-{
+class CardCandy : public Card<CardCandyType> {
 public:
     /**
      * @brief Construct a new Card object
@@ -32,10 +31,13 @@ public:
     value_pair_t value() const;
 
     CardCandyType getType() const;
+
     int getNumber() const;
 
     bool operator>(const CardCandy &) const;
+
     bool operator==(const CardCandy &) const;
+
     bool operator<(const CardCandy &) const;
 
     string getTypeString() const;

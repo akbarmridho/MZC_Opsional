@@ -5,10 +5,9 @@
 #include "../deck/PlayerDeckCandy.hpp"
 #include "../deck/TableDeckCandy.hpp"
 
-class Pair : virtual public Comboable 
-{
-    public:
-        explicit Pair(const vector<CardCandy> &);
+class Pair : public Comboable {
+public:
+    explicit Pair(const vector<CardCandy> &);
 };
 
 

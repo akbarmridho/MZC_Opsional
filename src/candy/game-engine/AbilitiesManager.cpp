@@ -6,12 +6,10 @@
 #include "../abilities/Reverse.hpp"
 #include "../abilities/SwapCard.hpp"
 #include "../abilities/Switch.hpp"
-#include <vector>
 #include <random>
+#include <vector>
+#include <algorithm>
 
-using std::mt19937;
-using std::random_device;
-using std::uniform_int_distribution;
 using std::vector;
 
 AbilitiesManager::AbilitiesManager() {
@@ -42,16 +40,11 @@ void AbilitiesManager::shuffle() {
     options.push_back((AbilityCard *) new Reverse(this->roundManager));
     options.push_back((AbilityCard *) new SwapCard(this->players));
     options.push_back((AbilityCard *) new Switch(this->players));
-
-    random_device rd;
-    mt19937 generator(rd());
-    uniform_int_distribution<int> distributor(0, 6);
+    std::shuffle(options.begin(), options.end(), std::mt19937(std::random_device()()));
 
     for (int i = 0; i < 7; i++) {
-        int idx = distributor(generator) % (int) options.size();
-        players[i]->receiveAbility(&options[idx]->getStatus());
-        this->abilityOwner.insert({players[i]->getName(), options[idx]});
-        options.erase(options.begin() + idx, options.begin() + idx);
+        players[i]->receiveAbility(&options[i]->getStatus());
+        this->abilityOwner.insert({players[i]->getName(), options[i]});
     }
 }
 

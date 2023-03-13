@@ -7,15 +7,12 @@ using std::cin;
 using std::cout;
 using std::istream_iterator;
 
-GameEngine::GameEngine()
-{
+GameEngine::GameEngine() {
 }
 
-void GameEngine::start()
-{
+void GameEngine::start() {
     istream_iterator<string> iit(cin);
-    for (int i = 0; i < 7; i++)
-    {
+    for (int i = 0; i < 7; i++) {
         cout << "Masukkan nama player ke-" << i + 1 << ":\n> ";
         players[i] = new PlayerCandy(*iit);
         iit++;
@@ -33,55 +30,47 @@ void GameEngine::start()
     deckManager.initializePlayerDeck();
 
     bool gameOver = false;
-    do
-    {
+    do {
         gameOver = runMatch();
         gameCounter++;
     } while (!gameOver);
 }
 
-bool GameEngine::runMatch()
-{
+bool GameEngine::runMatch() {
     deckManager.initializePlayerDeck();
     bool roundFinished = false;
     roundCount = 1;
-    do
-    {
+    do {
         roundFinished = runRound();
         roundCount++;
     } while (!roundFinished);
 
-    string winnerName = max<PlayerCandy>(players).getName();
+    string winnerName = max<PlayerCandy>(players, 7).getName();
     bool gameOver = pointManager.givePointAndReset(winnerName);
     pointManager.showLeaderboard();
     return gameOver;
 }
 
-bool GameEngine::runRound()
-{
-    if (roundCount == 2)
-    {
+bool GameEngine::runRound() {
+    if (roundCount == 2) {
         abilitiesManager.shuffle();
     }
-    if (roundCount < 6)
-    {
+    if (roundCount < 6) {
         deckManager.openTableCard();
     }
-    do
-    {
+    do {
         PlayerCandy *p = roundManager.getCurrentPlayer();
         PlayerAction action = p->getAction(roundCount == 1);
-        switch (action)
-        {
-        case ability:
-            abilitiesManager.useAbility(p);
-            break;
-        case dbl:
-            pointManager.multiplyReward(2);
-        case half:
-            pointManager.divideReward(2);
-        default:
-            break;
+        switch (action) {
+            case ability:
+                abilitiesManager.useAbility(p);
+                break;
+            case dbl:
+                pointManager.multiplyReward(2);
+            case half:
+                pointManager.divideReward(2);
+            default:
+                break;
         }
     } while (!roundManager.nextPlayer());
     return roundCount == 6;

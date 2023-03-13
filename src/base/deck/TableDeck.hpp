@@ -3,11 +3,11 @@
 
 #include "InventoryHolder.hpp"
 
-template <class T>
-class TableDeck : virtual public InventoryHolder<T>
-{
+template<class T>
+class TableDeck : public InventoryHolder<T> {
 public:
     void insertCard(T);
+
     vector<T> &getCards();
 };
 

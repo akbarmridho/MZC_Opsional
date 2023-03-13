@@ -3,7 +3,9 @@
 #include <iostream>
 #include <algorithm>
 
-using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
 
 Abilityless::Abilityless(PlayerCandy **players) : AbilityCard("Abilityless") {
     this->players = new PlayerCandy *[7];

@@ -7,7 +7,7 @@
 using std::string;
 
 template<class T>
-class GameDeck : virtual public InventoryHolder<T> {
+class GameDeck : public InventoryHolder<T> {
 public:
     virtual T popCard();
 

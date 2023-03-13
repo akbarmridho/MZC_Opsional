@@ -2,6 +2,7 @@
 #define REVERSE_HPP
 
 #include "AbilityCard.hpp"
+#include "../game-engine/RoundManager.hpp"
 
 class Reverse : public virtual AbilityCard {
 private:

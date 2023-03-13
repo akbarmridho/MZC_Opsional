@@ -3,7 +3,9 @@
 #include <iostream>
 #include <algorithm>
 
-using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
 
 Switch::Switch(PlayerCandy **a) : AbilityCard("Switch") {
     this->players = new PlayerCandy *[7];
@@ -73,5 +75,5 @@ void Switch::use() {
 }
 
 Switch::~Switch() {
-    delete[] this->players[];
+    delete[] this->players;
 }

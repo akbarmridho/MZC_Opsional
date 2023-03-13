@@ -5,12 +5,12 @@
 #include "../card/CardCandy.hpp"
 #include "./TableDeckCandy.hpp"
 #include "../combo/Comboable.hpp"
+#include "../exception/DeckCandyException.hpp"
 #include <functional>
 
 using std::function;
 
-class PlayerDeckCandy : virtual public PlayerDeck<CardCandy>
-{
+class PlayerDeckCandy : public PlayerDeck<CardCandy> {
 private:
     bool comboComputed;
     vector<Comboable *> combos;

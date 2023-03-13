@@ -5,10 +5,9 @@
 #include "../deck/PlayerDeckCandy.hpp"
 #include "../deck/TableDeckCandy.hpp"
 
-class Straight : virtual public Comboable
-{
-    public:
-        explicit Straight(const vector<CardCandy> &);
+class Straight : public Comboable {
+public:
+    explicit Straight(const vector<CardCandy> &);
 };
 
 #endif

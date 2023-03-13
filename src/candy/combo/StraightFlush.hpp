@@ -5,10 +5,9 @@
 #include "../deck/PlayerDeckCandy.hpp"
 #include "../deck/TableDeckCandy.hpp"
 
-class StraightFlush : virtual public Comboable 
-{
-    public:
-        explicit StraightFlush(const vector<CardCandy> &);
+class StraightFlush : public Comboable {
+public:
+    explicit StraightFlush(const vector<CardCandy> &);
 };
 
 

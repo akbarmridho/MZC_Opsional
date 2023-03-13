@@ -5,11 +5,13 @@
 #include "../card/CardCandy.hpp"
 #include <iostream>
 #include <vector>
+
 using std::vector;
 
-class HighCard : virtual public Comboable {
+class HighCard : public Comboable {
 protected:
     void computeCombo(vector<CardCandy>);
+
 public:
     HighCard(const vector<CardCandy> &);
 };

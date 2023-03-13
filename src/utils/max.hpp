@@ -11,24 +11,21 @@ using std::map;
 using std::pair;
 using std::string;
 
-class NoMaxException : public exception
-{
+class NoMaxException : public exception {
 public:
-  explicit NoMaxException() {}
-  string what()
-  {
-    return "No max";
-  }
+    explicit NoMaxException() {}
+
+    string what() {
+        return "No max";
+    }
 };
 
-template <class T>
-T &max(T *arr[]);
+template<class T>
+T &max(T *arr[], int length);
 
-template <class T>
-T &max(T arr[]);
+template<class T>
+T &max(T &t1, T &t2);
 
-template <class T>
-T &max(T t1, T t2);
+pair<string, long long> max(map<string, long long> obj);
 
-pair<string, long long> max(map<string, long long>);
 #endif

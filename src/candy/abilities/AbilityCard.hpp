@@ -1,7 +1,7 @@
 #ifndef ABILITYCARD_HPP
 #define ABILITYCARD_HPP
 
-#include "../game-engine/GameEngine.hpp"
+#include "../player/PlayerCandy.hpp"
 #include "AbilityStatus.hpp"
 
 class AbilityCard {

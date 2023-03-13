@@ -3,6 +3,8 @@
 #ifndef QUADRUPLE_HPP
 #define QUADRUPLE_HPP
 
+#include "../game-engine/PointManager.hpp"
+
 class Quadruple : public virtual AbilityCard {
 private:
     PointManager *pointManager;

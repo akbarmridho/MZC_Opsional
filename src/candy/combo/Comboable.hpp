@@ -4,8 +4,7 @@
 #include <utility>
 #include "../../base/card/Valuable.hpp"
 
-class Comboable : virtual public Valuable
-{
+class Comboable : public Valuable {
 protected:
     int level;
     double comboValue;

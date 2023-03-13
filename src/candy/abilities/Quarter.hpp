@@ -2,6 +2,7 @@
 #define QUARTER_HPP
 
 #include "AbilityCard.hpp"
+#include "../game-engine/PointManager.hpp"
 
 class Quarter : public virtual AbilityCard {
 private:

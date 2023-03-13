@@ -6,6 +6,7 @@
 #include "DeckManager.hpp"
 #include "PointManager.hpp"
 #include "RoundManager.hpp"
+#include <map>
 
 class AbilitiesManager {
 public:

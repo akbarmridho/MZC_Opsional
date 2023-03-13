@@ -1,7 +1,6 @@
 #include "DeckManager.hpp"
 
-DeckManager::DeckManager(PlayerCandy *players[7], GameDeckCandy gameDeck, TableDeckCandy tableDeck) : gameDeck(
-        gameDeck), tableDeck(tableDeck) {
+DeckManager::DeckManager(PlayerCandy *players[7]) {
     for (int i = 0; i < 7; i++) {
         this->players[i] = players[i];
     }
@@ -33,4 +32,8 @@ void DeckManager::openTableCard() {
 
 GameDeckCandy &DeckManager::getGameDeck() {
     return gameDeck;
+}
+
+DeckManager::DeckManager() {
+
 }

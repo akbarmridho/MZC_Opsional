@@ -3,9 +3,10 @@
 
 #include "../../base/deck/TableDeck.hpp"
 #include "../card/CardCandy.hpp"
-class TableDeckCandy : virtual public TableDeck<CardCandy>
-{
+
+class TableDeckCandy : public TableDeck<CardCandy> {
 public:
     void resetDeck();
 };
+
 #endif
