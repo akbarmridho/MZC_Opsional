@@ -12,21 +12,27 @@ void ThreeOfAKind::computeCombo(vector<CardCandy> cards)
          
     int same = 0;
     int number;
+    int type = -1;
     for (int i = 0; i < cards.size(); i++)
     {
         const CardCandy &card = cards[i];
         if (same == 0 || (card.getNumber() != number))
         {
             number = card.getNumber();
+            type = card.getType();
             same = 1;
         }
         else
         {
             same++;
+            if (card.getType() > type)
+            {
+                type = card.getType();
+            }
         }
         if (same == 3)
         {
-            this->comboValue = card.value().second;
+            this->comboValue = card.value().second * 10 + (type);
             break;
         }
     }
