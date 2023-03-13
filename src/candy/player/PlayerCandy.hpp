@@ -36,7 +36,7 @@ public:
     void updateTableDeck(TableDeckCandy *);
 
     // boolean isFirstRound
-    PlayerAction getThenRunAction(bool);
+    PlayerAction getAction(bool);
     bool operator>(PlayerCandy &);
     bool operator<(PlayerCandy &);
     bool operator==(PlayerCandy &);
