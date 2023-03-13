@@ -1,5 +1,5 @@
-#ifndef CASINO_HPP
-#define CASINO_HPP
+#ifndef CANGKUL_HPP
+#define CANGKUL_HPP
 
 class Cangkul
 {

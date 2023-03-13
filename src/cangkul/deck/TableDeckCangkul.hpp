@@ -4,9 +4,15 @@
 #include "../card/CardCangkul.hpp"
 #include "../../base/deck/TableDeck.hpp"
 
-class TableDeckCangkul : virtual public TableDeck<CardCangkul> {
+class TableDeckCangkul : virtual public TableDeck<CardCangkul>
+{
+private:
+  CardCangkulType currentType;
 
+public:
+  TableDeckCangkul();
+  void initCard(CardCangkul &);
+  CardCangkulType getCurrentType() const;
 };
-
 
 #endif

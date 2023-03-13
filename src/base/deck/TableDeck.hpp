@@ -8,6 +8,7 @@ class TableDeck : virtual public InventoryHolder<T>
 {
 public:
     void insertCard(T);
+    vector<T> &getCards();
 };
 
 #endif
