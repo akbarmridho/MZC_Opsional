@@ -1,6 +1,10 @@
 #include "TableDeck.hpp"
 #include "../../candy/card/CardCandy.hpp"
 #include "../../cangkul/card/CardCangkul.hpp"
+#include "../../cangkul/player/PlayerCangkul.hpp"
+#include <utility>
+
+using std::pair;
 
 template<class T>
 vector<T> &TableDeck<T>::getCards() {
@@ -16,4 +20,4 @@ template
 class TableDeck<CardCandy>;
 
 template
-class TableDeck<CardCangkul>;
+class TableDeck<pair<PlayerCangkul *, CardCangkul>>;

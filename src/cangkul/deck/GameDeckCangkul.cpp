@@ -12,6 +12,7 @@ using std::vector;
 #include "../../utils/reader.hpp"
 #include "../../base/exception/DeckException.hpp"
 #include <algorithm>
+#include <random>
 
 void GameDeckCangkul::fromFile(const string &path)
 {
@@ -68,11 +69,11 @@ void GameDeckCangkul::shuffle()
         }
     }
 
-    std::random_shuffle(this->cards.begin(), this->cards.end());
+    std::shuffle(this->cards.begin(), this->cards.end(), std::mt19937(std::random_device()()));
 }
 
 void GameDeckCangkul::shuffle(vector<CardCangkul> &waste)
 {
     this->cards = std::move(waste);
-    std::random_shuffle(this->cards.begin(), this->cards.end());
+    std::shuffle(this->cards.begin(), this->cards.end(), std::mt19937(std::random_device()()));
 }

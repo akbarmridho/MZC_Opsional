@@ -2,17 +2,31 @@
 #define TABLEDECKCANGKUL_HPP
 
 #include "../card/CardCangkul.hpp"
+#include "../player/PlayerCangkul.hpp"
+#include <utility>
 #include "../../base/deck/TableDeck.hpp"
+#include <iostream>
 
-class TableDeckCangkul : virtual public TableDeck<CardCangkul>
+using std::ostream;
+
+class TableDeckCangkul : virtual public TableDeck<pair<PlayerCangkul *, CardCangkul>>
 {
 private:
-  CardCangkulType currentType;
+    CardCangkulType currentType;
+    vector<CardCangkul> waste;
 
 public:
-  TableDeckCangkul();
-  void initCard(CardCangkul &);
-  CardCangkulType getCurrentType() const;
+    TableDeckCangkul();
+
+    CardCangkulType getCurrentType() const;
+
+    vector<PlayerCangkul *> resolveCards();
+
+    vector<CardCangkul> getWaste();
+
+    void clearWaste();
+
+    void printTable();
 };
 
 #endif

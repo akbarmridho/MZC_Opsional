@@ -6,6 +6,8 @@
 
 class PlayerDeckCangkul : public virtual PlayerDeck<CardCangkul>
 {
+public:
+    CardCangkul popAt(int);
 };
 
 #endif

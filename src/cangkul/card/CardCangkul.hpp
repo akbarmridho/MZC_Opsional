@@ -13,12 +13,12 @@ enum CardCangkulType
 
 class CardCangkul : public Card<CardCangkulType>
 {
+public:
+    CardCangkul(CardCangkulType type, int value);
+
     [[nodiscard]] value_pair_t value() const override;
 
     [[nodiscard]] std::string getTypeString() const override;
-
-public:
-    CardCangkul(CardCangkulType type, int value);
 };
 
 #endif

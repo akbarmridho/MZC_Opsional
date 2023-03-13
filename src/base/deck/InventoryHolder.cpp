@@ -1,6 +1,10 @@
 #include "InventoryHolder.hpp"
 #include "../../candy/card/CardCandy.hpp"
 #include "../../cangkul/card/CardCangkul.hpp"
+#include "../../cangkul/player/PlayerCangkul.hpp"
+#include <utility>
+
+using std::pair;
 
 template<class T>
 void InventoryHolder<T>::reset() {
@@ -27,3 +31,6 @@ class InventoryHolder<CardCandy>;
 
 template
 class InventoryHolder<CardCangkul>;
+
+template
+class InventoryHolder<pair<PlayerCangkul *, CardCangkul>>;

@@ -2,10 +2,23 @@
 #define PLAYERCANGKUL_HPP
 
 #include "../../base/player/Player.hpp"
+#include "../card/CardCangkul.hpp"
+#include "../deck/PlayerDeckCangkul.hpp"
 
-class PlayerCangkul : virtual public Player {
+class PlayerCangkul : virtual public Player
+{
+public:
+    PlayerCangkul(string name);
 
+    CardCangkul selectCard();
+
+    CardCangkul selectCardWithType(CardCangkulType);
+
+    int countCardWithType(CardCangkulType);
+
+    void receiveCard(CardCangkul);
+
+    PlayerDeckCangkul deck;
 };
-
 
 #endif
