@@ -1,7 +1,5 @@
-#include "string.h"
+#include "string.hpp"
 #include <algorithm>
-
-using std::string;
 
 void lower(string &s)
 {

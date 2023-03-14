@@ -16,6 +16,8 @@ class CardCangkul : public Card<CardCangkulType>
 public:
     CardCangkul(CardCangkulType type, int value);
 
+    string getNumberReps();
+
     [[nodiscard]] value_pair_t value() const override;
 
     [[nodiscard]] std::string getTypeString() const override;

@@ -21,21 +21,16 @@ int main()
     cout << "Masukkan pilihan: [1/2/3]\n> ";
 
     cin >> out;
-    while (true)
+    if (out == "1")
     {
-        if (out == "1")
-        {
-            Candy::start();
-        }
-        else if (out == "2")
-        {
-            Cangkul::start();
-        }
-        else
-        {
-            break;
-        }
+        Candy::start();
     }
+    else if (out == "2")
+    {
+        Cangkul::start();
+    }
+    // gausah diloop di sini
+
     cout << cred() << "dadah :)" << reset() << endl;
 
     return 0;
