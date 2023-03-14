@@ -35,10 +35,10 @@ public:
 
     pair<string, long long> getHighestScore() const;
 
-    [[nodiscard]] int getCurrentRewardPoint() const;
+    [[nodiscard]] long long getCurrentRewardPoint() const;
 
 protected:
-    int currentRewardPoint;
+    long long currentRewardPoint;
     map<string, long long> players;
     const static long long WIN_SCORE = 1LL << 32;
 };
