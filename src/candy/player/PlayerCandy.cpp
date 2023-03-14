@@ -4,6 +4,7 @@
 #include "../exception/DeckCandyException.hpp"
 #include "../../utils/string.hpp"
 #include "../../utils/interface.hpp"
+#include "../../utils/debug.hpp"
 #include <iostream>
 
 using std::cin;
@@ -74,6 +75,11 @@ void help(bool isFirstRound)
 // Minta input, validasi, terus kalau ability ada try nya di exception in
 PlayerAction PlayerCandy::getAction(bool isFirstRound)
 {
+#ifdef DEBUG
+#ifdef NEXT_ALL
+    return PlayerAction::next;
+#endif
+#endif
     cout << "Masukkan command\n";
     string input;
     bool valid = false;
