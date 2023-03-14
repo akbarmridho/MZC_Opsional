@@ -50,6 +50,7 @@ add_executable(MZC_Opsional
         src/candy/deck/TableDeckCandy.cpp 
         src/utils/max.cpp 
         src/cangkul/game-engine/CangkulGameEngine.cpp 
+        src/cangkul/game-engine/CangkulDeckManager.cpp
         src/cangkul/cangkul.cpp 
         src/utils/string.cpp
         src/utils/interface.cpp)
