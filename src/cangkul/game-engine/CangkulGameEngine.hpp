@@ -20,6 +20,7 @@ protected:
     TableDeckCangkul tableDeck;
     PlayerCangkul **players;
     vector<PlayerCangkul *> leaderboards;
+    vector<PlayerCangkul *> lostLeaderboards;
     vector<PlayerCangkul *> turns;
 };
 

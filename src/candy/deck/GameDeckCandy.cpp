@@ -44,10 +44,10 @@ void GameDeckCandy::fromFile(const string &path) {
             throw InvalidDeckNumberException(line);
         }
 
-        if (checker[type][number]) {
+        if (checker[type][number - 1]) {
             throw DuplicateDeckException(line);
         } else {
-            checker[type][number] = true;
+            checker[type][number - 1] = true;
         }
 
         CardCandy card((CardCandyType) type, number);
