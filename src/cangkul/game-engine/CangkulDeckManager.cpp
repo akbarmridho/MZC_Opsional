@@ -87,6 +87,7 @@ bool CangkulDeckManager::getFromPlayer(PlayerCangkul *player)
   {
     CardCangkul card = player->selectCard();
     this->tableDeck.insertCard({player, card});
+    return true;
   }
   else
   {

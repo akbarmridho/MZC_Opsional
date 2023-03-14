@@ -4,7 +4,7 @@
 #include "../card/CardCangkul.hpp"
 #include "../../base/deck/GameDeck.hpp"
 
-class GameDeckCangkul : virtual public GameDeck<CardCangkul>
+class GameDeckCangkul : public GameDeck<CardCangkul>
 {
 public:
     void shuffle() override;

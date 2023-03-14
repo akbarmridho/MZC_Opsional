@@ -59,6 +59,7 @@ void DeckManager::initializePlayerDeck() {
     for (int i = 0; i < 7; i++) {
         this->players[i]->getDeck().insertCard(gameDeck.popCard());
         this->players[i]->getDeck().insertCard(gameDeck.popCard());
+        players[i]->updateTableDeck(&this->tableDeck);
     }
 }
 

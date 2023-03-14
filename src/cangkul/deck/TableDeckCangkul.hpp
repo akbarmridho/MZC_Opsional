@@ -9,7 +9,8 @@
 
 using std::ostream;
 
-class TableDeckCangkul : virtual public TableDeck<pair<PlayerCangkul *, CardCangkul>> {
+class TableDeckCangkul : public TableDeck<pair<PlayerCangkul *, CardCangkul>>
+{
 private:
     CardCangkulType currentType;
     vector<CardCangkul> waste;

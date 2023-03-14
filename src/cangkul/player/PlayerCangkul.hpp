@@ -5,7 +5,7 @@
 #include "../card/CardCangkul.hpp"
 #include "../deck/PlayerDeckCangkul.hpp"
 
-class PlayerCangkul : virtual public Player
+class PlayerCangkul : public Player
 {
 public:
     PlayerCangkul(string name);

@@ -2,6 +2,13 @@
 #include "../combo/Comboable.hpp"
 #include "../combo/TwoPair.hpp"
 #include "../combo/FourOfAKind.hpp"
+#include "../combo/Flush.hpp"
+#include "../combo/FullHouse.hpp"
+#include "../combo/HighCard.hpp"
+#include "../combo/Pair.hpp"
+#include "../combo/Straight.hpp"
+#include "../combo/StraightFlush.hpp"
+#include "../combo/ThreeOfAKind.hpp"
 #include "../../base/exception/DeckException.hpp"
 #include <algorithm>
 
@@ -50,10 +57,19 @@ void PlayerDeckCandy::computeCombos(TableDeckCandy &tableDeck) {
     cards.insert(cards.end(), tableDeck.getCards().begin(), tableDeck.getCards().end());
 
     // do this for all the combos
+    pushOrDeleteCombo(new StraightFlush(cards));
+    pushOrDeleteCombo(new FullHouse(cards));
+    pushOrDeleteCombo(new Straight(cards));
+    pushOrDeleteCombo(new Flush(cards));
     pushOrDeleteCombo(new FourOfAKind(cards));
+    pushOrDeleteCombo(new TwoPair(cards));
+    pushOrDeleteCombo(new ThreeOfAKind(cards));
+    pushOrDeleteCombo(new Pair(cards));
+    pushOrDeleteCombo(new HighCard(cards));
 
     // sort descending
     sort(combos.begin(), combos.end(), [](Comboable *a, Comboable *b) { return (*a) > (*b); });
+    comboComputed = true;
 }
 
 bool PlayerDeckCandy::operator<(PlayerDeckCandy &other) {

@@ -47,10 +47,10 @@ add_executable(MZC_Opsional
         src/candy/combo/Straight.cpp
         src/candy/combo/StraightFlush.cpp
         src/candy/combo/ThreeOfAKind.cpp
-        src/candy/deck/TableDeckCandy.cpp 
-        src/utils/max.cpp 
-        src/cangkul/game-engine/CangkulGameEngine.cpp 
+        src/candy/deck/TableDeckCandy.cpp
+        src/utils/max.cpp
+        src/cangkul/game-engine/CangkulGameEngine.cpp
         src/cangkul/game-engine/CangkulDeckManager.cpp
-        src/cangkul/cangkul.cpp 
+        src/cangkul/cangkul.cpp
         src/utils/string.cpp
         src/utils/interface.cpp)
