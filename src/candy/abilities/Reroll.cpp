@@ -1,11 +1,18 @@
 #include "Reroll.hpp"
 #include "../exception/AbilitiesException.hpp"
+#include "../../utils/interface.hpp"
+#include "../../utils/string.hpp"
+#include <iostream>
 
-Reroll::Reroll(DeckManager *a) : AbilityCard("reroll") {
+using namespace std;
+
+Reroll::Reroll(DeckManager *a) : AbilityCard("reroll")
+{
     this->deckManager = a;
 }
 
-void Reroll::use() {
+void Reroll::use()
+{
     // Deletes the current main deck card
     PlayerDeckCandy &deck = this->getOwner()->getDeck();
     deck.removeCard();
@@ -17,6 +24,8 @@ void Reroll::use() {
     deck.insertCard(gameDeck.popCard());
     deck.insertCard(gameDeck.popCard());
 
+    cout << cblue(true) << "JENG JENG JENG deck mu telah di reroll" << reset() << endl;
+    this->getOwner()->showStatus(true);
+
     this->getStatus().setUsed();
 }
-
