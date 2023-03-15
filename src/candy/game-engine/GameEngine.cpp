@@ -3,6 +3,7 @@
 #include <iterator>
 #include "../../utils/max.hpp"
 #include "../../utils/interface.hpp"
+#include "../../utils/string.hpp"
 #include <algorithm>
 
 using std::cin;
@@ -26,12 +27,20 @@ void GameEngine::start()
         cout << "\nMasukkan nama player ke-" << i + 1 << ":\n> ";
         string name;
         getline(cin, name);
+        trim(name);
         clearTerminal();
-        if (std::any_of(players, players + i, [name](PlayerCandy *p)
-                        { return p->getName() == name; }))
+        if (name.size() == 0)
         {
             i--;
-            cout << "Nama '" << name << "' telah digunakan, harap masukkan nama lain.\n";
+            cout << cred() << "Nama tidak valid, harap masukkan ulang.\n"
+                 << reset();
+        }
+        else if (std::any_of(players, players + i, [name](PlayerCandy *p)
+                             { return p->getName() == name; }))
+        {
+            i--;
+            cout << cred() << "Nama " << cblue() << "'" << name << "'" << cred() << " telah digunakan, harap masukkan nama lain.\n"
+                 << reset();
         }
         else
         {

@@ -4,6 +4,7 @@
 #include "../player/PlayerCangkul.hpp"
 #include "../../utils/interface.hpp"
 #include "../../base/exception/DeckException.hpp"
+#include "../../utils/string.hpp"
 #include <algorithm>
 
 using std::cin;
@@ -17,16 +18,28 @@ CangkulGameEngine::CangkulGameEngine()
 
 void CangkulGameEngine::main()
 {
-    cout << "Selamat datang di permatinan cangkul!" << endl
+    cout << "Selamat datang di permainan " << cblue() << "Cangkul" << reset() << "!" << endl
          << endl;
-
+    cin.ignore();
     for (int i = 0; i < 4; i++)
     {
         string name;
         cout << "Masukkan nama pemain ke-" << i + 1 << ":" << endl
              << "> ";
-        cin >> name;
-        this->players[i] = new PlayerCangkul(name);
+        getline(cin, name);
+        trim(name);
+        clearTerminal();
+
+        if (name.size() == 0)
+        {
+            i--;
+            cout << cred() << "Nama tidak valid, harap masukkan ulang.\n"
+                 << reset();
+        }
+        else
+        {
+            this->players[i] = new PlayerCangkul(name);
+        }
     }
 
     CangkulDeckManager dm(players);
@@ -38,7 +51,7 @@ void CangkulGameEngine::main()
     {
         beginGame();
 
-        cout << "Apakah anda ingin mengakhiri permainan?[ya/tidak]" << endl;
+        cout << "Apakah anda ingin mengakhiri permainan?[" << cred() << "ya" << reset() << "/" << cblue() << "tidak" << reset() << "]" << endl;
         string choice;
 
         cin >> choice;

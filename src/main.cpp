@@ -21,6 +21,7 @@ int main()
     cout << "Masukkan pilihan: [1/2/3]\n> ";
 
     cin >> out;
+    clearTerminal();
     if (out == "1")
     {
         Candy::start();

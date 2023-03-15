@@ -7,11 +7,11 @@ using std::string;
 
 void clearTerminal()
 {
-#ifdef __WIN32
-  system("cls");
-#else
-  system("clear");
-#endif
+// #ifdef __WIN32
+//   system("cls");
+// #else
+//   system("clear");
+// #endif
 }
 
 string cred(bool bold)

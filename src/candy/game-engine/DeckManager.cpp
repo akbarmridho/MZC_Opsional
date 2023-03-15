@@ -1,5 +1,6 @@
 #include "DeckManager.hpp"
 #include "../../base/exception/DeckException.hpp"
+#include "../../utils/interface.hpp"
 #include <iostream>
 #include <string>
 
@@ -43,6 +44,7 @@ void DeckManager::resetDeck() {
             try {
                 gameDeck.fromFile(path);
                 valid = true;
+                clearTerminal();
             } catch (DeckException &e) {
                 cout << "Pembacaan file gagal" << endl;
                 cout << e.what() << endl;

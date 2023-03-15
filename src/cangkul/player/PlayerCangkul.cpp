@@ -42,7 +42,9 @@ CardCangkul PlayerCangkul::selectCard()
         cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
     }
 
-    return this->deck.removeCard(idx);
+    CardCangkul res = this->deck.removeCard(idx);
+    this->deck.sortCards();
+    return res;
 }
 
 CardCangkul PlayerCangkul::selectCardWithType(CardCangkulType type)
@@ -90,6 +92,7 @@ CardCangkul PlayerCangkul::selectCardWithType(CardCangkulType type)
 void PlayerCangkul::receiveCard(CardCangkul card)
 {
     this->deck.insertCard(card);
+    this->deck.sortCards();
 }
 
 int PlayerCangkul::countCardWithType(CardCangkulType type)

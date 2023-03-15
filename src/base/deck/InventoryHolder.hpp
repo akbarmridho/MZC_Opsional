@@ -13,6 +13,7 @@ protected:
 
 public:
     void reset();
+    void sortCards();
     T& operator[](int);
     T& get(int);
     [[nodiscard]] int getCount() const;

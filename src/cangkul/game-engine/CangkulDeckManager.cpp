@@ -89,6 +89,7 @@ bool CangkulDeckManager::getFromPlayer(PlayerCangkul *player)
   {
     CardCangkul card = player->selectCard();
     this->tableDeck.insertCard({player, card});
+    this->tableDeck.sortCards();
     return true;
   }
   else
@@ -146,6 +147,7 @@ bool CangkulDeckManager::getFromPlayer(PlayerCangkul *player)
     {
       CardCangkul card = player->selectCardWithType(type);
       this->tableDeck.insertCard({player, card});
+      this->tableDeck.sortCards();
       return true;
     }
   }
