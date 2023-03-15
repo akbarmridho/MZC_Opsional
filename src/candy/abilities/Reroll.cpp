@@ -6,9 +6,6 @@ Reroll::Reroll(DeckManager *a) : AbilityCard("reroll") {
 }
 
 void Reroll::use() {
-    this->getStatus().notUsedOrThrow();
-    this->getStatus().activeOrThrow();
-
     // Deletes the current main deck card
     PlayerDeckCandy &deck = this->getOwner()->getDeck();
     deck.removeCard();
@@ -19,7 +16,5 @@ void Reroll::use() {
     // Insert from deck
     deck.insertCard(gameDeck.popCard());
     deck.insertCard(gameDeck.popCard());
-
-    this->getStatus().setUsed();
 }
 

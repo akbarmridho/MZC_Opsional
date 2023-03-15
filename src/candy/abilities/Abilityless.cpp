@@ -48,7 +48,7 @@ void Abilityless::use() {
         }
     }
     if (target->getAbility()->getUsed()) {
-        cout << "Kartu ability " << *target << " telah dipakai debelumnya. Yah, sayang penggunaan kartu ini sia-sia\n";
+        cout << "Kartu ability " << *target << " telah dipakai sebelumnya. Yah, sayang penggunaan kartu ini sia-sia\n";
     } else {
         target->getAbility()->deactivate();
         cout << "Kartu ability " << *target << " telah dimatikan.\n";

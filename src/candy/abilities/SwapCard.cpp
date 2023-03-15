@@ -43,7 +43,7 @@ void SwapCard::use() {
                 cout << "Masukan salah. Pilih ulang! " << endl;
             } else {
                 target[i] = selectablePlayers[i];
-                selectablePlayers.erase(selectablePlayers.begin() + i, selectablePlayers.begin() + i);
+                selectablePlayers.erase(selectablePlayers.begin() + i);
                 valid = true;
             }
         }

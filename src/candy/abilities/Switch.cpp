@@ -52,7 +52,7 @@ void Switch::use() {
         } else {
             // Input sudah valid
             valid = true;
-            target = selectablePlayers[value];
+            target = selectablePlayers[value - 1];
         }
     }
 
@@ -61,16 +61,16 @@ void Switch::use() {
     PlayerDeckCandy &deck2 = target->getDeck();
 
     CardCandy c1 = deck1.removeCard(0);
-    CardCandy c2 = deck1.removeCard(1);
+    CardCandy c2 = deck1.removeCard(0);
     CardCandy c3 = deck2.removeCard(0);
-    CardCandy c4 = deck2.removeCard(1);
+    CardCandy c4 = deck2.removeCard(0);
 
     deck1.insertCard(c3);
     deck1.insertCard(c4);
     deck2.insertCard(c1);
     deck2.insertCard(c2);
 
-    cout << "Switch dengan " << selectablePlayers[value]->getName() << " berhasil dilakukan" << endl;
+    cout << "Switch dengan " << selectablePlayers[value - 1]->getName() << " berhasil dilakukan" << endl;
 
     this->getStatus().setUsed();
 }

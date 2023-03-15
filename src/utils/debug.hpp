@@ -1,7 +1,7 @@
 #ifndef DEBUG_HPP
 #define DEBUG_HPP
 
-// #define DEBUG
+#define DEBUG
 // #define NEXT_ALL
 // #define AUTO_CANGKUL
 

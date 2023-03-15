@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <iostream>
+#include "debug.hpp"
 
 using std::cin;
 using std::cout;
@@ -10,10 +11,12 @@ using std::string;
 
 void clearTerminal()
 {
+#ifndef DEBUG
 #ifdef __WIN32
   system("cls");
 #else
   system("clear");
+#endif
 #endif
 }
 
