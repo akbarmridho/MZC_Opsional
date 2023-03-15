@@ -84,6 +84,11 @@ bool GameEngine::runMatch()
     string winnerName = max<PlayerCandy>(players, 7).getName();
     cout << cblue() << winnerName << reset() << " berhasil memenangkan match. " << cblue() << winnerName << cblue() << " mendapatkan " << cyellow() << pointManager.getCurrentRewardPoint() << reset() << " point.\n";
     bool gameOver = pointManager.givePointAndReset(winnerName);
+
+    if (gameOver) {
+        cout << "Permainan berakhir. \nPermainan dimenangkan oleh " << cblue() << winnerName << reset() << endl;  
+    }
+
     pointManager.showLeaderboard();
     return gameOver;
 }

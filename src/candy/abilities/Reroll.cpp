@@ -16,5 +16,7 @@ void Reroll::use() {
     // Insert from deck
     deck.insertCard(gameDeck.popCard());
     deck.insertCard(gameDeck.popCard());
+
+    this->getStatus().setUsed();
 }
 
