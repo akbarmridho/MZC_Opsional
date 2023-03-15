@@ -11,7 +11,7 @@ Comboable::Comboable(int level) : Comboable(level, 0)
 {
 }
 
-Comboable::Comboable(int level, double comboValue)
+Comboable::Comboable(int level, unsigned long long int comboValue)
 {
     this->level = level;
     this->comboValue = comboValue;
