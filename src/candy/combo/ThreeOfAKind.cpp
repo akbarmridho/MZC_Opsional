@@ -6,7 +6,7 @@ using std::make_pair;
 using std::vector;
 
 ThreeOfAKind::ThreeOfAKind(const vector<CardCandy> &cards)
-    : Comboable(2, 0)
+    : Comboable(4, 0)
 {
     using VectorPair = vector<pair<int, int>>;
     VectorPair cardBag(13, make_pair(0,0));

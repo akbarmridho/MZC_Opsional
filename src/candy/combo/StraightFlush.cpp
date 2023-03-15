@@ -68,5 +68,7 @@ StraightFlush::StraightFlush(const vector<CardCandy> &cards)
             counter++;
             this->comboValue *= 100;
         } 
+    } else {
+        this->comboValue = 0;
     }
 }
