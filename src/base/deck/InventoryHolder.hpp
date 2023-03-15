@@ -16,6 +16,8 @@ public:
     void sortCards();
     T& operator[](int);
     T& get(int);
+    InventoryHolder<T> &operator+(InventoryHolder<T> &);
+    InventoryHolder<T> &operator-(InventoryHolder<T> &);
     [[nodiscard]] int getCount() const;
 };
 

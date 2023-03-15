@@ -21,8 +21,8 @@ void Reroll::use()
     GameDeckCandy &gameDeck = this->deckManager->getGameDeck();
 
     // Insert from deck
-    deck.insertCard(gameDeck.popCard());
-    deck.insertCard(gameDeck.popCard());
+    deck + gameDeck;
+    deck + gameDeck;
 
     cout << cblue(true) << "JENG JENG JENG deck mu telah di reroll" << reset() << endl;
     this->getOwner()->showStatus(true);

@@ -59,15 +59,16 @@ void DeckManager::resetDeck() {
 
 void DeckManager::initializePlayerDeck() {
     for (int i = 0; i < 7; i++) {
-        this->players[i]->getDeck().insertCard(gameDeck.popCard());
-        this->players[i]->getDeck().insertCard(gameDeck.popCard());
+        // ambil dua kartu dari gamedeck, kasih ke player
+        this->players[i]->getDeck() + gameDeck;
+        this->players[i]->getDeck() + gameDeck;
         players[i]->updateTableDeck(&this->tableDeck);
     }
 }
 
 void DeckManager::openTableCard() {
-    CardCandy c1 = gameDeck.popCard();
-    tableDeck.insertCard(c1);
+    // mindahin dari gamedeck ke tableDeck
+    gameDeck - tableDeck;
 }
 
 GameDeckCandy &DeckManager::getGameDeck() {

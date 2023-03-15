@@ -34,6 +34,22 @@ int InventoryHolder<T>::getCount() const {
     return cards.size();
 }
 
+template<class T>
+InventoryHolder<T> &InventoryHolder<T>::operator+(InventoryHolder<T> &other) {
+    auto card = other.cards.rbegin();
+    this->cards.push_back(*card);
+    other.cards.pop_back();
+    return *this;
+}
+
+template<class T>
+InventoryHolder<T> &InventoryHolder<T>::operator-(InventoryHolder<T> &other) {
+    auto card = this->cards.rbegin();
+    other.cards.push_back(*card);
+    this->cards.pop_back();
+    return *this;
+}
+
 template
 class InventoryHolder<CardCandy>;
 

@@ -64,8 +64,9 @@ void CangkulDeckManager::resetDeck()
     this->players[j]->deck.reset();
     for (int i = 0; i < 7; i++)
     {
-      this->players[j]->receiveCard(this->gameDeck.popCard());
+      this->players[j]->deck + gameDeck;
     }
+    this->players[j]->deck.sortCards();
   }
 }
 
