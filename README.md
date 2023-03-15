@@ -5,6 +5,10 @@ Tugas Besar 1 IF2210 Pemrograman Berorientasi Objek
 
 Dalam rangka merayakan pesta panen gula di kerajaan permen, akan diadakan kompetisi massal permainan kartu ala Kerajaan Permen. Ratu kerajaan permen ingin mencari pemain kartu terhebat di kerajaannya. Namun karena Ratu tidak bisa memantau permainan satu-persatu, kalian diminta untuk membuatkan sistem agar permainan dapat berjalan dengan adil. Bantulah ratu kerajaan permen untuk membuatkan permainan ala kerajaan permen.
 
+Program yang kelompok kami buat adalah sebuah permainan bernama candy land, dimana permainan kartu ini akan menggunakan konsep Object-Oriented Programming seperti Inheritance, Polymorphism, Method/Operator Overloading, Template dan Generic Classes
+
+Dokumentasi lengkap tentang program dapat dilihat pada [link berikut](https://docs.google.com/document/d/1tcn1uz0htHW3AcQ1i9r_9jG2EbuHPnaY/edit?usp=sharing&ouid=112978846037300547829&rtpof=true&sd=true)
+
 ## Anggota
 
 1. Fakhri Muhammad Mahendra (13521045)
@@ -15,7 +19,7 @@ Dalam rangka merayakan pesta panen gula di kerajaan permen, akan diadakan kompet
    
 ## Permainan tambahan
 
-Selain candy land, kami juga membuat game bonus yang bernama cangkulan.
+Selain candy land, kami juga membuat game bonus yang bernama cangkulan. Game cangkulan ini menyerupai game cangkul yang biasa dimainkan, dimana pemain akan berlomba untuk memenangkan ronde dengan mengeluarkan kartu terbesar sesuai constraint yang pemain pertama di ronde itu keluarkan.
 
 ## Setup and Installation
 
