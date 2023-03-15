@@ -78,8 +78,6 @@ DeckManager::DeckManager() {
 void DeckManager::showTableStatus() {
     cout << "Kartu di meja:\n";
     for (auto &c: tableDeck.getCards()) {
-        cout << "\t- ";
-        c.print();
-        cout << endl;
+        cout << "\t- " << c << endl;
     }
 }

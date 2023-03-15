@@ -91,7 +91,6 @@ string CardCandy::getTypeColor() const
     }
 }
 
-void CardCandy::print()
-{
-    cout << this->getTypeColor() << this->getNumber() << " " << this->getTypeString() << reset();
+std::ostream &operator<<(std::ostream &stream, CardCandy &c) {
+    return stream << c.getTypeColor() << c.getNumber() << " " << c.getTypeString() << reset();;
 }

@@ -46,7 +46,7 @@ public:
 
     string getTypeColor() const;
 
-    void print();
+    friend std::ostream &operator<<(std::ostream &stream, CardCandy &c);
 };
 
 #endif

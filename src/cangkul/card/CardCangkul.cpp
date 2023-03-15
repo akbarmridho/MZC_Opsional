@@ -1,4 +1,5 @@
 #include "CardCangkul.hpp"
+#include "../../utils/interface.hpp"
 
 using std::to_string;
 
@@ -9,24 +10,7 @@ value_pair_t CardCangkul::value() const
 
 std::string CardCangkul::getTypeString() const
 {
-    if (this->type == spade)
-    {
-        return "♠";
-        // return "Sekop";
-    }
-    else if (this->type == heart)
-    {
-        return "♥";
-        // return "Hati";
-    }
-    else if (this->type == diamond)
-    {
-        // return "Wajik";
-        return "♦";
-    }
-
-    // return "Keriting";
-    return "♣";
+    return typeToString(this->type);
 }
 
 CardCangkul::CardCangkul(CardCangkulType type, int value) : Card(type, value)
@@ -55,4 +39,48 @@ string CardCangkul::getNumberReps()
     {
         return "A";
     }
+}
+
+std::string typeToString(CardCangkulType type)
+{
+    if (type == spade)
+    {
+        return "♠";
+        // return "Sekop";
+    }
+    else if (type == heart)
+    {
+        return "♥";
+        // return "Hati";
+    }
+    else if (type == diamond)
+    {
+        // return "Wajik";
+        return "♦";
+    }
+
+    // return "Keriting";
+    return "♣";
+}
+
+std::ostream &operator<<(std::ostream &stream, CardCangkul &c)
+{
+    return stream << getTypeColor(c.type) << c.getTypeString() << c.getNumberReps() << reset();
+}
+
+string getTypeColor(CardCangkulType type)
+{
+    switch (type)
+    {
+    case spade:
+    case club:
+        return cblue();
+    default:
+        return cred();
+    }
+}
+
+std::ostream &operator<<(std::ostream &stream, CardCangkulType type)
+{
+    return stream << getTypeColor(type) << typeToString(type) << reset();
 }

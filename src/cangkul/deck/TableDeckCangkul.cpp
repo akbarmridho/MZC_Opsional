@@ -48,10 +48,8 @@ void TableDeckCangkul::printTable() {
     }
 
     for (auto &cpair: cards) {
-        cout << cpair.second.getTypeString() << "-" << cpair.second.getNumberReps() << " ";
+        cout << cpair.second << endl;
     }
-
-    cout << endl;
 }
 
 int TableDeckCangkul::getWasteCount() const {

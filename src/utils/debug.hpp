@@ -3,5 +3,6 @@
 
 // #define DEBUG
 // #define NEXT_ALL
+// #define AUTO_CANGKUL
 
 #endif

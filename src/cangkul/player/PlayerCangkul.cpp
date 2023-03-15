@@ -1,6 +1,7 @@
 #include "PlayerCangkul.hpp"
 
 #include <iostream>
+#include <limits>
 
 using std::cin;
 using std::cout;
@@ -22,14 +23,13 @@ CardCangkul PlayerCangkul::selectCard()
         for (int i = 0; i < this->deck.getCount(); i++)
         {
             CardCangkul &card = this->deck[i];
-            cout << i + 1 << ". " << card.getTypeString() << card.getNumberReps() << endl;
+            cout << i + 1 << ". " << card << endl;
         }
 
-        cin.clear();
         int number;
         cin >> number;
 
-        if (number >= 1 && number <= this->deck.getCount())
+        if (!cin.fail() && number >= 1 && number <= this->deck.getCount())
         {
             valid = true;
             idx = number - 1;
@@ -38,6 +38,8 @@ CardCangkul PlayerCangkul::selectCard()
         {
             cout << "Nomor kartu salah!" << endl;
         }
+        cin.clear();
+        cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
     }
 
     return this->deck.removeCard(idx);
@@ -61,7 +63,7 @@ CardCangkul PlayerCangkul::selectCardWithType(CardCangkulType type)
 
             if (card.getType() == type)
             {
-                cout << j + 1 << ". " << card.getTypeString() << card.getNumberReps() << endl;
+                cout << j + 1 << ". " << card << endl;
                 j++;
                 idxMap.push_back(i);
             }

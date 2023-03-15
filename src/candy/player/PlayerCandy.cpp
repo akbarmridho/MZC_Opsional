@@ -166,9 +166,7 @@ void PlayerCandy::showStatus(bool isFirstRound)
     for (int i = 0; i < 2; i++)
     {
         CardCandy &c = this->deck.get(i);
-        cout << "\t- ";
-        c.print();
-        cout << endl;
+        cout << "\t- " << c << endl;
     }
 
     if (!isFirstRound)

@@ -21,6 +21,12 @@ public:
     [[nodiscard]] value_pair_t value() const override;
 
     [[nodiscard]] std::string getTypeString() const override;
+
+    friend std::ostream &operator<<(std::ostream &stream, CardCangkul &c);
 };
+
+std::ostream &operator<<(std::ostream &stream, CardCangkulType type);
+std::string typeToString(CardCangkulType type);
+string getTypeColor(CardCangkulType type);
 
 #endif
