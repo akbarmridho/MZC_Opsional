@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <limits>
+#include "../../utils/interface.hpp"
 
 using std::cin;
 using std::cout;
@@ -26,10 +27,9 @@ CardCangkul PlayerCangkul::selectCard()
             cout << i + 1 << ". " << card << endl;
         }
 
-        int number;
-        cin >> number;
+        int number = getValidatedInt("> ");
 
-        if (!cin.fail() && number >= 1 && number <= this->deck.getCount())
+        if (number >= 1 && number <= this->deck.getCount())
         {
             valid = true;
             idx = number - 1;
@@ -38,8 +38,6 @@ CardCangkul PlayerCangkul::selectCard()
         {
             cout << "Nomor kartu salah!" << endl;
         }
-        cin.clear();
-        cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
     }
 
     CardCangkul res = this->deck.removeCard(idx);
@@ -71,9 +69,7 @@ CardCangkul PlayerCangkul::selectCardWithType(CardCangkulType type)
             }
         }
 
-        cin.clear();
-        int number;
-        cin >> number;
+        int number = getValidatedInt("> ");
 
         if (number >= 1 && number <= j)
         {

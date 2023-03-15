@@ -1,5 +1,7 @@
 #include "SwapCard.hpp"
 #include "../exception/AbilitiesException.hpp"
+#include "../../utils/interface.hpp"
+#include "../../utils/interface.hpp"
 
 #include <iostream>
 #include <algorithm>
@@ -35,9 +37,7 @@ void SwapCard::use() {
 
         bool valid = false;
         while (!valid) {
-            int val;
-            cout << "> ";
-            cin >> val;
+            int val = getValidatedInt("> ");
 
             if (val < 1 || val > selectablePlayers.size()) {
                 cout << "Masukan salah. Pilih ulang! " << endl;
@@ -59,9 +59,7 @@ void SwapCard::use() {
 
         bool valid = false;
         while (!valid) {
-            int val;
-            cout << "> ";
-            cin >> val;
+            int val = getValidatedInt("> ");
 
             if (val != 1 && val != 2) {
                 cout << "Masukan salah. Pilih ulang! " << endl;

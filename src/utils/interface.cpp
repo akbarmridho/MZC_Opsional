@@ -1,17 +1,20 @@
 #include "interface.hpp"
 #include <stdlib.h>
 #include <stdio.h>
+#include <iostream>
 
+using std::cin;
+using std::cout;
 using std::string;
 #define ENABLE_COLOR
 
 void clearTerminal()
 {
-// #ifdef __WIN32
-//   system("cls");
-// #else
-//   system("clear");
-// #endif
+#ifdef __WIN32
+  system("cls");
+#else
+  system("clear");
+#endif
 }
 
 string cred(bool bold)
@@ -76,4 +79,19 @@ string rgb(int r, int g, int b)
 string reset()
 {
   return "\033[0m";
+}
+
+int getValidatedInt(string prompt)
+{
+  while (true)
+  {
+    cout << prompt;
+    int number;
+    cin >> number;
+    if (!cin.fail())
+      return number;
+    cout << "Masukan angka tidak valid.\n";
+    cin.clear();
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+  }
 }

@@ -2,6 +2,7 @@
 #include "../exception/AbilitiesException.hpp"
 #include <iostream>
 #include <algorithm>
+#include "../../utils/interface.hpp"
 
 using std::cout;
 using std::cin;
@@ -36,9 +37,8 @@ void Abilityless::use() {
     PlayerCandy *target;
     bool valid = false;
     while (!valid) {
-        int val;
-        cout << "> ";
-        cin >> val;
+        int val = getValidatedInt("> ");
+        
 
         if (val < 1 || val > selectablePlayers.size()) {
             cout << "Masukan salah. Pilih ulang! " << endl;

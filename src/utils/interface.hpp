@@ -18,4 +18,6 @@ string rgb(int r, int g, int b);
 
 string reset();
 
+int getValidatedInt(string prompt);
+
 #endif

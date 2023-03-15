@@ -2,6 +2,7 @@
 #include "../exception/AbilitiesException.hpp"
 #include <iostream>
 #include <algorithm>
+#include "../../utils/interface.hpp"
 
 using std::cout;
 using std::cin;
@@ -41,8 +42,8 @@ void Switch::use() {
     bool valid = false;
     int value;
     while (!valid) {
-        cout << "Silahkan pilih pemain untuk menukar kartu Anda: ";
-        cin >> value;
+        cout << "Silahkan pilih pemain untuk menukar kartu Anda: \n";
+        value = getValidatedInt("> ");
 
         // Validasi input
         if (value < 1 || value > selectablePlayers.size()) {
