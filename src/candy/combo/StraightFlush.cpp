@@ -25,23 +25,48 @@ StraightFlush::StraightFlush(const vector<CardCandy> &cards)
 
         if ((prevTypeValue & card.second) == 0)
         {
-            this->comboValue = i + 1;
-            counter = 1;
-            prevTypeValue = card.second;
+            if (counter >= 5)
+            {
+                break;
+            }
+            else
+            {
+                this->comboValue = i + 1;
+                counter = 1;
+                prevTypeValue = card.second;
+            }
         }
         else 
         {
             prevTypeValue = prevTypeValue & card.second;
             counter++;
-            if (counter == 5) 
+            switch (counter)
             {
+            case 5:
                 this->comboValue = this->comboValue * 100 + prevTypeValue;
                 break;
+            
+            case 6:
+                this->comboValue = this->comboValue * 100 + i + 5;
+                break;
+
+            case 7:
+                this->comboValue = this->comboValue * 100 + i + 5;
+                break;
+
+            default:
+                break;
             }
+
+            if (counter == 7) {break;}
         }
     }
-    if (counter <= 4)
+    if (counter >= 5)
     {
-        this->comboValue = 0;
+        while(counter < 7)
+        {
+            counter++;
+            this->comboValue *= 100;
+        } 
     }
 }

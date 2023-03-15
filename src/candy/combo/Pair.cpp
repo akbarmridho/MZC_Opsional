@@ -20,14 +20,25 @@ Pair::Pair(const vector<CardCandy> &cards)
         cardBag[cardNum - 1].second += typeValue;
     }
 
+    int counter = 0;
     for (int i = 12; i >= 0; i--)
     {
         if (cardBag[i].first >= 2)
         {
+            counter++;
             int cardNum = i + 1;
             int typeValue = cardBag[i].second;
-            this->comboValue = 100 * cardNum + typeValue;
-            break;
+
+            this->comboValue = this->comboValue * 100 + cardNum;
+            this->comboValue = this->comboValue * 100 + typeValue;
+
+            if (counter > 3) {break;}
         }
+    }
+
+    while (counter < 3)
+    {
+        counter++;
+        this->comboValue *= 10000;
     }
 }

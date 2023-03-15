@@ -9,9 +9,6 @@
 using std::vector;
 
 class ThreeOfAKind : public Comboable {
-protected:
-    void computeCombo(vector<CardCandy>);
-
 public:
     ThreeOfAKind(const vector<CardCandy> &);
 };

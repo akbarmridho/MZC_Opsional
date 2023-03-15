@@ -1,38 +1,37 @@
 #include "FourOfAKind.hpp"
 #include <iostream>
-#include <algorithm>
-#include <cmath>
-using std::sort;
+
+using std::pair;
+using std::make_pair;
+using std::vector;
 
 FourOfAKind::FourOfAKind(const vector<CardCandy> &cards)
-    : Comboable(8, 0)
+    : Comboable(2, 0)
 {
-    computeCombo(cards);
-};
+    using VectorPair = vector<pair<int, int>>;
+    VectorPair cardBag(13, make_pair(0,0));
 
-void FourOfAKind::computeCombo(vector<CardCandy> cards) // copy so that cards can be sorted freely
-{
 
-    // sort by value
-    sort(cards.begin(), cards.end(), [](CardCandy &a, CardCandy &b)
-         { return a < b; });
-    int same = 0;
-    int lastNumber;
-    for (int i = 0; i < cards.size(); i++)
+    for (const auto card : cards)
     {
-        const CardCandy &card = cards[i];
-        if (same == 0 || card.getNumber() != lastNumber)
+        int cardNum = card.getNumber();
+        int typeValue = 1<<card.getType();
+        cardBag[cardNum - 1].first++;
+        cardBag[cardNum - 1].second += typeValue;
+    }
+
+    int counter = 0;
+    for (int i = 12; i >= 0; i--)
+    {
+        if (cardBag[i].first >= 4)
         {
-            lastNumber = card.getNumber();
-            same = 1;
-        }
-        else
-        {
-            same++;
-        }
-        if (same == 4)
-        {
-            this->comboValue = card.getNumber();
+            counter++;
+            int cardNum = i + 1;
+            int typeValue = cardBag[i].second;
+
+            this->comboValue = this->comboValue * 100 + cardNum;
+            this->comboValue = this->comboValue * 100 + typeValue;
+
             break;
         }
     }

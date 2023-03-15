@@ -1,39 +1,44 @@
 #include "ThreeOfAKind.hpp"
-#include <algorithm>
+#include <iostream>
 
-ThreeOfAKind::ThreeOfAKind(const vector<CardCandy> &cards) : Comboable(4) {
-    computeCombo(cards);
-}
+using std::pair;
+using std::make_pair;
+using std::vector;
 
-void ThreeOfAKind::computeCombo(vector<CardCandy> cards)
+ThreeOfAKind::ThreeOfAKind(const vector<CardCandy> &cards)
+    : Comboable(2, 0)
 {
-    sort(cards.begin(), cards.end(), [](CardCandy &a, CardCandy &b)
-         { return a < b; });
-         
-    int same = 0;
-    int number;
-    int type = -1;
-    for (int i = 0; i < cards.size(); i++)
+    using VectorPair = vector<pair<int, int>>;
+    VectorPair cardBag(13, make_pair(0,0));
+
+
+    for (const auto card : cards)
     {
-        const CardCandy &card = cards[i];
-        if (same == 0 || (card.getNumber() != number))
+        int cardNum = card.getNumber();
+        int typeValue = 1<<card.getType();
+        cardBag[cardNum - 1].first++;
+        cardBag[cardNum - 1].second += typeValue;
+    }
+
+    int counter = 0;
+    for (int i = 12; i >= 0; i--)
+    {
+        if (cardBag[i].first >= 3)
         {
-            number = card.getNumber();
-            type = card.getType();
-            same = 1;
+            counter++;
+            int cardNum = i + 1;
+            int typeValue = cardBag[i].second;
+
+            this->comboValue = this->comboValue * 100 + cardNum;
+            this->comboValue = this->comboValue * 100 + typeValue;
+
+            if (counter > 2) {break;}
         }
-        else
-        {
-            same++;
-            if (card.getType() > type)
-            {
-                type = card.getType();
-            }
-        }
-        if (same == 3)
-        {
-            this->comboValue = card.value().second * 10 + (type);
-            break;
-        }
+    }
+
+    while (counter < 2)
+    {
+        counter++;
+        this->comboValue *= 10000;
     }
 }

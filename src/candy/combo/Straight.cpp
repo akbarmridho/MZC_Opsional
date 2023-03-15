@@ -19,38 +19,42 @@ Straight::Straight(const vector<CardCandy> &cards)
         int cardNum = card.getNumber();
         int typeValue = 1<<card.getType();
         cardBag[cardNum - 1].first++;
-        try
-        {
-        cardBag[cardNum - 1].second = std::max<int>(cardBag[cardNum - 1].second, typeValue);
-        }
-        catch (NoMaxException &e)
-        {
-            cout << "Terdapat nilai yang sama pada perbandingan fungsi straight" << endl;
-        }
+        cardBag[cardNum - 1].second += typeValue;
     }
 
-    int count = 0;
+    int counter = 0;
     int i = 12;
-    for (i; i > 0; i--)
+    for (i; i >= 0; i--)
     {
         if (cardBag[i].first == 0)
         {
-            count = 0;
+            if (counter >= 5)
+            {
+                break;
+            }
+            else
+            {
+                counter = 1;
+            }
         }
         else
         {
-            count++;
-            if (count == 5) {break;}
+            counter++;
         }
     }
-    if (count == 5)
+    if (counter >= 5)
     {
-        int index_end = i;
-        for (i = index_end + 4; i >= index_end; i--)
+        int index_end = i + 1;
+        for (i = index_end + counter - 1; i >= index_end; i--)
         {
-            this->comboValue = this->comboValue * 100 + (i + 1);
-            this->comboValue = this->comboValue * 10 + cardBag[i].second;
+            this->comboValue = (this->comboValue << 4) + (i + 1);
+            this->comboValue = (this->comboValue << 4) + cardBag[i].second;
         }
+        while (counter < 7)
+        {
+            counter++;
+            this->comboValue <<= 8;
+        } 
     }
     
 

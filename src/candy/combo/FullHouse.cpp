@@ -1,87 +1,99 @@
 #include "FullHouse.hpp"
-#include <map>
-#include <vector>
-#include <utility>
-#include <algorithm>
-#include <cmath>
+#include <iostream>
 
-using std::greater;
-using std::sort;
-using std::vector;
-using std::map;
 using std::pair;
+using std::make_pair;
+using std::vector;
 
-FullHouse::FullHouse(const vector<CardCandy> &cards) : Comboable(7) {
-    /** Format combo value
-     *
-     * Highest three pair | colors | highest two pair | colors
-     *
-     * Example:
-     * highest three pair 13 with colors 3 2 1
-     * highest two pair  5 with color 2 1
-     * will have combo value of
-     * 133210521
-     *
-     * Formula:
-     * highest three pair number * 10^7 +
-     * highest three pair card type * 10^6 +
-     * second highest three pair card type * 10^5 +
-     * third highest three pair card type * 10^4 +
-     * highest two pair number * 10^2 +
-     * highest two pair card type * 10 +
-     * second highest two pair card type
-     */
-    map<int, vector<int>> counter;
+FullHouse::FullHouse(const vector<CardCandy> &cards)
+    : Comboable(7, 0)
+{
+    using VectorPair = vector<pair<int, int>>;
+    VectorPair cardBag(13, make_pair(0,0));
 
-    for (auto &card: cards) {
-        if (counter.find(card.getNumber()) == counter.end()) {
-            counter.insert(pair<int, vector<int>>(card.getNumber(), vector<int>()));
-        }
 
-        counter[card.getNumber()].push_back(card.getType());
+    for (const auto card : cards)
+    {
+        int cardNum = card.getNumber();
+        int typeValue = 1<<card.getType();
+        cardBag[cardNum - 1].first++;
+        cardBag[cardNum - 1].second += typeValue;
     }
 
-    // find the highest three pair
-    int maxThree = -1;
-    for (auto &each: counter) {
-        if (each.second.size() >= 3) {
-            if (each.first > maxThree) {
-                maxThree = each.first;
+    int counter = 0;
+    int typeValue1stTriple = 0;
+    int typeValue2ndTriple = 0;
+    for (int i = 12; i >= 0; i--)
+    {
+        if (cardBag[i].first >= 3)
+        {
+            counter++;
+            int cardNum = i + 1;
+            int typeValue = cardBag[i].second;
+
+            this->comboValue = (this->comboValue << 4) + cardNum;
+
+            if (counter == 1)
+            {
+                typeValue1stTriple = typeValue;
+            }
+            else if (counter == 2)
+            {
+                typeValue2ndTriple = typeValue;
+                break;
             }
         }
     }
-
-    if (maxThree == -1) {
-        return; // no fullhouse
+    int tripleCount = counter;
+    while (counter < 2)
+    {
+        counter++;
+        this->comboValue <<= 4;
     }
 
-    vector<int> threeTypes = counter[maxThree];
-    sort(threeTypes.begin(), threeTypes.end(), greater<>());
-    counter.erase(maxThree);
+    counter = 0;
+    int typeValue1stDouble = 0;
+    int typeValue2ndDouble = 0;
+    int typeValue3rdDouble = 0;
+    for (int i = 12; i >= 0; i--)
+    {
+        if (cardBag[i].first >= 2)
+        {
+            counter++;
+            int cardNum = i + 1;
+            int typeValue = cardBag[i].second;
 
-    // find the highest two pair
-    int maxTwo = -1;
-    for (auto &each: counter) {
-        if (each.second.size() >= 2) {
-            if (each.first > maxTwo) {
-                maxTwo = each.first;
+            this->comboValue = (this->comboValue << 4) + cardNum;
+
+            if (counter == 1)
+            {
+                typeValue1stDouble = typeValue;
+            }
+            else if (counter == 2)
+            {
+                typeValue2ndDouble = typeValue;
+            }
+            else if (counter == 3)
+            {
+                typeValue3rdDouble = typeValue;
+                break;
             }
         }
     }
-
-    if (maxTwo == -1) {
-        return; // no fullhouse
+    int doubleCount = counter;
+    while (counter < 3)
+    {
+        counter++;
+        this->comboValue <<= 4;
     }
+    this->comboValue = (this->comboValue << 4) + typeValue1stTriple;
+    this->comboValue = (this->comboValue << 4) + typeValue2ndTriple;
+    this->comboValue = (this->comboValue << 4) + typeValue1stDouble;
+    this->comboValue = (this->comboValue << 4) + typeValue2ndDouble;
+    this->comboValue = (this->comboValue << 4) + typeValue3rdDouble;
 
-    vector<int> twoTypes = counter[maxTwo];
-    sort(twoTypes.begin(), twoTypes.end(), greater<>());
-    counter.erase(maxTwo);
-
-    this->comboValue += maxThree * pow(10, 7); // highest three pair
-    this->comboValue += threeTypes[0] * pow(10, 6); // highest three pair card type
-    this->comboValue += threeTypes[1] * pow(10, 5); // second-highest three pair card type
-    this->comboValue += threeTypes[2] * pow(10, 4); // third-highest three pair card type
-    this->comboValue += maxTwo * pow(10, 2); // highest two pair number
-    this->comboValue += twoTypes[0] * 10; // highest two pair card type
-    this->comboValue += twoTypes[1]; // second-highest two pair card type
+    if ((tripleCount == 0) || (doubleCount <= 1))
+    {
+        this->comboValue = 0;
+    }
 }

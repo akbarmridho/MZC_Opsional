@@ -41,16 +41,16 @@ void Flush::computeCombo(vector<CardCandy> cards) // copy so that cards can be s
             const CardCandy &card = cards[i];
             if (card.getType() == typeGreaterThanFive)
             {
+                counter++;    
                 this->comboValue = this->comboValue * 100 + card.getNumber();
-                this->comboValue = this->comboValue * 10 + card.getType();
-                counter++;
-
-                if (counter == 5)
-                {
-                    break;
-                }
             }
         }
+        while (counter < 7)
+        {
+            counter++;
+            this->comboValue *= 100;
+        }
+        this->comboValue = this->comboValue * 10 + typeGreaterThanFive;
     }
 
 }

@@ -7,14 +7,11 @@ using std::make_pair;
 using std::vector;
 
 TwoPair::TwoPair(const vector<CardCandy> &cards)
-    : Comboable(2, 0)
+    : Comboable(3, 0)
 {
-    int highCardNum, highTypeValue;
-    int lowCardNum, lowTypeValue;
-
-
     using VectorPair = vector<pair<int, int>>;
     VectorPair cardBag(13, make_pair(0,0));
+
 
     for (const auto card : cards)
     {
@@ -23,37 +20,48 @@ TwoPair::TwoPair(const vector<CardCandy> &cards)
         cardBag[cardNum - 1].first++;
         cardBag[cardNum - 1].second += typeValue;
     }
-    
-    int i = 12;
-    for (i; i >= 0; i--)
+
+    int counter = 0;
+    int typeValue1stDouble = 0;
+    int typeValue2ndDouble = 0;
+    int typeValue3rdDouble = 0;
+    for (int i = 12; i >= 0; i--)
     {
         if (cardBag[i].first >= 2)
         {
-            highCardNum = i + 1;
-            highTypeValue = cardBag[i].second;
-            break;
+            counter++;
+            int cardNum = i + 1;
+            int typeValue = cardBag[i].second;
+
+            this->comboValue = (this->comboValue * 100) + cardNum;
+
+            if (counter == 1)
+            {
+                typeValue1stDouble = typeValue;
+            }
+            else if (counter == 2)
+            {
+                typeValue2ndDouble = typeValue;
+            }
+            else if (counter == 3)
+            {
+                typeValue3rdDouble = typeValue;
+                break;
+            }
         }
     }
-
-    bool found = false;
-    int j = i - 1;
-    for (j; j >= 0; j--)
+    int doubleCount = counter;
+    while (counter < 3)
     {
-        if (cardBag[j].first >= 2)
-        {
-            found = true;
-            lowCardNum = j + 1;
-            lowTypeValue = cardBag[j].second;
-            break;
-        }
+        counter++;
+        this->comboValue *= 100;
     }
+    this->comboValue = (this->comboValue *= 100) + typeValue1stDouble;
+    this->comboValue = (this->comboValue *= 100) + typeValue2ndDouble;
+    this->comboValue = (this->comboValue *= 100) + typeValue3rdDouble;
 
-    if (found)
+    if ((doubleCount <= 1))
     {
-        this->comboValue += highCardNum * pow(10, 6);
-        this->comboValue += highTypeValue * pow(10, 4);
-        this->comboValue += lowCardNum * pow(10, 2);
-        this->comboValue += lowTypeValue * pow(10, 0);
-
+        this->comboValue = 0;
     }
 }
