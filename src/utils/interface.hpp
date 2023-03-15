@@ -2,6 +2,7 @@
 #define INTERFACE_HPP
 
 #include "string"
+#include <limits>
 using std::string;
 
 void clearTerminal();

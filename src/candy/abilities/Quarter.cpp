@@ -10,7 +10,7 @@ void Quarter::use()
 {
   std::cout << *getOwner();
 
-  if (pointManager->getCurrentRewardPoint() >= 4)
+  if (pointManager->getCurrentRewardPoint() > 1)
   {
     std::cout << " melakukan QUARTER! Poin hadiah turun " << pointManager->getCurrentRewardPoint() << " menjadi ";
     pointManager->divideReward(4);
@@ -18,7 +18,7 @@ void Quarter::use()
   }
   else
   {
-    std::cout << " melakukan QUARTER! Sayangnya poin hadiah sudah bernilai kurang dari 4. Poin hadiah tidak berubah.. Giliran dilanjut\n";
+    std::cout << " melakukan QUARTER! Sayangnya poin hadiah sudah 1. Poin hadiah tidak berubah.. Giliran dilanjut\n";
   }
 
   getStatus().setUsed();
