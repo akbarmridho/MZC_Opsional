@@ -100,7 +100,8 @@ void GameEngine::runRound()
     if (roundCount == 2)
     {
         abilitiesManager.shuffle();
-        cout << cyellow() << "Ability telah dibagikan kepada setiap pemain.\n\n";
+        cout << cyellow() << "Ability telah dibagikan kepada setiap pemain.\n\n"
+             << reset();
     }
     bool willNext = true;
     do
@@ -113,6 +114,7 @@ void GameEngine::runRound()
             string temp;
             getline(cin, temp);
             clearTerminal();
+            cout << "Sekarang giliran " << *p << "\n";
             if (roundCount > 1)
                 deckManager.showTableStatus();
             p->showStatus(roundCount == 1);
@@ -141,12 +143,13 @@ void GameEngine::runRound()
             willNext = false;
             showGameStatus();
             continue;
-        default:
+        case next:
             clearTerminal();
             continue;
         }
         cout << "Tekan enter untuk mengakhiri giliran" << endl;
         string temp;
+        cin.ignore();
         getline(cin, temp);
         clearTerminal();
     } while (!willNext || roundManager.nextPlayer());

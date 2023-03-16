@@ -14,6 +14,7 @@ enum PlayerAction
     dbl,
     half,
     status,
+    invalid
 };
 
 class PlayerCandy : public Player

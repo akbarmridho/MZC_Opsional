@@ -106,7 +106,8 @@ PlayerAction PlayerCandy::getAction(bool isFirstRound)
             }
             catch (AbilityException &e)
             {
-                cout << e.what() << endl;
+                cout << endl << cred() << e.what() <<  reset() << endl << endl;
+                return PlayerAction::invalid;
             }
         }
         else if (input == "NEXT")
@@ -134,7 +135,7 @@ PlayerAction PlayerCandy::getAction(bool isFirstRound)
             cout << "Masukan salah! Harap ulangi masukan (command help untuk menampilkan list command)" << endl;
         }
     }
-    return PlayerAction::next;
+    return PlayerAction::invalid;
 }
 
 bool PlayerCandy::operator>(PlayerCandy &other)
