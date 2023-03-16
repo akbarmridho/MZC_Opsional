@@ -20,11 +20,7 @@ TwoPair::TwoPair(const vector<CardCandy> &cards)
         cardBag[cardNum - 1].first++;
         cardBag[cardNum - 1].second += typeValue;
     }
-
     int counter = 0;
-    int typeValue1stDouble = 0;
-    int typeValue2ndDouble = 0;
-    int typeValue3rdDouble = 0;
     for (int i = 12; i >= 0; i--)
     {
         if (cardBag[i].first >= 2)
@@ -34,18 +30,10 @@ TwoPair::TwoPair(const vector<CardCandy> &cards)
             int typeValue = cardBag[i].second;
 
             this->comboValue = (this->comboValue * 100) + cardNum;
+            this->comboValue = (this->comboValue *= 100) + typeValue;
 
-            if (counter == 1)
+            if (counter == 3)
             {
-                typeValue1stDouble = typeValue;
-            }
-            else if (counter == 2)
-            {
-                typeValue2ndDouble = typeValue;
-            }
-            else if (counter == 3)
-            {
-                typeValue3rdDouble = typeValue;
                 break;
             }
         }
@@ -54,11 +42,8 @@ TwoPair::TwoPair(const vector<CardCandy> &cards)
     while (counter < 3)
     {
         counter++;
-        this->comboValue *= 100;
+        this->comboValue *= 10000;
     }
-    this->comboValue = (this->comboValue *= 100) + typeValue1stDouble;
-    this->comboValue = (this->comboValue *= 100) + typeValue2ndDouble;
-    this->comboValue = (this->comboValue *= 100) + typeValue3rdDouble;
 
     if ((doubleCount <= 1))
     {

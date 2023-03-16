@@ -21,8 +21,6 @@ FullHouse::FullHouse(const vector<CardCandy> &cards)
     }
 
     int counter = 0;
-    int typeValue1stTriple = 0;
-    int typeValue2ndTriple = 0;
     for (int i = 12; i >= 0; i--)
     {
         if (cardBag[i].first >= 3)
@@ -32,14 +30,10 @@ FullHouse::FullHouse(const vector<CardCandy> &cards)
             int typeValue = cardBag[i].second;
 
             this->comboValue = (this->comboValue << 4) + cardNum;
+            this->comboValue = (this->comboValue << 4) + typeValue;
 
-            if (counter == 1)
+            if (counter == 2)
             {
-                typeValue1stTriple = typeValue;
-            }
-            else if (counter == 2)
-            {
-                typeValue2ndTriple = typeValue;
                 break;
             }
         }
@@ -48,13 +42,10 @@ FullHouse::FullHouse(const vector<CardCandy> &cards)
     while (counter < 2)
     {
         counter++;
-        this->comboValue <<= 4;
+        this->comboValue <<= 8;
     }
 
     counter = 0;
-    int typeValue1stDouble = 0;
-    int typeValue2ndDouble = 0;
-    int typeValue3rdDouble = 0;
     for (int i = 12; i >= 0; i--)
     {
         if (cardBag[i].first >= 2)
@@ -64,18 +55,10 @@ FullHouse::FullHouse(const vector<CardCandy> &cards)
             int typeValue = cardBag[i].second;
 
             this->comboValue = (this->comboValue << 4) + cardNum;
+            this->comboValue = (this->comboValue << 4) + typeValue;
 
-            if (counter == 1)
+            if (counter == 3)
             {
-                typeValue1stDouble = typeValue;
-            }
-            else if (counter == 2)
-            {
-                typeValue2ndDouble = typeValue;
-            }
-            else if (counter == 3)
-            {
-                typeValue3rdDouble = typeValue;
                 break;
             }
         }
@@ -84,13 +67,8 @@ FullHouse::FullHouse(const vector<CardCandy> &cards)
     while (counter < 3)
     {
         counter++;
-        this->comboValue <<= 4;
+        this->comboValue <<= 8;
     }
-    this->comboValue = (this->comboValue << 4) + typeValue1stTriple;
-    this->comboValue = (this->comboValue << 4) + typeValue2ndTriple;
-    this->comboValue = (this->comboValue << 4) + typeValue1stDouble;
-    this->comboValue = (this->comboValue << 4) + typeValue2ndDouble;
-    this->comboValue = (this->comboValue << 4) + typeValue3rdDouble;
 
     if ((tripleCount == 0) || (doubleCount <= 1))
     {
