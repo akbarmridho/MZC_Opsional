@@ -36,12 +36,6 @@ public:
 
     int getNumber() const;
 
-    bool operator>(const CardCandy &) const;
-
-    bool operator==(const CardCandy &) const;
-
-    bool operator<(const CardCandy &) const;
-
     string getTypeString() const;
 
     string getTypeColor() const;

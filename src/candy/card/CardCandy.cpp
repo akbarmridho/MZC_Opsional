@@ -10,7 +10,7 @@ CardCandy::CardCandy(CardCandyType type, int number) : Card(type, number)
 
 value_pair_t CardCandy::value() const
 {
-    value_pair_t ret = {type, number};
+    value_pair_t ret = {number, type};
     return ret;
 }
 
@@ -22,35 +22,6 @@ CardCandyType CardCandy::getType() const
 int CardCandy::getNumber() const
 {
     return number;
-}
-
-bool CardCandy::operator>(const CardCandy &other) const
-{
-    if (this->type == other.type)
-    {
-        return this->number > other.number;
-    }
-    else
-    {
-        return this->type > other.type;
-    }
-}
-
-bool CardCandy::operator==(const CardCandy &other) const
-{
-    return this->type == other.type && this->number == other.number;
-}
-
-bool CardCandy::operator<(const CardCandy &other) const
-{
-    if (this->type == other.type)
-    {
-        return this->number < other.number;
-    }
-    else
-    {
-        return this->type < other.type;
-    }
 }
 
 string CardCandy::getTypeString() const
