@@ -12,9 +12,9 @@ void HighCard::computeCombo(vector<CardCandy> cards) {
     stable_sort(cards.begin(), cards.end(), [](CardCandy a, CardCandy b)
         { return ((a.getNumber() >= b.getNumber())); });
     std::cout << std::endl;
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i <= 6; i++) {
         const CardCandy &card = cards[i];
-        this->comboValue = this->comboValue*32 + card.getNumber();
-        this->comboValue = this->comboValue*4 + card.getType();
+        this->comboValue = (this->comboValue<<4) + card.getNumber();
+        this->comboValue = (this->comboValue<<2) + card.getType();
     }
 }

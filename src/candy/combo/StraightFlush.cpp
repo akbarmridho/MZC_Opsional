@@ -1,74 +1,93 @@
 #include "StraightFlush.hpp"
+#include <algorithm>
 
 using std::make_pair;
 
 StraightFlush::StraightFlush(const vector<CardCandy> &cards)
     : Comboable(9, 0)
 {
+    computeCombo(cards);
+}
+
+void StraightFlush::computeCombo(vector<CardCandy> cards) // copy so that cards can be sorted freely
+{
     using VectorPair = vector<pair<int, int>>;
     VectorPair cardBag(13, make_pair(0,0));
 
+    sort(cards.begin(), cards.end(), [](CardCandy &a, CardCandy &b)
+         { return a > b; });
 
-    for (const auto card : cards)
+    vector<int> countType = vector<int>(4, 0);
+
+    for (int i = 0; i < cards.size(); i++)
     {
-        int cardNum = card.getNumber();
-        int typeValue = 1<<card.getType();
-        cardBag[cardNum - 1].first++;
-        cardBag[cardNum - 1].second += typeValue;
+        countType[cards[i].getType()]++;
     }
 
-    int prevTypeValue = 0;
-    int counter = 0;
-    for (int i = 12; i >= 0; i--)
+    int typeGreaterThanFive = -1;
+    for (int i = 0; i <= 3; i++)
     {
-        const pair<int, int> &card = cardBag[i];
-
-        if ((prevTypeValue & card.second) == 0)
+        if (countType[i] >= 5)
         {
-            if (counter >= 5)
-            {
-                break;
-            }
-            else
-            {
-                this->comboValue = i + 1;
-                counter = 1;
-                prevTypeValue = card.second;
-            }
-        }
-        else 
-        {
-            prevTypeValue = prevTypeValue & card.second;
-            counter++;
-            switch (counter)
-            {
-            case 5:
-                this->comboValue = this->comboValue * 100 + prevTypeValue;
-                break;
-            
-            case 6:
-                this->comboValue = this->comboValue * 100 + i + 5;
-                break;
-
-            case 7:
-                this->comboValue = this->comboValue * 100 + i + 5;
-                break;
-
-            default:
-                break;
-            }
-
-            if (counter == 7) {break;}
-        }
-    }
-    if (counter >= 5)
-    {
-        while(counter < 7)
-        {
-            counter++;
-            this->comboValue *= 100;
+            typeGreaterThanFive = i;
+            break;
         } 
-    } else {
-        this->comboValue = 0;
+    }
+
+    if (typeGreaterThanFive != -1)
+    {
+        for (const auto card : cards)
+        {
+            int cardNum = card.getNumber();
+            int typeValue = card.getType();
+            if (typeValue == typeGreaterThanFive)
+            {
+                cardBag[cardNum - 1].first++;
+                cardBag[cardNum - 1].second += typeValue;
+            }
+        }
+        int counter = 0;
+        int prevNum = 14;
+        for (int i=cardBag.size() - 1; i >= 0; i--)
+        {
+            const pair<int, int> &card = cardBag[i];
+            if (card.first >= 1)
+            {
+                int currentNum = (i + 1);
+                if (currentNum + 1 == prevNum)
+                {
+                    counter++;
+                    this->comboValue = this->comboValue * 100 + (currentNum);
+                }
+                else
+                {
+                     if (counter >= 5)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        counter = 1;
+                        this->comboValue = (currentNum);
+                    }
+                }
+                prevNum = currentNum;
+            }
+        }
+        if (counter >= 5)
+        {
+            while (counter < 7)
+            {
+                counter++;
+                this->comboValue *= 100;
+            }
+            this->comboValue = this->comboValue * 10 + typeGreaterThanFive;
+        }
+        else
+        {
+            this->comboValue = 0;
+        }
+        
+        
     }
 }

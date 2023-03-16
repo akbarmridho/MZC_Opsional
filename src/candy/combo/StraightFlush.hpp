@@ -6,9 +6,11 @@
 #include "../deck/TableDeckCandy.hpp"
 
 class StraightFlush : public Comboable {
+protected:
+    void computeCombo(vector<CardCandy>);
+
 public:
     explicit StraightFlush(const vector<CardCandy> &);
 };
-
 
 #endif

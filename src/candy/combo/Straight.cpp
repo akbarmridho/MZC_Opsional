@@ -1,7 +1,6 @@
 #include "Straight.hpp"
 #include <iostream>
 #include <algorithm>
-#include "../../utils/max.hpp"
 
 using std::make_pair;
 using std::cout;
@@ -21,41 +20,43 @@ Straight::Straight(const vector<CardCandy> &cards)
         cardBag[cardNum - 1].first++;
         cardBag[cardNum - 1].second += typeValue;
     }
-
     int counter = 0;
-    int i = 12;
-    for (i; i >= 0; i--)
+    int prevNum = 14;
+    for (int i=cardBag.size() - 1; i >= 0; i--)
     {
-        if (cardBag[i].first == 0)
+        const pair<int, int> &card = cardBag[i];
+        if (card.first >= 1)
         {
-            if (counter >= 5)
+            int currentNum = (i + 1);
+            if (currentNum + 1 == prevNum)
             {
-                break;
+                counter++;
+                this->comboValue = (this->comboValue<<4) + (currentNum);
+                this->comboValue = (this->comboValue<<4) + card.second;
             }
             else
             {
-                counter = 1;
+                if (counter >= 5) {break;}
+                else
+                {
+                    counter = 1;
+                    this->comboValue = (currentNum);
+                    this->comboValue = (this->comboValue<<4) + card.second;
+                }
             }
-        }
-        else
-        {
-            counter++;
+            prevNum = currentNum;
         }
     }
     if (counter >= 5)
     {
-        int index_end = i + 1;
-        for (i = index_end + counter - 1; i >= index_end; i--)
-        {
-            this->comboValue = (this->comboValue << 4) + (i + 1);
-            this->comboValue = (this->comboValue << 4) + cardBag[i].second;
-        }
         while (counter < 7)
         {
             counter++;
             this->comboValue <<= 8;
-        } 
+        }
     }
-    
-
+    else
+    {
+        this->comboValue = 0;
+    }
 }
