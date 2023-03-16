@@ -96,7 +96,7 @@ void RoundManager::reversePlayer()
     }
 
     // bakal dipanggil next player di game manager (currentPlayerIdx++) -> biar tetep player ke-7 (index 6)
-    this->currentPlayerIdx = 5;
+    this->currentPlayerIdx--;
     std::cout << "urutan eksekusi giliran selanjutnya : \n";
     for (int i = 0; i < 7; i++)
     {
