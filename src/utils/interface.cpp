@@ -50,7 +50,7 @@ string cyellow(bool bold)
   if (bold)
     return "\033[1;33m";
   else
-    return "\033[0;33m";
+    return rgb(255, 255, 0);
 #else
   return "";
 #endif
@@ -66,6 +66,11 @@ string cblue(bool bold)
 #else
   return "";
 #endif
+}
+
+string cpink()
+{
+  return rgb(255, 105, 180);
 }
 
 string rgb(int r, int g, int b)

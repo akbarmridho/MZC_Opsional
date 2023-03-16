@@ -8,7 +8,7 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-Abilityless::Abilityless(PlayerCandy **players) : AbilityCard("abilityless") {
+Abilityless::Abilityless(PlayerCandy **players) : AbilityCard("ABILITYLESS") {
     this->players = new PlayerCandy *[7];
     for (int i = 0; i < 7; i++) {
         this->players[i] = players[i];

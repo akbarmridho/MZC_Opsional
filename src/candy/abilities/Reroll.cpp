@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Reroll::Reroll(DeckManager *a) : AbilityCard("reroll")
+Reroll::Reroll(DeckManager *a) : AbilityCard("REROLL")
 {
     this->deckManager = a;
 }
