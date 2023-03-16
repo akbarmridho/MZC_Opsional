@@ -8,7 +8,7 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-Switch::Switch(PlayerCandy **a) : AbilityCard("switch") {
+Switch::Switch(PlayerCandy **a) : AbilityCard("SWITCH") {
     this->players = new PlayerCandy *[7];
 
     for (int i = 0; i < 7; i++) {

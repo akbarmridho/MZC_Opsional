@@ -15,6 +15,8 @@ string cyellow(bool bold = false);
 
 string cblue(bool bold = false);
 
+string cpink();
+
 string rgb(int r, int g, int b);
 
 string reset();

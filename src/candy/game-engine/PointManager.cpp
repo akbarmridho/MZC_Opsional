@@ -1,5 +1,6 @@
 #include "PointManager.hpp"
 #include "../../utils/max.hpp"
+#include "../../utils/interface.hpp"
 #include <algorithm>
 #include <iostream>
 
@@ -54,7 +55,7 @@ void PointManager::showLeaderboard() const
     cout << "Leaderboard:\n";
     for (int i = 0; i < sortedPoints.size(); i++)
     {
-        cout << "\t" << i + 1 << ". " << sortedPoints[i].first << ": " << sortedPoints[i].second << endl;
+        cout << "    " << i + 1 << ". " << sortedPoints[i].first << ": " << sortedPoints[i].second << endl;
     }
 }
 

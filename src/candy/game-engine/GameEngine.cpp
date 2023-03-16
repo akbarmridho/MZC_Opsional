@@ -19,12 +19,12 @@ GameEngine::GameEngine()
 void GameEngine::start()
 {
     clearTerminal();
-    cout << "\n\nSelamat datang di" << cyellow() << " Candy Land\n"
+    cout << "\n\nSelamat datang di" << cpink() << " Candy Land\n"
          << reset() << endl;
     cin.ignore();
     for (int i = 0; i < 7; i++)
     {
-        cout << "\nMasukkan nama player ke-" << i + 1 << ":\n> ";
+        cout << "\nMasukkan nama player ke-" << cblue() << i + 1 << reset() << ":\n> ";
         string name;
         getline(cin, name);
         trim(name);
@@ -81,12 +81,14 @@ bool GameEngine::runMatch()
         roundCount++;
     } while (roundManager.nextRound());
 
-    string winnerName = max<PlayerCandy>(players, 7).getName();
+    PlayerCandy &winner = max<PlayerCandy>(players, 7);
+    string winnerName = winner.getName();
     cout << cblue() << winnerName << reset() << " berhasil memenangkan match. " << cblue() << winnerName << cblue() << " mendapatkan " << cyellow() << pointManager.getCurrentRewardPoint() << reset() << " point.\n";
     bool gameOver = pointManager.givePointAndReset(winnerName);
 
-    if (gameOver) {
-        cout << "Permainan berakhir. \nPermainan dimenangkan oleh " << cblue() << winnerName << reset() << endl;  
+    if (gameOver)
+    {
+        cout << "Permainan berakhir. \nPermainan dimenangkan oleh " << cblue() << winnerName << reset() << endl;
     }
 
     pointManager.showLeaderboard();
@@ -98,6 +100,7 @@ void GameEngine::runRound()
     if (roundCount == 2)
     {
         abilitiesManager.shuffle();
+        cout << cyellow() << "Ability telah dibagikan kepada setiap pemain.\n\n";
     }
     bool willNext = true;
     do
@@ -155,9 +158,10 @@ void GameEngine::runRound()
 
 void GameEngine::showGameStatus()
 {
-    cout << "\n=====GAME STATUS=====\n\n";
+    cout << cgreen() << "\n=====GAME STATUS=====\n\n";
     cout << "Match\t: " << gameCounter << endl;
     cout << "Round\t: " << roundCount << endl;
     cout << "Points\t: " << pointManager.getCurrentRewardPoint() << endl;
     pointManager.showLeaderboard();
+    cout << reset();
 }

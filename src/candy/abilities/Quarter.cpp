@@ -1,7 +1,7 @@
 #include "Quarter.hpp"
 #include <iostream>
 
-Quarter::Quarter(PointManager *pm) : AbilityCard("quarter")
+Quarter::Quarter(PointManager *pm) : AbilityCard("QUARTER")
 {
   pointManager = pm;
 }

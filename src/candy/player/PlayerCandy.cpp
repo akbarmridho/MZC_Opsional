@@ -52,22 +52,22 @@ void PlayerCandy::updateTableDeck(TableDeckCandy *tc)
 void help(bool isFirstRound)
 {
     cout << "List perintah:" << endl
-         << "\t1. next" << endl
-         << "\t2. double" << endl
-         << "\t3. half" << endl
-         << "\t4. game status" << endl;
+         << "  1. NEXT" << endl
+         << "  2. DOUBLE" << endl
+         << "  3. HALF" << endl
+         << "  4. GAME STATUS" << endl;
 
     if (!isFirstRound)
     {
-        cout << "\t4. <ability-name>" << endl
+        cout << "  4. <ability-name>" << endl
              << "List ability:" << endl
-             << "\t1. Abilityless" << endl
-             << "\t2. Quadruple" << endl
-             << "\t3. Quarter" << endl
-             << "\t4. Reroll" << endl
-             << "\t5. Reverse" << endl
-             << "\t6. Swap Card" << endl
-             << "\t7. Switch" << endl;
+             << "  1. ABILITYLESS" << endl
+             << "  2. QUADRUPLE" << endl
+             << "  3. QUARTER" << endl
+             << "  4. REROLL" << endl
+             << "  5. REVERSE" << endl
+             << "  6. SWAP CARD" << endl
+             << "  7. SWITCH" << endl;
     }
 }
 
@@ -87,14 +87,14 @@ PlayerAction PlayerCandy::getAction(bool isFirstRound)
     {
         cout << "> ";
         getline(cin, input);
-        lower(input);
-        if (input == "help")
+        upper(input);
+        if (input == "HELP")
         {
             help(isFirstRound);
         }
         else if (!isFirstRound &&
-                 ((input == "abilityless") || (input == "quadruple") || (input == "quarter") || (input == "reroll") ||
-                  (input == "reverse") || (input == "swap card") || (input == "switch")))
+                 ((input == "ABILITYLESS") || (input == "QUADRUPLE") || (input == "QUARTER") || (input == "REROLL") ||
+                  (input == "REVERSE") || (input == "SWAP CARD") || (input == "SWITCH")))
         {
             valid = true;
             try
@@ -109,22 +109,22 @@ PlayerAction PlayerCandy::getAction(bool isFirstRound)
                 cout << e.what() << endl;
             }
         }
-        else if (input == "next")
+        else if (input == "NEXT")
         {
             valid = true;
             return PlayerAction::next;
         }
-        else if (input == "double")
+        else if (input == "DOUBLE")
         {
             valid = true;
             return PlayerAction::dbl;
         }
-        else if (input == "half")
+        else if (input == "HALF")
         {
             valid = true;
             return PlayerAction::half;
         }
-        else if (input == "game status")
+        else if (input == "GAME STATUS")
         {
             valid = true;
             return PlayerAction::status;
@@ -171,6 +171,7 @@ void PlayerCandy::showStatus(bool isFirstRound)
 
     if (!isFirstRound)
     {
+        cout << endl;
         this->abilityStatus->showStatus();
     }
 }

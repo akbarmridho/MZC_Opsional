@@ -1,5 +1,6 @@
 #include "AbilityStatus.hpp"
 #include "../exception/AbilitiesException.hpp"
+#include "../../utils/interface.hpp"
 
 #include <iostream>
 using std::cout;
@@ -61,8 +62,9 @@ void AbilityStatus::haveOrThrow(string name) const
 void AbilityStatus::showStatus() const
 {
     cout << "Status ability:\n";
-    cout << "\tAbility\t: " << name << endl;
-    cout << "\tStatus\t: " << (isDeactivated() ? "deactivated" : getUsed() ? "used"
-                                                                           : "not used")
+    cout << "\tAbility\t: " << cblue() << name << reset() << endl;
+    cout << "\tStatus\t: " << (isDeactivated() ? cred() + "DEACTIVATED" : getUsed() ? cred() + "USED"
+                                                                                    : cgreen() + "AVAILABLE")
+         << reset() << endl
          << endl;
 }

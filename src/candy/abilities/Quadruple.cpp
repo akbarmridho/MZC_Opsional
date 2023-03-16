@@ -2,7 +2,7 @@
 #include <iostream>
 using std::cout;
 
-Quadruple::Quadruple(PointManager *pm) : AbilityCard("quadruple")
+Quadruple::Quadruple(PointManager *pm) : AbilityCard("QUADRUPLE")
 {
   pointManager = pm;
 }

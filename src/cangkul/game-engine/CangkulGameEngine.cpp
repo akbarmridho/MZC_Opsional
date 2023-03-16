@@ -24,7 +24,7 @@ void CangkulGameEngine::main()
     for (int i = 0; i < 4; i++)
     {
         string name;
-        cout << "Masukkan nama pemain ke-" << i + 1 << ":" << endl
+        cout << "Masukkan nama pemain ke-" << cblue() << i + 1 << reset() << ":" << endl
              << "> ";
         getline(cin, name);
         trim(name);

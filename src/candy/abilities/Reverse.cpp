@@ -1,7 +1,7 @@
 #include "Reverse.hpp"
 #include <iostream>
 
-Reverse::Reverse(RoundManager *rm) : AbilityCard("reverse")
+Reverse::Reverse(RoundManager *rm) : AbilityCard("REVERSE")
 {
   roundManager = rm;
 }
