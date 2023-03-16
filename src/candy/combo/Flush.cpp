@@ -1,7 +1,20 @@
 #include "Flush.hpp"
 #include <algorithm>
 
-
+/**
+ * @brief Menghitung nilai Flush dengan skema sebagai berikut
+ * "AABBCCDDEEFFGGH"
+ * A: Nilai tertinggi ke-1
+ * B: Nilai tertinggi ke-2
+ * C: Nilai tertinggi ke-3
+ * D: Nilai tertinggi ke-4
+ * E: Nilai tertinggi ke-5
+ * F: Nilai tertinggi ke-6 (Optional, bernilai 00 jika tidak terbentuk flush ke-6)
+ * G: Nilai tertinggi ke-7 (Optional, bernilai 00 jika tidak terbentuk flush ke-6)
+ * H: Warna tipe dari kartu yang membuat flush
+ * 
+ * @param cards 
+ */
 Flush::Flush(const vector<CardCandy> &cards)
     : Comboable(6, 0)
 {
@@ -13,7 +26,7 @@ void Flush::computeCombo(vector<CardCandy> cards) // copy so that cards can be s
 
     // sort by value
     sort(cards.begin(), cards.end(), [](CardCandy &a, CardCandy &b)
-         { return a > b; });
+         {return a.getNumber() > b.getNumber(); });
 
     vector<int> countType = vector<int>(4, 0);
 

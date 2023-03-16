@@ -30,7 +30,6 @@ FourOfAKind::FourOfAKind(const vector<CardCandy> &cards)
             int typeValue = cardBag[i].second;
 
             this->comboValue = this->comboValue * 100 + cardNum;
-            this->comboValue = this->comboValue * 100 + typeValue;
 
             break;
         }

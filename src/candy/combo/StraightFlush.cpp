@@ -3,6 +3,20 @@
 
 using std::make_pair;
 
+/**
+ * @brief Menghitung nilai StraightFlush dengan skema sebagai berikut
+ * AABBCCDDEEFFGGH (Dalam basis 10)
+ * A: Nilai tertinggi ke-1
+ * B: Nilai tertinggi ke-2
+ * C: Nilai tertinggi ke-3
+ * D: Nilai tertinggi ke-4
+ * E: Nilai tertinggi ke-5
+ * F: Nilai tertinggi ke-6 (Optional, bernilai 00 jika tidak ada kartu StraightFlush ke-6)
+ * G: Nilai tertinggi ke-7 (Optional, bernilai 00 jika tidak ada kartu StraightFlush ke-7)
+ * H: Warna tipe dari kartu yang membuat StraightFlush
+ * 
+ * @param cards Kartu yang dimiliki player digabung dengan kartu di table (PlayerDeck + TableDeck)
+ */
 StraightFlush::StraightFlush(const vector<CardCandy> &cards)
     : Comboable(9, 0)
 {
@@ -15,7 +29,7 @@ void StraightFlush::computeCombo(vector<CardCandy> cards) // copy so that cards 
     VectorPair cardBag(13, make_pair(0,0));
 
     sort(cards.begin(), cards.end(), [](CardCandy &a, CardCandy &b)
-         { return a > b; });
+         { return a.getNumber() > b.getNumber(); });
 
     vector<int> countType = vector<int>(4, 0);
 

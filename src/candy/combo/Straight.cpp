@@ -6,6 +6,26 @@ using std::make_pair;
 using std::cout;
 using std::endl;
 
+/**
+ * @brief Menghitung nilai Straight dengan skema sebagai berikut
+ * AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNN (Dalam basis 2)
+ * A: Nilai tertinggi ke-1
+ * B: Semua tipe kartu dengan nilai tertinggi ke-1
+ * C: Nilai tertinggi ke-2
+ * D: Semua tipe kartu dengan nilai tertinggi ke-2
+ * E: Nilai tertinggi ke-3
+ * F: Semua tipe kartu dengan nilai tertinggi ke-3
+ * G: Nilai tertinggi ke-4
+ * H: Semua tipe kartu dengan nilai tertinggi ke-4
+ * I: Nilai tertinggi ke-5
+ * J: Semua tipe kartu dengan nilai tertinggi ke-5
+ * K: Nilai tertinggi ke-6 (Optional, bernilai 0000 jika tidak ada kartu Straight ke-6)
+ * L: Semua tipe kartu dengan nilai tertinggi ke-6 (Optional, bernilai 0000 jika tidak ada kartu Straight ke-6)
+ * M: Nilai tertinggi ke-7 (Optional, bernilai 0000 jika tidak ada kartu Straight ke-7)
+ * N: Semua tipe kartu dengan nilai tertinggi ke-7 (Optional, bernilai 0000 jika tidak ada kartu Straight ke-7)
+ * 
+ * @param cards Kartu yang dimiliki player digabung dengan kartu di table (PlayerDeck + TableDeck)
+ */
 Straight::Straight(const vector<CardCandy> &cards)
     : Comboable(5, 0)
 {
